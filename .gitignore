@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.cache/geoquetzal/
+.ipynb_checkpoints/
+GEOQUETZAL_LAUNCH_PLAN.md
+emigracion.parquet

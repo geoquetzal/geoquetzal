@@ -1,0 +1,341 @@
+codigo_muni,municipio,departamento,codigo_depto,codigo_muni_in_depto
+101,Guatemala,Guatemala,1,1
+102,Santa Catarina Pinula,Guatemala,1,2
+103,San José Pinula,Guatemala,1,3
+104,San José del Golfo,Guatemala,1,4
+105,Palencia,Guatemala,1,5
+106,Chinautla,Guatemala,1,6
+107,San Pedro Ayampuc,Guatemala,1,7
+108,Mixco,Guatemala,1,8
+109,San Pedro Sacatepéquez,Guatemala,1,9
+110,San Juan Sacatepéquez,Guatemala,1,10
+111,San Raymundo,Guatemala,1,11
+112,Chuarrancho,Guatemala,1,12
+113,Fraijanes,Guatemala,1,13
+114,Amatitlán,Guatemala,1,14
+115,Villa Nueva,Guatemala,1,15
+116,Villa Canales,Guatemala,1,16
+117,San Miguel Petapa,Guatemala,1,17
+201,Guastatoya,El Progreso,2,1
+202,Morazán,El Progreso,2,2
+203,San Agustín Acasaguastlán,El Progreso,2,3
+204,San Cristóbal Acasaguastlán,El Progreso,2,4
+205,El Jícaro,El Progreso,2,5
+206,Sansare,El Progreso,2,6
+207,Sanarate,El Progreso,2,7
+208,San Antonio la Paz,El Progreso,2,8
+301,Antigua Guatemala,Sacatepéquez,3,1
+302,Jocotenango,Sacatepéquez,3,2
+303,Pastores,Sacatepéquez,3,3
+304,Sumpango,Sacatepéquez,3,4
+305,Santo Domingo Xenacoj,Sacatepéquez,3,5
+306,Santiago Sacatepéquez,Sacatepéquez,3,6
+307,San Bartolomé Milpas Altas,Sacatepéquez,3,7
+308,San Lucas Sacatepéquez,Sacatepéquez,3,8
+309,Santa Lucía Milpas Altas,Sacatepéquez,3,9
+310,Magdalena Milpas Altas,Sacatepéquez,3,10
+311,Santa María de Jesús,Sacatepéquez,3,11
+312,Ciudad Vieja,Sacatepéquez,3,12
+313,San Miguel Dueñas,Sacatepéquez,3,13
+314,San Juan Alotenango,Sacatepéquez,3,14
+315,San Antonio Aguas Calientes,Sacatepéquez,3,15
+316,Santa Catarina Barahona,Sacatepéquez,3,16
+401,Chimaltenango,Chimaltenango,4,1
+402,San José Poaquil,Chimaltenango,4,2
+403,San Martín Jilotepeque,Chimaltenango,4,3
+404,San Juan Comalapa,Chimaltenango,4,4
+405,Santa Apolonia,Chimaltenango,4,5
+406,Tecpán Guatemala,Chimaltenango,4,6
+407,Patzún,Chimaltenango,4,7
+408,San Miguel Pochuta,Chimaltenango,4,8
+409,Patzicía,Chimaltenango,4,9
+410,Santa Cruz Balanyá,Chimaltenango,4,10
+411,Acatenango,Chimaltenango,4,11
+412,San Pedro Yepocapa,Chimaltenango,4,12
+413,San Andrés Itzapa,Chimaltenango,4,13
+414,Parramos,Chimaltenango,4,14
+415,Zaragoza,Chimaltenango,4,15
+416,El Tejar,Chimaltenango,4,16
+501,Escuintla,Escuintla,5,1
+502,Santa Lucía Cotzumalguapa,Escuintla,5,2
+503,La Democracia,Escuintla,5,3
+504,Siquinalá,Escuintla,5,4
+505,Masagua,Escuintla,5,5
+506,Tiquisate,Escuintla,5,6
+507,La Gomera,Escuintla,5,7
+508,Guanagazapa,Escuintla,5,8
+509,San José,Escuintla,5,9
+510,Iztapa,Escuintla,5,10
+511,Palín,Escuintla,5,11
+512,San Vicente Pacaya,Escuintla,5,12
+513,Nueva Concepción,Escuintla,5,13
+514,Sipacate,Escuintla,5,14
+601,Cuilapa,Santa Rosa,6,1
+602,Barberena,Santa Rosa,6,2
+603,Santa Rosa de Lima,Santa Rosa,6,3
+604,Casillas,Santa Rosa,6,4
+605,San Rafael Las Flores,Santa Rosa,6,5
+606,Oratorio,Santa Rosa,6,6
+607,San Juan Tecuaco,Santa Rosa,6,7
+608,Chiquimulilla,Santa Rosa,6,8
+609,Taxisco,Santa Rosa,6,9
+610,Santa María Ixhuatán,Santa Rosa,6,10
+611,Guazacapán,Santa Rosa,6,11
+612,Santa Cruz Naranjo,Santa Rosa,6,12
+613,Pueblo Nuevo Viñas,Santa Rosa,6,13
+614,Nueva Santa Rosa,Santa Rosa,6,14
+701,Sololá,Sololá,7,1
+702,San José Chacayá,Sololá,7,2
+703,Santa María Visitación,Sololá,7,3
+704,Santa Lucía Utatlán,Sololá,7,4
+705,Nahualá,Sololá,7,5
+706,Santa Catarina Ixtahuacán,Sololá,7,6
+707,Santa Clara La Laguna,Sololá,7,7
+708,Concepción,Sololá,7,8
+709,San Andrés Semetabaj,Sololá,7,9
+710,Panajachel,Sololá,7,10
+711,Santa Catarina Palopó,Sololá,7,11
+712,San Antonio Palopó,Sololá,7,12
+713,San Lucas Tolimán,Sololá,7,13
+714,Santa Cruz La Laguna,Sololá,7,14
+715,San Pablo La Laguna,Sololá,7,15
+716,San Marcos La Laguna,Sololá,7,16
+717,San Juan La Laguna,Sololá,7,17
+718,San Pedro La Laguna,Sololá,7,18
+719,Santiago Atitlán,Sololá,7,19
+801,Totonicapán,Totonicapán,8,1
+802,San Cristóbal Totonicapán,Totonicapán,8,2
+803,San Francisco el Alto,Totonicapán,8,3
+804,San Andrés Xecul,Totonicapán,8,4
+805,Momostenango,Totonicapán,8,5
+806,Santa María Chiquimula,Totonicapán,8,6
+807,Santa Lucía la Reforma,Totonicapán,8,7
+808,San Bartolo Aguas Calientes,Totonicapán,8,8
+901,Quetzaltenango,Quetzaltenango,9,1
+902,Salcajá,Quetzaltenango,9,2
+903,San Juan Olintepeque,Quetzaltenango,9,3
+904,San Carlos Sija,Quetzaltenango,9,4
+905,Sibilia,Quetzaltenango,9,5
+906,Cabricán,Quetzaltenango,9,6
+907,Cajolá,Quetzaltenango,9,7
+908,San Miguel Siguilá,Quetzaltenango,9,8
+909,San Juan Ostuncalco,Quetzaltenango,9,9
+910,San Mateo,Quetzaltenango,9,10
+911,Concepción Chiquirichapa,Quetzaltenango,9,11
+912,San Martín Sacatepéquez,Quetzaltenango,9,12
+913,Almolonga,Quetzaltenango,9,13
+914,Cantel,Quetzaltenango,9,14
+915,Huitán,Quetzaltenango,9,15
+916,Zunil,Quetzaltenango,9,16
+917,Colomba Costa Cuca,Quetzaltenango,9,17
+918,San Francisco la Unión,Quetzaltenango,9,18
+919,El Palmar,Quetzaltenango,9,19
+920,Coatepeque,Quetzaltenango,9,20
+921,Génova,Quetzaltenango,9,21
+922,Flores Costa Cuca,Quetzaltenango,9,22
+923,La Esperanza,Quetzaltenango,9,23
+924,Palestina de los Altos,Quetzaltenango,9,24
+1001,Mazatenango,Suchitepéquez,10,1
+1002,Cuyotenango,Suchitepéquez,10,2
+1003,San Francisco Zapotitlán,Suchitepéquez,10,3
+1004,San Bernardino,Suchitepéquez,10,4
+1005,San José el Ídolo,Suchitepéquez,10,5
+1006,Santo Domingo Suchitepéquez,Suchitepéquez,10,6
+1007,San Lorenzo,Suchitepéquez,10,7
+1008,Samayac,Suchitepéquez,10,8
+1009,San Pablo Jocopilas,Suchitepéquez,10,9
+1010,San Antonio Suchitepéquez,Suchitepéquez,10,10
+1011,San Miguel Panán,Suchitepéquez,10,11
+1012,San Gabriel,Suchitepéquez,10,12
+1013,Chicacao,Suchitepéquez,10,13
+1014,Patulul,Suchitepéquez,10,14
+1015,Santa Bárbara,Suchitepéquez,10,15
+1016,San Juan Bautista,Suchitepéquez,10,16
+1017,Santo Tomas la Unión,Suchitepéquez,10,17
+1018,Zunilito,Suchitepéquez,10,18
+1019,Pueblo Nuevo,Suchitepéquez,10,19
+1020,Río Bravo,Suchitepéquez,10,20
+1021,San José La Máquina,Suchitepéquez,10,21
+1101,Retalhuleu,Retalhuleu,11,1
+1102,San Sebastián,Retalhuleu,11,2
+1103,Santa Cruz Muluá,Retalhuleu,11,3
+1104,San Martín Zapotitlán,Retalhuleu,11,4
+1105,San Felipe,Retalhuleu,11,5
+1106,San Andrés Villa Seca,Retalhuleu,11,6
+1107,Champerico,Retalhuleu,11,7
+1108,Nuevo San Carlos,Retalhuleu,11,8
+1109,El Asintal,Retalhuleu,11,9
+1201,San Marcos,San Marcos,12,1
+1202,San Pedro Sacatepéquez,San Marcos,12,2
+1203,San Antonio Sacatepéquez,San Marcos,12,3
+1204,Comitancillo,San Marcos,12,4
+1205,San Miguel Ixtahuacán,San Marcos,12,5
+1206,Concepción Tutuapa,San Marcos,12,6
+1207,Tacaná,San Marcos,12,7
+1208,Sibinal,San Marcos,12,8
+1209,Tajumulco,San Marcos,12,9
+1210,Tejutla,San Marcos,12,10
+1211,San Rafael Pie de la Cuesta,San Marcos,12,11
+1212,Nuevo Progreso,San Marcos,12,12
+1213,El Tumbador,San Marcos,12,13
+1214,San José el Rodeo,San Marcos,12,14
+1215,Malacatán,San Marcos,12,15
+1216,Catarina,San Marcos,12,16
+1217,Ayutla,San Marcos,12,17
+1218,Ocós,San Marcos,12,18
+1219,San Pablo,San Marcos,12,19
+1220,El Quetzal,San Marcos,12,20
+1221,La Reforma,San Marcos,12,21
+1222,Pajapita,San Marcos,12,22
+1223,Ixchiguán,San Marcos,12,23
+1224,San José Ojetenam,San Marcos,12,24
+1225,San Cristóbal Cucho,San Marcos,12,25
+1226,Sipacapa,San Marcos,12,26
+1227,Esquipulas Palo Gordo,San Marcos,12,27
+1228,Río Blanco,San Marcos,12,28
+1229,San Lorenzo,San Marcos,12,29
+1230,La Blanca,San Marcos,12,30
+1301,Huehuetenango,Huehuetenango,13,1
+1302,Chiantla,Huehuetenango,13,2
+1303,Malacatancito,Huehuetenango,13,3
+1304,Cuilco,Huehuetenango,13,4
+1305,Nentón,Huehuetenango,13,5
+1306,San Pedro Necta,Huehuetenango,13,6
+1307,Jacaltenango,Huehuetenango,13,7
+1308,San Pedro Soloma,Huehuetenango,13,8
+1309,San Ildefonso Ixtahuacán,Huehuetenango,13,9
+1310,Santa Bárbara,Huehuetenango,13,10
+1311,La Libertad,Huehuetenango,13,11
+1312,La Democracia,Huehuetenango,13,12
+1313,San Miguel Acatán,Huehuetenango,13,13
+1314,San Rafael La Independencia,Huehuetenango,13,14
+1315,Todos Santos Cuchumatán,Huehuetenango,13,15
+1316,San Juan Atitán,Huehuetenango,13,16
+1317,Santa Eulalia,Huehuetenango,13,17
+1318,San Mateo Ixtatán,Huehuetenango,13,18
+1319,Colotenango,Huehuetenango,13,19
+1320,San Sebastián Huehuetenango,Huehuetenango,13,20
+1321,Tectitán,Huehuetenango,13,21
+1322,Concepción Huista,Huehuetenango,13,22
+1323,San Juan Ixcoy,Huehuetenango,13,23
+1324,San Antonio Huista,Huehuetenango,13,24
+1325,San Sebastián Coatán,Huehuetenango,13,25
+1326,Santa Cruz Barillas,Huehuetenango,13,26
+1327,Aguacatán,Huehuetenango,13,27
+1328,San Rafael Petzal,Huehuetenango,13,28
+1329,San Gaspar Ixchil,Huehuetenango,13,29
+1330,Santiago Chimaltenango,Huehuetenango,13,30
+1331,Santa Ana Huista,Huehuetenango,13,31
+1332,Unión Cantinil,Huehuetenango,13,32
+1333,Petatán,Huehuetenango,13,33
+1401,Santa Cruz del Quiché,Quiché,14,1
+1402,Chiché,Quiché,14,2
+1403,Chinique,Quiché,14,3
+1404,Zacualpa,Quiché,14,4
+1405,Chajul,Quiché,14,5
+1406,Santo Tomás Chichicastenango,Quiché,14,6
+1407,Patzité,Quiché,14,7
+1408,San Antonio Ilotenango,Quiché,14,8
+1409,San Pedro Jocopilas,Quiché,14,9
+1410,Cunén,Quiché,14,10
+1411,San Juan Cotzal,Quiché,14,11
+1412,Joyabaj,Quiché,14,12
+1413,Santa María Nebaj,Quiché,14,13
+1414,San Andrés Sajcabajá,Quiché,14,14
+1415,San Miguel Uspantán,Quiché,14,15
+1416,Sacapulas,Quiché,14,16
+1417,San Bartolomé Jocotenango,Quiché,14,17
+1418,Canillá,Quiché,14,18
+1419,Chicamán,Quiché,14,19
+1420,Playa Grande Ixcán,Quiché,14,20
+1421,Pachalum,Quiché,14,21
+1501,Salamá,Baja Verapaz,15,1
+1502,San Miguel Chicaj,Baja Verapaz,15,2
+1503,Rabinal,Baja Verapaz,15,3
+1504,Cubulco,Baja Verapaz,15,4
+1505,Granados,Baja Verapaz,15,5
+1506,Santa Cruz El Chol,Baja Verapaz,15,6
+1507,San Jerónimo,Baja Verapaz,15,7
+1508,Purulhá,Baja Verapaz,15,8
+1601,Cobán,Alta Verapaz,16,1
+1602,Santa Cruz Verapaz,Alta Verapaz,16,2
+1603,San Cristóbal Verapaz,Alta Verapaz,16,3
+1604,Tactic,Alta Verapaz,16,4
+1605,Tamahú,Alta Verapaz,16,5
+1606,San Miguel Tucurú,Alta Verapaz,16,6
+1607,Panzós,Alta Verapaz,16,7
+1608,Senahú,Alta Verapaz,16,8
+1609,San Pedro Carchá,Alta Verapaz,16,9
+1610,San Juan Chamelco,Alta Verapaz,16,10
+1611,San Agustín Lanquín,Alta Verapaz,16,11
+1612,Santa María Cahabón,Alta Verapaz,16,12
+1613,Chisec,Alta Verapaz,16,13
+1614,Chahal,Alta Verapaz,16,14
+1615,Fray Bartolomé de las Casas,Alta Verapaz,16,15
+1616,Santa Catalina La Tinta,Alta Verapaz,16,16
+1617,Raxruhá,Alta Verapaz,16,17
+1701,Flores,Petén,17,1
+1702,San José,Petén,17,2
+1703,San Benito,Petén,17,3
+1704,San Andrés,Petén,17,4
+1705,La Libertad,Petén,17,5
+1706,San Francisco,Petén,17,6
+1707,Santa Ana,Petén,17,7
+1708,Dolores,Petén,17,8
+1709,San Luis,Petén,17,9
+1710,Sayaxché,Petén,17,10
+1711,Melchor de Mencos,Petén,17,11
+1712,Poptún,Petén,17,12
+1713,Las Cruces,Petén,17,13
+1714,El Chal,Petén,17,14
+1801,Puerto Barrios,Izabal,18,1
+1802,Livingston,Izabal,18,2
+1803,El Estor,Izabal,18,3
+1804,Morales,Izabal,18,4
+1805,Los Amates,Izabal,18,5
+1901,Zacapa,Zacapa,19,1
+1902,Estanzuela,Zacapa,19,2
+1903,Río Hondo,Zacapa,19,3
+1904,Gualán,Zacapa,19,4
+1905,Teculután,Zacapa,19,5
+1906,Usumatlán,Zacapa,19,6
+1907,Cabañas,Zacapa,19,7
+1908,San Diego,Zacapa,19,8
+1909,La Unión,Zacapa,19,9
+1910,Huité,Zacapa,19,10
+1911,San Jorge,Zacapa,19,11
+2001,Chiquimula,Chiquimula,20,1
+2002,San José la Arada,Chiquimula,20,2
+2003,San Juan Ermita,Chiquimula,20,3
+2004,Jocotán,Chiquimula,20,4
+2005,Camotán,Chiquimula,20,5
+2006,Olopa,Chiquimula,20,6
+2007,Esquipulas,Chiquimula,20,7
+2008,Concepción las Minas,Chiquimula,20,8
+2009,Quezaltepeque,Chiquimula,20,9
+2010,San Jacinto,Chiquimula,20,10
+2011,Ipala,Chiquimula,20,11
+2101,Jalapa,Jalapa,21,1
+2102,San Pedro Pinula,Jalapa,21,2
+2103,San Luis Jilotepeque,Jalapa,21,3
+2104,San Manuel Chaparrón,Jalapa,21,4
+2105,San Carlos Alzatate,Jalapa,21,5
+2106,Monjas,Jalapa,21,6
+2107,Mataquescuintla,Jalapa,21,7
+2201,Jutiapa,Jutiapa,22,1
+2202,El Progreso,Jutiapa,22,2
+2203,Santa Catarina Mita,Jutiapa,22,3
+2204,Agua Blanca,Jutiapa,22,4
+2205,Asunción Mita,Jutiapa,22,5
+2206,Yupiltepeque,Jutiapa,22,6
+2207,Atescatempa,Jutiapa,22,7
+2208,Jerez,Jutiapa,22,8
+2209,El Adelanto,Jutiapa,22,9
+2210,Zapotitlán,Jutiapa,22,10
+2211,Comapa,Jutiapa,22,11
+2212,Jalpatagua,Jutiapa,22,12
+2213,Conguaco,Jutiapa,22,13
+2214,Moyuta,Jutiapa,22,14
+2215,Pasaco,Jutiapa,22,15
+2216,San José Acatempa,Jutiapa,22,16
+2217,Quesada,Jutiapa,22,17
