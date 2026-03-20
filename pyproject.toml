@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geoquetzal"
-version = "1.0.1"
+version = "1.0.3"
 description = "Geographic and census data for Guatemala — the tigris equivalent for Guatemalan researchers"
 readme = "README.md"
 license = "MIT"

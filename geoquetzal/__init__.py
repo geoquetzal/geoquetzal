@@ -43,7 +43,7 @@ Data sources
 - Census data: INE Guatemala, XII Censo 2018
 """
 
-__version__ = "1.0.1"
+__version__ = "1.0.3"
 __author__ = "Jorge Yass & Anasilvia Salazar"
 
 # Geography — top level
