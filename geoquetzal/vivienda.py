@@ -151,7 +151,7 @@ def _download_parquet(depto_code: int) -> Path:
 # Public API
 # ---------------------------------------------------------------------------
 
-def vivienda(
+def viviendas(
     departamento: Optional[Union[str, int]] = None,
     municipio: Optional[Union[str, int]] = None,
     geometry: Optional[str] = None,
@@ -284,3 +284,8 @@ def describe(variable: Optional[str] = None) -> Union[pd.DataFrame, dict]:
             "tipo": info.get("tipo", ""),
         })
     return pd.DataFrame(rows)
+
+
+# Backward-compatible alias (v1.0 used vivienda, v1.1+ uses viviendas)
+vivienda = viviendas
+

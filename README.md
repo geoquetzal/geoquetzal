@@ -4,7 +4,7 @@
 
 **Geographic and census data for Guatemala — the first library of its kind for Central America.**
 
-GeoQuetzal gives Guatemalan students, researchers, entrepreneurs, and professionals programmatic access to administrative boundaries and census microdata, following the same philosophy as [`tigris`](https://github.com/walkerke/tigris)/[`tidycensus`](https://walker-data.com/tidycensus/) for the US and [`geobr`](https://github.com/ipeaGIT/geobr) for Brazil.
+GeoQuetzal gives Guatemalan researchers programmatic access to administrative boundaries and census microdata, following the same philosophy as [`tigris`](https://github.com/walkerke/tigris)/[`tidycensus`](https://walker-data.com/tidycensus/) for the US and [`geobr`](https://github.com/ipeaGIT/geobr) for Brazil.
 
 ```python
 import geoquetzal as gq
@@ -15,9 +15,9 @@ deptos.plot(edgecolor="white", figsize=(8, 8))
 
 ## Why GeoQuetzal?
 
-Working with Guatemalan geographic and census data typically means downloading shapefiles from GADM (Global Administrative Areas), cleaning up inconsistent name spellings, downloading census CSVs from INE (Instituto Nacional de Estadística), figuring out how to join them, and dealing with the fact that GADM spells "Quetzaltenango" as "Quezaltenango" and concatenates "San Marcos" into "SanMarcos".
+Working with Guatemalan geographic and census data typically means downloading shapefiles from GADM, cleaning up inconsistent name spellings, downloading census CSVs from INE, figuring out how to join them and dealing with the fact that GADM spells "Quetzaltenango" as "Quezaltenango" and concatenates "San Marcos" into "SanMarcos".
 
-GeoQuetzal handles all of that. One function call gives you clean data, ready to be analyzed with consistent INE names and numeric codes that join reliably.
+GeoQuetzal handles all of that. One function call gives you clean, analysis-ready data with consistent INE names and numeric codes that join reliably.
 
 ## Installation
 
@@ -41,10 +41,12 @@ pip install geoquetzal[all]
 | Lagos | 2 lakes | geometry | Bundled | MINFIN |
 | Emigración | 242,203 | 11 | GitHub (~1.6 MB) | INE Censo 2018 |
 | Hogares | 3,275,931 | 37 | GitHub (~38 MB) | INE Censo 2018 |
-| Vivienda | ~3,300,000 | 11 | GitHub (~30 MB) | INE Censo 2018 |
+| Viviendas | ~3,300,000 | 11 | GitHub (~30 MB) | INE Censo 2018 |
 | Personas | 14,901,286 | 84 | GitHub (~333 MB) | INE Censo 2018 |
+| Lugares Poblados | 20,254 | 200+ | GitHub | INE Censo 2018 |
+| Voronoi Lugares Poblados | 20,254 | geometry | Computed on-demand | Derived from INE centroids |
 
-**Boundaries and lakes are bundled** in the package, they load instantly with no Internet connection. Census microdata is hosted as Parquet files on GitHub Releases and downloaded on-demand per departamento. After the first download, data loads from a local cache.
+**Boundaries and lakes are bundled** in the package and they load instantly with no internet connection. Census microdata is hosted as Parquet files on GitHub Releases and downloaded on-demand per departamento. After the first download, data loads from a local cache.
 
 ## Quick Start
 
@@ -77,7 +79,7 @@ gq.municipios(name=301)                      # single municipio by code
 # Guatemala City zone-level polygons (uses GADM)
 gq.municipios("Guatemala", zonas=True)       # 22 rows, one per zona
 
-# Guatemalan map with lakes
+# Lakes for prettier maps
 ax = deptos.plot(color="lightyellow", edgecolor="gray")
 gq.lagos().plot(ax=ax, color="lightblue", edgecolor="steelblue")
 ```
@@ -90,10 +92,8 @@ import geoquetzal as gq
 # Load all records
 df = gq.emigracion()                    # 242K emigrant records
 df = gq.hogares()                       # 3.2M households
-df = gq.vivienda()                      # 3.3M housing units
-
-#This instruction might take a while
-df = gq.personas()                      # 14.9M people 
+df = gq.viviendas()                     # 3.3M housing units
+df = gq.personas()                      # 14.9M people
 
 # Filter by departamento (only downloads that departamento's file)
 df = gq.hogares(departamento="Huehuetenango")
@@ -104,7 +104,48 @@ df = gq.hogares(municipio="Antigua Guatemala")
 df = gq.hogares(municipio=301)
 ```
 
-### Explore Variables (the descriptions are in Spanish)
+### Sub-Municipal Data (Lugar Poblado)
+
+```python
+import geoquetzal as gq
+
+# Pre-aggregated indicators for all 20,254 lugares poblados
+df = gq.lugares_poblados()
+
+# Filter by departamento or municipio
+df = gq.lugares_poblados(departamento="Sacatepéquez")
+df = gq.lugares_poblados(municipio="Antigua Guatemala")
+
+# As GeoDataFrame with point geometry (centroids)
+gdf = gq.lugares_poblados(geometry=True)
+
+# Map internet access at sub-municipal level
+gdf["pct_internet"] = gdf["pch9_i_si"] / gdf["poblacion_total"]
+gdf.plot(column="pct_internet", legend=True, markersize=5)
+```
+
+### Sub-Municipal Choropleth (Voronoi Polygons)
+
+Since INE does not publish lugar poblado boundaries, GeoQuetzal generates
+Voronoi polygon approximations from centroids clipped to municipio boundaries.
+These are suitable for choropleth visualization but are approximations — not
+official boundaries.
+
+```python
+import geoquetzal as gq
+
+# Generate Voronoi polygons
+vor = gq.voronoi_lugares_poblados(departamento="Sacatepéquez")
+
+# Join with census data and map
+lp  = gq.lugares_poblados(departamento="Sacatepéquez")
+gdf = vor.merge(lp, on=["departamento", "municipio", "lugar_poblado"])
+gdf["pct_internet"] = gdf["pch9_i_si"] / gdf["poblacion_total"]
+gdf.plot(column="pct_internet", cmap="YlGnBu", legend=True,
+         edgecolor="white", linewidth=0.3)
+```
+
+### Explore Variables
 
 ```python
 import geoquetzal as gq
@@ -115,7 +156,10 @@ gq.describe_hogares("PCH15")     # receives remittances
 
 gq.describe_emigracion("PEI3")   # sex of emigrant
 gq.describe_personas("PCP12")    # ethnic self-identification
-gq.describe_vivienda("PCV2")     # wall material
+gq.describe_viviendas("PCV2")    # wall material
+
+gq.describe_lugares_poblados()              # all columns
+gq.describe_lugares_poblados("pcp12_maya") # Maya count per lugar poblado
 ```
 
 ### Variable Highlights
@@ -124,9 +168,11 @@ gq.describe_vivienda("PCV2")     # wall material
 
 **Hogares**: water source (`PCH4`), sanitation (`PCH5`), electricity (`PCH8`), appliances — radio, TV, fridge, internet, car (`PCH9_A`–`PCH9_M`), cooking fuel (`PCH14`), remittances (`PCH15`)
 
-**Vivienda**: housing type (`PCV1`), wall material (`PCV2`), roof (`PCV3`), floor (`PCV5`)
+**Viviendas**: housing type (`PCV1`), wall material (`PCV2`), roof (`PCV3`), floor (`PCV5`)
 
 **Personas**: sex (`PCP6`), age (`PCP7`), ethnicity (`PCP12` — Maya/Garífuna/Xinka/Ladino), Mayan linguistic community (`PCP13`), mother tongue (`PCP15`), disability (`PCP16_A`–`PCP16_F`), education (`PCP17_A`), literacy (`PCP22`), tech access — cellphone/computer/internet (`PCP26_A`–`PCP26_C`), employment (`PCP27`), marital status (`PCP34`), fertility (`PCP35`–`PCP39`)
+
+**Lugares Poblados**: pre-aggregated counts for all of the above at sub-municipal level, plus housing materials and household services. 20,254 localities with point geometry (centroids).
 
 ## Mapping Patterns
 
@@ -161,38 +207,27 @@ result.explore(
 ### Animated Choropleth (Plotly)
 
 ```python
-### Animated Choropleth (Plotly)
 import geoquetzal as gq
-from geoquetzal.emigracion import emigracion
 import plotly.express as px
 import json
 
-# Aggregate: emigrants per departamento per year
-df = gq.emigracion()
-df = df[df["PEI5"] != 9999]
-agg = df.groupby(["DEPARTAMENTO", "PEI5"]).size().reset_index(name="emigrantes")
-
-# Prepare GeoJSON
 deptos = gq.departamentos()
 geojson = json.loads(deptos.to_json())
 for f in geojson["features"]:
     f["id"] = f["properties"]["codigo_depto"]
 
-# Animated map
 fig = px.choropleth(
-    agg,
+    agg_df,                         # your aggregated data
     geojson=geojson,
-    title="Emigrantes por departamento por año",
-    locations="DEPARTAMENTO",
-    color="emigrantes",
-    animation_frame="PEI5",
-    color_continuous_scale="YlOrRd",
+    locations="codigo_depto",
+    color="value",
+    animation_frame="year",
 )
 fig.update_geos(fitbounds="locations", visible=False)
 fig.show()
 ```
 
-> **IMPORTANT:** Always aggregate first with pandas, then merge geometry onto the 22 or 340 summary rows. Never use `geometry=` on large microdata, as it attaches a polygon to every row and is very slow.
+> **Key rule:** Always aggregate first with pandas, then merge geometry onto the 22 or 340 summary rows. Never use `geometry=` on large microdata as it attaches a polygon to every row and is very slow.
 
 ## Using with Your Own Data
 
@@ -228,15 +263,13 @@ deptos_utm = to_utm16n(deptos)   # UTM Zone 16N (good for area/distance)
 
 ## How Data Works
 
-**Boundaries** (departamentos, municipios, lakes) are bundled in the package from MINFIN (Ministerio de Finanzas Públicas de Guatemala) geospatial data. They load instantly with no network calls. All 340 municipios have correct INE codes built in.
+**Boundaries** (departamentos, municipios, lakes) are bundled in the package from MINFIN (Ministerio de Finanzas Públicas de Guatemala). They load instantly with no network calls. All 340 municipios have correct INE codes built in.
 
 **Census microdata** is partitioned by departamento into Parquet files and hosted on [GitHub Releases](https://github.com/geoquetzal/censo2018/releases). When you request a single departamento, only that file is downloaded (~1–15 MB). Requesting all of Guatemala downloads all 22 files. Everything is cached after the first download.
 
-To clean the cache:
-```python
-from geoquetzal.cache import clear_cache
-clear_cache()
-```
+**Lugares poblados** data is a single pre-aggregated Parquet file (20,254 sub-municipal localities) downloaded once and cached. It contains counts and averages derived from all three census tables — personas, hogares, and viviendas.
+
+**Voronoi polygons** are computed on-demand from lugar poblado centroids clipped to municipio boundaries. They are approximations for visualization — INE does not publish official lugar poblado boundaries. Lugares poblados with NULL coordinates (codes ending in `999`) are excluded from the tessellation.
 
 **Joins** between census data and boundaries always use INE numeric codes (`codigo_depto`, `codigo_muni`), never names.
 
@@ -261,9 +294,9 @@ pip install -e ".[dev,plotting]"
 
 ## Author
 
-Created by **[Jorge Yass](https://www.linkedin.com/in/jyass/?locale=en_US)** and **[Anasilvia Salazar](https://www.linkedin.com/in/anasilviasalazar/)** online lecturers at Universidad del Valle de Guatemala (UVG) and PhD students in Human-Computer Interaction at Iowa State University.
+Created by **Jorge Yass** and **Anasilvia Salazar**, online lecturers at Universidad del Valle de Guatemala (UVG) and PhD students at Iowa State University.
 
-Inspired by mentoring a Data Science for Public Good team on 2025 and the realization that Guatemala (and Central America) had no equivalent to `tigris`, `tidycensus`, or `geobr`.
+Inspired by mentoring a Data Science for Public Good team and the realization that Guatemala (and Central America) had no equivalent to `tigris`, `tidycensus`, or `geobr`.
 
 ## License
 

@@ -2,9 +2,9 @@
 
 🌐 [Read in English](README.md) | **Español**
 
-**Datos geográficos y censales de Guatemala — la primera librería de su tipo para Centroamérica.**
+**Datos geográficos y censales de Guatemala.**
 
-GeoQuetzal le da a estudiantes, investigadores, emprendedores, y profesionales guatemaltecos acceso programático a límites geográficos administrativos y microdatos censales, siguiendo la misma filosofía de [`tigris`](https://github.com/walkerke/tigris)/[`tidycensus`](https://walker-data.com/tidycensus/) para Estados Unidos y [`geobr`](https://github.com/ipeaGIT/geobr) para Brasil.
+GeoQuetzal le da a investigadores guatemaltecos acceso programático a límites administrativos y microdatos censales, siguiendo la misma filosofía de [`tigris`](https://github.com/walkerke/tigris)/[`tidycensus`](https://walker-data.com/tidycensus/) para Estados Unidos y [`geobr`](https://github.com/ipeaGIT/geobr) para Brasil.
 
 ```python
 import geoquetzal as gq
@@ -15,9 +15,9 @@ deptos.plot(edgecolor="white", figsize=(8, 8))
 
 ## ¿Por qué GeoQuetzal?
 
-Trabajar con datos geográficos y censales de Guatemala normalmente requiere descargar shapefiles de GADM (Global Administrative Areas), limpiar nombres con ortografía inconsistente, descargar CSVs del INE (Instituto Nacional de Estadística), descifrar cómo hacer joins, y lidiar con el hecho de que GADM escribe "Quetzaltenango" como "Quezaltenango" y concatena "San Marcos" en "SanMarcos".
+Trabajar con datos geográficos y censales de Guatemala normalmente requiere descargar shapefiles de GADM, limpiar nombres con ortografía inconsistente, descargar CSVs del INE, descifrar cómo hacer joins y lidiar con el hecho de que GADM escribe "Quetzaltenango" como "Quezaltenango" y concatena "San Marcos" en "SanMarcos".
 
-GeoQuetzal se encarga de todo eso. Una sola función devuelve datos limpios, listos para analizar, con nombres consistentes del INE y códigos numéricos que hacen join de forma confiable.
+GeoQuetzal se encarga de todo eso. Una sola función le devuelve datos limpios, listos para analizar, con nombres consistentes del INE y códigos numéricos que hacen join de forma confiable.
 
 ## Instalación
 
@@ -41,10 +41,12 @@ pip install geoquetzal[all]
 | Lagos | 2 lagos | geometría | Incluido | MINFIN |
 | Emigración | 242,203 | 11 | GitHub (~1.6 MB) | INE Censo 2018 |
 | Hogares | 3,275,931 | 37 | GitHub (~38 MB) | INE Censo 2018 |
-| Vivienda | ~3,300,000 | 11 | GitHub (~30 MB) | INE Censo 2018 |
+| Viviendas | ~3,300,000 | 11 | GitHub (~30 MB) | INE Censo 2018 |
 | Personas | 14,901,286 | 84 | GitHub (~333 MB) | INE Censo 2018 |
+| Lugares Poblados | 20,254 | 200+ | GitHub | INE Censo 2018 |
+| Voronoi Lugares Poblados | 20,254 | geometría | Calculado en línea | Derivado de centroides INE |
 
-**Los límites y lagos están incluidos** en el paquete — se cargan instantáneamente sin conexión a internet. Los microdatos censales están alojados como archivos Parquet en GitHub Releases y se descargan bajo demanda por departamento. Después de la primera descarga, los datos se cargan desde un caché local.
+**Los límites y lagos están incluidos** en el paquete por lo que se cargan instantáneamente sin conexión a internet. Los microdatos censales están alojados como archivos Parquet en GitHub Releases y se descargan bajo demanda por departamento. Después de la primera descarga, los datos se cargan desde un caché local.
 
 ## Inicio Rápido
 
@@ -77,7 +79,7 @@ gq.municipios(name=301)                      # un municipio por código
 # Polígonos por zona de la Ciudad de Guatemala (usa GADM)
 gq.municipios("Guatemala", zonas=True)       # 22 filas, una por zona
 
-# Mapa de Guatemala con lagos
+# Lagos para mapas más bonitos
 ax = deptos.plot(color="lightyellow", edgecolor="gray")
 gq.lagos().plot(ax=ax, color="lightblue", edgecolor="steelblue")
 ```
@@ -90,9 +92,7 @@ import geoquetzal as gq
 # Cargar todos los registros
 df = gq.emigracion()                    # 242K registros de emigrantes
 df = gq.hogares()                       # 3.2M hogares
-df = gq.vivienda()                      # 3.3M unidades de vivienda
-
-# Esta instrucción puede llevar un tiempo (descarga aproximadamente 330 MB)
+df = gq.viviendas()                     # 3.3M unidades de vivienda
 df = gq.personas()                      # 14.9M personas
 
 # Filtrar por departamento (solo descarga el archivo de ese departamento)
@@ -102,6 +102,47 @@ df = gq.hogares(departamento=13)
 # Filtrar por municipio
 df = gq.hogares(municipio="Antigua Guatemala")
 df = gq.hogares(municipio=301)
+```
+
+### Datos Sub-Municipales (Lugar Poblado)
+
+```python
+import geoquetzal as gq
+
+# Indicadores pre-agregados para los 20,254 lugares poblados
+df = gq.lugares_poblados()
+
+# Filtrar por departamento o municipio
+df = gq.lugares_poblados(departamento="Sacatepéquez")
+df = gq.lugares_poblados(municipio="Antigua Guatemala")
+
+# Como GeoDataFrame con geometría de puntos (centroides)
+gdf = gq.lugares_poblados(geometry=True)
+
+# Mapear acceso a internet a nivel sub-municipal
+gdf["pct_internet"] = gdf["pch9_i_si"] / gdf["poblacion_total"]
+gdf.plot(column="pct_internet", legend=True, markersize=5)
+```
+
+### Coropleta Sub-Municipal (Polígonos Voronoi)
+
+El INE no publica los límites oficiales de los lugares poblados. GeoQuetzal
+genera aproximaciones mediante teselación Voronoi a partir de los centroides,
+recortados a los límites municipales. Son adecuados para visualización
+coroplética, pero son aproximaciones, NO son límites oficiales.
+
+```python
+import geoquetzal as gq
+
+# Generar polígonos Voronoi
+vor = gq.voronoi_lugares_poblados(departamento="Sacatepéquez")
+
+# Unir con datos censales y mapear
+lp  = gq.lugares_poblados(departamento="Sacatepéquez")
+gdf = vor.merge(lp, on=["departamento", "municipio", "lugar_poblado"])
+gdf["pct_internet"] = gdf["pch9_i_si"] / gdf["poblacion_total"]
+gdf.plot(column="pct_internet", cmap="YlGnBu", legend=True,
+         edgecolor="white", linewidth=0.3)
 ```
 
 ### Explorar Variables
@@ -115,7 +156,10 @@ gq.describe_hogares("PCH15")     # recibe remesas
 
 gq.describe_emigracion("PEI3")   # sexo del emigrante
 gq.describe_personas("PCP12")    # autoidentificación étnica
-gq.describe_vivienda("PCV2")     # material de paredes
+gq.describe_viviendas("PCV2")    # material de paredes
+
+gq.describe_lugares_poblados()                  # todas las columnas
+gq.describe_lugares_poblados("pcp12_maya")      # conteo Maya por lugar poblado
 ```
 
 ### Variables Destacadas
@@ -124,13 +168,15 @@ gq.describe_vivienda("PCV2")     # material de paredes
 
 **Hogares**: fuente de agua (`PCH4`), saneamiento (`PCH5`), electricidad (`PCH8`), equipamiento — radio, TV, refrigeradora, internet, carro (`PCH9_A`–`PCH9_M`), combustible para cocinar (`PCH14`), remesas (`PCH15`)
 
-**Vivienda**: tipo de vivienda (`PCV1`), material de paredes (`PCV2`), techo (`PCV3`), piso (`PCV5`)
+**Viviendas**: tipo de vivienda (`PCV1`), material de paredes (`PCV2`), techo (`PCV3`), piso (`PCV5`)
 
 **Personas**: sexo (`PCP6`), edad (`PCP7`), autoidentificación étnica (`PCP12` — Maya/Garífuna/Xinka/Ladino), comunidad lingüística maya (`PCP13`), lengua materna (`PCP15`), discapacidad (`PCP16_A`–`PCP16_F`), escolaridad (`PCP17_A`), alfabetismo (`PCP22`), acceso a tecnología — celular/computadora/internet (`PCP26_A`–`PCP26_C`), empleo (`PCP27`), estado civil (`PCP34`), fecundidad (`PCP35`–`PCP39`)
 
+**Lugares Poblados**: conteos pre-agregados de todas las variables anteriores a nivel sub-municipal, más materiales de vivienda y servicios del hogar. 20,254 localidades con geometría de puntos (centroides).
+
 ## Patrones para Mapas
 
-### Choropleth Estático (matplotlib)
+### Coropleta Estática (matplotlib)
 
 ```python
 import geoquetzal as gq
@@ -158,41 +204,30 @@ result.explore(
 )
 ```
 
-### Choropleth Animado (Plotly)
+### Coropleta Animada (Plotly)
 
 ```python
-### Animated Choropleth (Plotly)
 import geoquetzal as gq
-from geoquetzal.emigracion import emigracion
 import plotly.express as px
 import json
 
-# Aggregate: emigrants per departamento per year
-df = gq.emigracion()
-df = df[df["PEI5"] != 9999]
-agg = df.groupby(["DEPARTAMENTO", "PEI5"]).size().reset_index(name="emigrantes")
-
-# Prepare GeoJSON
 deptos = gq.departamentos()
 geojson = json.loads(deptos.to_json())
 for f in geojson["features"]:
     f["id"] = f["properties"]["codigo_depto"]
 
-# Animated map
 fig = px.choropleth(
-    agg,
+    agg_df,                         # sus datos agregados
     geojson=geojson,
-    title="Emigrantes por departamento por año",
-    locations="DEPARTAMENTO",
-    color="emigrantes",
-    animation_frame="PEI5",
-    color_continuous_scale="YlOrRd",
+    locations="codigo_depto",
+    color="value",
+    animation_frame="year",
 )
 fig.update_geos(fitbounds="locations", visible=False)
 fig.show()
 ```
 
-> **IMPORTANTE:** Siempre agregue primero con pandas, luego haga merge de la geometría sobre las 22 o 340 filas resumen. Nunca use `geometry=` en microdatos grandes ya que agrega un polígono a cada fila y es muy lento.
+> **Regla clave:** Siempre agregue primero con pandas, luego haga merge de la geometría sobre las 22 o 340 filas resumen. Nunca use `geometry=` en microdatos grandes ya que agrega un polígono a cada fila y es muy lento.
 
 ## Uso con Sus Propios Datos
 
@@ -228,9 +263,13 @@ deptos_utm = to_utm16n(deptos)   # UTM Zona 16N (para cálculos de área/distanc
 
 ## Cómo Funcionan los Datos
 
-Los **límites administrativos** (departamentos, municipios, lagos) están incluidos en el paquete, provenientes de la data geoespacial proporcionada por el MINFIN (Ministerio de Finanzas Públicas de Guatemala). Se cargan instantáneamente sin necesidad de conexión a internet. Los 340 municipios tienen los códigos INE correctos incluidos.
+Los **límites administrativos** (departamentos, municipios, lagos) están incluidos en el paquete, provenientes de MINFIN (Ministerio de Finanzas Públicas de Guatemala). Se cargan instantáneamente sin necesidad de conexión a internet. Los 340 municipios tienen los códigos INE correctos incluidos.
 
 Los **microdatos censales** están particionados por departamento en archivos Parquet y alojados en [GitHub Releases](https://github.com/geoquetzal/censo2018/releases). Cuando solicita un solo departamento, solo se descarga ese archivo (~1–15 MB). Solicitar todo Guatemala descarga los 22 archivos. Todo se guarda en caché después de la primera descarga.
+
+Los **datos de lugares poblados** son un único archivo Parquet pre-agregado (20,254 localidades sub-municipales) que se descarga una vez y se almacena en caché. Contiene conteos y promedios derivados de las tres tablas censales — personas, hogares y viviendas.
+
+Los **polígonos Voronoi** se calculan en línea a partir de los centroides de los lugares poblados, recortados a los límites municipales. Son aproximaciones para visualización — el INE no publica límites oficiales de lugares poblados. Los lugares poblados con coordenadas nulas (códigos terminados en `999`) son excluidos de la teselación.
 
 Los **joins** entre datos censales y límites siempre usan códigos numéricos del INE (`codigo_depto`, `codigo_muni`), nunca nombres.
 
@@ -245,7 +284,7 @@ Las **zonas de la Ciudad de Guatemala** están disponibles con `gq.municipios("G
 
 ## Contribuir
 
-GeoQuetzal es código abierto bajo la licencia MIT. Se aceptan contribuciones — especialmente nuevos datasets, documentación y notebooks de ejemplo.
+GeoQuetzal es código abierto bajo la licencia MIT. Se aceptan contribuciones, especialmente nuevos datasets, documentación y notebooks de ejemplo.
 
 ```bash
 git clone https://github.com/geoquetzal/geoquetzal.git
@@ -255,9 +294,9 @@ pip install -e ".[dev,plotting]"
 
 ## Autor
 
-Creado por **[Jorge Yass](https://www.linkedin.com/in/jyass/?locale=en_US)** y **[Anasilvia Salazar](https://www.linkedin.com/in/anasilviasalazar/)** docentes online en la Universidad del Valle de Guatemala (UVG) y estudiantes de doctorado en Interacción Humano-Computador en Iowa State University.
+Creado por **Jorge Yass** y **Anasilvia Salazar** docentes en la Universidad del Valle de Guatemala (UVG) y estudiantes de doctorado en Iowa State University.
 
-Inspirado al acompañar a un equipo de Data Science for Public Good en el 2025 y darse cuenta de que Guatemala (y Centroamérica) no tenía un equivalente a `tigris`, `tidycensus` o `geobr`.
+Inspirado al acompañar a un equipo de Data Science for Public Good y darse cuenta de que Guatemala (y Centroamérica) no tenía un equivalente a `tigris`, `tidycensus` o `geobr`.
 
 ## Licencia
 
