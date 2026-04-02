@@ -3,17 +3,96 @@ body {
   background-color: #F5F0E8 !important;
 }
 
-/* Apply to sidebar and navbar too */
+/* Navbar and sidebar */
 .navbar,
 .sidebar,
 #quarto-sidebar,
 .quarto-sidebar-section,
-.sidebar-navigation {
+.sidebar-navigation,
+.nav-page,
+.sidebar-item {
   background-color: #F5F0E8 !important;
 }
 
-/* Keep code blocks with a slightly darker cream so they stand out */
+/* Main content area */
+#quarto-content,
+.quarto-container,
+.page-layout-article,
+.page-columns {
+  background-color: #F5F0E8 !important;
+}
+
+/* Code blocks — slightly darker cream */
 pre.sourceCode,
-div.sourceCode {
+div.sourceCode,
+pre.sourceCode code,
+.sourceCode,
+code.sourceCode,
+div.cell-output,
+div.cell-output-stdout,
+div.cell-output pre {
   background-color: #EDE8DF !important;
+  border: none !important;
+}
+
+/* Inline code */
+code:not(.sourceCode) {
+  background-color: #EDE8DF !important;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* Tab content area */
+.tab-content,
+.tab-pane {
+  background-color: #F5F0E8 !important;
+}
+
+/* Remove ALL borders from nav-tabs and let background do the work */
+.nav-tabs {
+  border-bottom: none !important;
+  background-color: #F5F0E8 !important;
+}
+
+.nav-tabs .nav-link,
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: #F5F0E8 !important;
+  border: none !important;
+  color: #888 !important;
+}
+
+.nav-tabs .nav-link.active {
+  color: #222 !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #222 !important;
+}
+
+.nav-tabs .nav-link:hover:not(.active) {
+  color: #444 !important;
+  border: none !important;
+  background-color: #F5F0E8 !important;
+}
+
+/* Callout blocks */
+.callout {
+  background-color: #EDE8DF !important;
+}
+
+/* Footer */
+.nav-footer {
+  background-color: #F5F0E8 !important;
+}
+
+/* Plot output area */
+div.cell-output-display,
+div.cell-output-display > div {
+  background-color: #F5F0E8 !important;
+}
+
+/* Remove Bootstrap tab content border */
+.tab-content,
+.tab-pane,
+.panel-tabset .tab-content {
+  border: none !important;
 }
