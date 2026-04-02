@@ -1,0 +1,19 @@
+/* Anthropic-style warm cream background */
+body {
+  background-color: #F5F0E8 !important;
+}
+
+/* Apply to sidebar and navbar too */
+.navbar,
+.sidebar,
+#quarto-sidebar,
+.quarto-sidebar-section,
+.sidebar-navigation {
+  background-color: #F5F0E8 !important;
+}
+
+/* Keep code blocks with a slightly darker cream so they stand out */
+pre.sourceCode,
+div.sourceCode {
+  background-color: #EDE8DF !important;
+}

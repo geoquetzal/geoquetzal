@@ -1,0 +1,1218 @@
+[
+  {
+    "objectID": "fuentes.html",
+    "href": "fuentes.html",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "",
+    "text": "GeoQuetzal es una librería de software que facilita el acceso a los datos públicos del censo 2018 en Guatemala (Instituto Nacional de Estadística) y datos geográficos territoriales (Ministerio de Finanzas). La librería no genera ni modifica los datos originales, pero si los reformatea, particiona y distribuye en formatos optimizados (Parquet, GeoJSON) para facilitar su uso en análisis computacionales.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "fuentes.html#datos-del-censo-2018-ine-guatemala",
+    "href": "fuentes.html#datos-del-censo-2018-ine-guatemala",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "Datos del censo 2018 — INE Guatemala",
+    "text": "Datos del censo 2018 — INE Guatemala\nLos microdatos de personas, hogares, viviendas, emigración y lugares poblados provienen del XII Censo Nacional de Población y VII de Vivienda 2018, publicado por el Instituto Nacional de Estadística de Guatemala (INE).\n\n\n\nInstitución\nInstituto Nacional de Estadística (INE)\n\n\nDataset\nXII Censo Nacional de Población y VII de Vivienda 2018\n\n\nAcceso original\ncenso2018.ine.gob.gt/descarga\n\n\nTipo\nDatos públicos\n\n\nCobertura\nNacional — 14,901,286 personas, 3,275,931 hogares\n\n\n\nLos archivos Parquet distribuidos en GitHub Releases son versiones derivadas de los CSV originales del INE, convertidas a formato Parquet y particionadas por departamento para facilitar descargas eficientes. El contenido de los datos no ha sido alterado.\n\n\n\n\n\n\nNote\n\n\n\nSi utiliza los datos del Censo 2018 en una publicación académica, cite tanto a GeoQuetzal como al INE como fuente original de los datos.\n\n\nCómo citar los datos del INE:\n\nInstituto Nacional de Estadística (INE). (2018). XII Censo Nacional de Población y VII de Vivienda 2018. Guatemala: INE. Disponible en: https://censo2018.ine.gob.gt",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "fuentes.html#datos-geográficos-territoriales-minfin-guatemala",
+    "href": "fuentes.html#datos-geográficos-territoriales-minfin-guatemala",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "Datos Geográficos Territoriales — MINFIN Guatemala",
+    "text": "Datos Geográficos Territoriales — MINFIN Guatemala\nLos límites de departamentos y municipios provienen de los archivos TopoJSON publicados por el Ministerio de Finanzas Públicas de Guatemala (MINFIN).\n\n\n\nInstitución\nMinisterio de Finanzas Públicas de Guatemala (MINFIN)\n\n\nDataset\nMapas TopoJSON de Guatemala\n\n\nAcceso original\ngithub.com/minfin-bi/Mapas-TopoJSON-Guatemala\n\n\nTipo\nDatos públicos\n\n\nCobertura\n22 departamentos, 340 municipios (a 2026)\n\n\n\nLos archivos de límites están incluidos directamente en la librería (integrados), por lo que se cargan instantáneamente sin necesidad de conexión a internet. GeoQuetzal reemplaza los nombres de MINFIN con la nomenclatura oficial del INE para garantizar joins confiables por códigos numéricos de Departamento, Municipios y Lugares poblados.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "fuentes.html#zonas-de-la-ciudad-de-guatemala-gadm-v4.1",
+    "href": "fuentes.html#zonas-de-la-ciudad-de-guatemala-gadm-v4.1",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "Zonas de la Ciudad de Guatemala — GADM v4.1",
+    "text": "Zonas de la Ciudad de Guatemala — GADM v4.1\nLos polígonos de las 22 zonas de la Ciudad de Guatemala se obtienen de GADM (Global Administrative Areas), versión 4.1.\n\n\n\nFuente\nGADM v4.1\n\n\nAcceso original\ngadm.org / geodata.ucdavis.edu\n\n\nLicencia\nLibre para uso académico y no comercial\n\n\nUso en GeoQuetzal\nSolo para gq.municipios(\"Guatemala\", zonas=True)\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nLos datos de GADM están sujetos a su propia licencia. Son gratuitos para uso académico y no comercial, pero no pueden redistribuirse ni usarse con fines comerciales sin permiso. GeoQuetzal descarga estos datos bajo demanda directamente desde los servidores de GADM (cuando se necesitan visualizar las zonas) y no los redistribuye en la librería.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "fuentes.html#polígonos-voronoi-derivados-de-centroides-ine",
+    "href": "fuentes.html#polígonos-voronoi-derivados-de-centroides-ine",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "Polígonos Voronoi — Derivados de centroides INE",
+    "text": "Polígonos Voronoi — Derivados de centroides INE\nLos polígonos Voronoi generados por gq.voronoi_lugares_poblados() son derivados computacionales calculados a partir de los centroides de lugares poblados presentes en los datos del censo 2018, Lugares Poblados del INE. No son límites oficiales ni han sido publicados por ninguna institución gubernamental como tales.\n\n\n\n\n\n\n\nTipo\nAproximación computacional\n\n\nMétodo\nTeselación geométrica Voronoi (scipy) recortada a límites municipales (MINFIN)\n\n\nFuente de centroides\nINE — XII Censo 2018\n\n\nUso recomendado\nVisualización coroplética únicamente\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nEstos polígonos son aproximaciones para visualización y análisis de las variables del censo. No deben usarse para análisis geográficas, delimitaciones oficiales, ni en documentos con requerimientos cartográficos precisos.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "fuentes.html#resumen-de-fuentes",
+    "href": "fuentes.html#resumen-de-fuentes",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "Resumen de fuentes",
+    "text": "Resumen de fuentes\n\n\n\n\n\n\n\n\nFunción GeoQuetzal\nFuente de datos\nLicencia\n\n\n\n\ngq.departamentos(), gq.municipios(), gq.lagos()\nMINFIN Guatemala\nPública\n\n\ngq.municipios(\"Guatemala\", zonas=True)\nGADM v4.1\nAcadémica/no comercial\n\n\ngq.personas(), gq.hogares(), gq.viviendas(), gq.emigracion()\nINE — Censo 2018\nPública\n\n\ngq.lugares_poblados()\nINE — Censo 2018 (pre-agregado)\nPública\n\n\ngq.voronoi_lugares_poblados()\nDerivado de INE + MINFIN\nPública (derivado)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "fuentes.html#sobre-geoquetzal",
+    "href": "fuentes.html#sobre-geoquetzal",
+    "title": "Fuentes de Datos y Atribución",
+    "section": "Sobre GeoQuetzal",
+    "text": "Sobre GeoQuetzal\nGeoQuetzal es software de código abierto publicado bajo la Licencia MIT. El código fuente está disponible en github.com/geoquetzal/geoquetzal.\nLos autores del paquete no reclaman autoría sobre los datos originales del INE, MINFIN ni GADM. El valor que aporta GeoQuetzal es la integración, reformateo, agrupación y documentación de estos datos en una interfaz unificada y reproducible.\nGeoQuetzal se distribuye tal como está (MIT License), sin garantías de ningún tipo. Los autores no asumen responsabilidad por el uso que se haga de los datos, análisis, visualizaciones o conclusiones derivadas del uso de esta librería. Es responsabilidad del usuario de la librería verificar los resultados, elegir los denominadores apropiados para cada análisis, y consultar los metadatos y documentación original del INE antes de publicar o tomar decisiones basadas en los datos. Los polígonos Voronoi generados por voronoi_lugares_poblados() son aproximaciones computacionales para visualización únicamente y no deben utilizarse como límites oficiales en ningún contexto que requiera precisión cartográfica.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Fuentes de Datos"
+    ]
+  },
+  {
+    "objectID": "en/api/reference.html",
+    "href": "en/api/reference.html",
+    "title": "API Reference",
+    "section": "",
+    "text": "This page documents all available functions in GeoQuetzal.",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "en/api/reference.html#geography",
+    "href": "en/api/reference.html#geography",
+    "title": "API Reference",
+    "section": "Geography",
+    "text": "Geography\nFunctions for accessing Guatemala’s administrative boundaries. Data was downloaded from MINFIN’s Github for administrative boundaries and loads instantly from the library, so no internet connection is required.\n\ngq.country()\nReturns the country outline of Guatemala as a GeoDataFrame.\n\nimport geoquetzal as gq\npais = gq.country()\npais.plot(color=\"lightgreen\", edgecolor=\"gray\")\n\n\n\n\ngq.departamentos()\nReturns Guatemala’s 22 departments with INE codes and geometry.\nParameters:\n\n\n\nParameter\nType\nDescription\n\n\n\n\nname\nstr | int\nDepartment name or code (accent-insensitive)\n\n\nregion\nstr\nFilter by region (e.g. \"V - Central\")\n\n\n\n\nimport geoquetzal as gq\n\ndeptos = gq.departamentos()\ngq.departamentos(\"Sacatepequez\")   # accent-insensitive\ngq.departamentos(3)                # by INE code\ngq.departamentos(region=\"V - Central\")\n\n\n\n\ngq.municipios()\nReturns Guatemala’s 340 municipalities with INE codes and geometry.\nParameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\nstr | int\nFilter by department\n\n\nname\nstr | int\nReturn a specific municipality by name or code\n\n\nzonas\nbool\nIf True, returns Guatemala City’s 22 zones (uses GADM)\n\n\n\n\nimport geoquetzal as gq\n\ngq.municipios(\"Sacatepequez\")\ngq.municipios(name=\"Antigua Guatemala\")\ngq.municipios(name=301)\ngq.municipios(\"Guatemala\", zonas=True)\n\n\n\n\ngq.lagos()\nReturns Guatemala’s two main lakes (Amatitlán and Atitlán) for map overlays.\n\nimport geoquetzal as gq\n\nax = gq.departamentos().plot(color=\"lightyellow\", edgecolor=\"gray\")\ngq.lagos().plot(ax=ax, color=\"lightblue\", edgecolor=\"steelblue\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "en/api/reference.html#census-microdata",
+    "href": "en/api/reference.html#census-microdata",
+    "title": "API Reference",
+    "section": "Census Microdata",
+    "text": "Census Microdata\nFunctions for accessing the XII National Population and Housing Census 2018 microdata (INE). Data is downloaded as Parquet files from GitHub Releases and cached locally. To clean the cache:\n\nfrom geoquetzal.cache import clear_cache\nclear_cache()\n\nAll microdata functions share the same filter parameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\nstr | int\nFilter by department (downloads only that file)\n\n\nmunicipio\nstr | int\nFilter by municipality\n\n\ngeometry\nstr\nJoin geometry: \"departamento\" or \"municipio\"\n\n\n\n\n\ngq.personas()\nPerson-level microdata. 14,901,286 records, 84 variables. Each row is represents one person.\nKey variables: sex (PCP6), age (PCP7), ethnic self-identification (PCP12), Mayan linguistic community (PCP13), mother tongue (PCP15), disability (PCP16_A–PCP16_F), education level (PCP17_A), literacy (PCP22), technology access (PCP26_A–PCP26_C), employment (PCP27), fertility (PCP35–PCP39).\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Huehuetenango\")\ndf = gq.personas(municipio=\"Antigua Guatemala\")\ndf = gq.personas()  # All of Guatemala (~333 MB)\n\n\n\n\ngq.hogares()\nHousehold microdata. 3,275,931 records, 37 variables. Each row represents one household.\nKey variables: water source (PCH4), sanitation (PCH5), electricity (PCH8), household appliances — radio, TV, fridge, internet, car (PCH9_A–PCH9_M), cooking fuel (PCH14), remittances (PCH15).\n\nimport geoquetzal as gq\n\ndf = gq.hogares(departamento=\"Sacatepequez\")\ndf = gq.hogares(municipio=\"Antigua Guatemala\")\ndf = gq.hogares()  # All of Guatemala (~38 MB)\n\n\n\n\ngq.viviendas()\nHousing unit microdata. ~3,300,000 records, 11 variables. Each row represents one housing unit.\nKey variables: housing type (PCV1), wall material (PCV2), roof (PCV3), condition (PCV4), floor (PCV5).\n\nimport geoquetzal as gq\n\ndf = gq.viviendas(departamento=\"Sacatepequez\")\ndf = gq.viviendas()  # All of Guatemala (~30 MB)\n\n\n\n\ngq.emigracion()\nInternational emigration records. 242,203 records, 11 variables. Each row represents one person who emigrated from a household.\nKey variables: sex (PEI3), age at departure (PEI4), year of departure (PEI5).\n\nimport geoquetzal as gq\n\ndf = gq.emigracion(departamento=\"Huehuetenango\")\ndf = gq.emigracion()  # All of Guatemala (~1.6 MB)",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "en/api/reference.html#sub-municipal-data",
+    "href": "en/api/reference.html#sub-municipal-data",
+    "title": "API Reference",
+    "section": "Sub-Municipal Data",
+    "text": "Sub-Municipal Data\n\ngq.lugares_poblados()\nPre-aggregated indicators at the lugar poblado (sub-municipal locality) level. 20,254 localities, 200+ columns. Each row represents one lugar poblado.\nData is derived from all three census tables (personas, hogares, viviendas) and stored as counts (not percentages). The correct denominator depends on the type of analysis intended.\n\n\n\n\n\n\nNote\n\n\n\nLugares poblados with codes ending in 999 (e.g. 102999) represent unnamed informal settlements (“Otros Lugares Poblados”) with NULL coordinates. They are included in the data but cannot be mapped.\n\n\nParameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\nstr | int\nFilter by department\n\n\nmunicipio\nstr | int\nFilter by municipality\n\n\ngeometry\nbool\nIf True, returns GeoDataFrame with point geometry (centroids)\n\n\n\n\nimport geoquetzal as gq\n\ndf  = gq.lugares_poblados()\ndf  = gq.lugares_poblados(departamento=\"Sacatepéquez\") #Loads all populated places from the department of Sacatepéquez\ndf  = gq.lugares_poblados(municipio=\"Antigua Guatemala\") #Loads all populated places from the municipality of Antigua Guatemala\ndf = gq.lugares_poblados(lugar_poblado=301001) #Loads populated place 301001 (Antigua Guatemala) data, from the municipality of Antigua Guatemala, Sacatepéquez\n\ngdf = gq.lugares_poblados(geometry=True)\n\nAvailable columns by topic:\n\n\n\n\n\n\n\n\nTopic\nColumn prefix\nSource\n\n\n\n\nScalars (population, PEA, years of education)\npoblacion_total, pea_total, aneduca_promedio…\npersona\n\n\nEthnic self-identification\npcp12_maya, pcp12_ladino…\npersona\n\n\nMayan linguistic community\npcp13_kiche, pcp13_mam…\npersona\n\n\nMother tongue\npcp15_espanol, pcp15_kiche…\npersona\n\n\nDisability\npcp16_a_sin_dificultad…\npersona\n\n\nEducation level\npcp17_a_ninguno, pcp17_a_primaria…\npersona\n\n\nLiteracy\npcp22_alfabeto, pcp22_no_alfabeto\npersona\n\n\nEmployment\npcp30_1d_agropecuarios…\npersona\n\n\nHousing type\npcv1_casa_formal, pcv1_rancho…\nvivienda\n\n\nWall material\npcv2_block, pcv2_adobe…\nvivienda\n\n\nFloor material\npcv5_tierra, pcv5_torta_cemento…\nvivienda\n\n\nWater source\npch4_tuberia_dentro, pch4_rio…\nhogar\n\n\nSanitation\npch5_inodoro_red_drenajes…\nhogar\n\n\nElectricity\npch8_red_electrica, pch8_candela…\nhogar\n\n\nHousehold appliances\npch9_i_si (internet), pch9_m_si (car)…\nhogar\n\n\nCooking fuel\npch14_lena, pch14_gas_propano…\nhogar\n\n\nRemittances\npch15_si, pch15_no\nhogar\n\n\nEmigration since 2002\npei1_si, pei1_no\nhogar\n\n\n\n\n\n\ngq.voronoi_lugares_poblados()\nGenerates Voronoi polygon approximations as lugar poblado boundaries, clipped to municipio boundaries. These polygons are approximations for choropleth visualization. The INE does not publish official lugar poblado boundaries.\n\n\n\n\n\n\nWarning\n\n\n\nLugares poblados with NULL coordinates (codes ending in 999) are automatically excluded. Municipios with only one lugar poblado return the full municipio polygon.\n\n\nParameters:\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\nstr | int\nFilter by department\n\n\nmunicipio\nstr | int\nFilter by municipality\n\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\nvor = gq.voronoi_lugares_poblados(departamento=\"Sacatepéquez\")\n\n# Typical pattern: join with census data for a choropleth\nlp  = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\nlp  = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\ngdf[\"pct_internet\"] = gdf[\"pch9_i_si\"] / (gdf[\"pch9_i_si\"] + gdf[\"pch9_i_no\"]) * 100\ngdf.plot(column=\"pct_internet\", cmap=\"YlGnBu\", legend=True)",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "en/api/reference.html#describe-functions",
+    "href": "en/api/reference.html#describe-functions",
+    "title": "API Reference",
+    "section": "Describe Functions",
+    "text": "Describe Functions\nAll describe functions return a DataFrame with all variables if none is specified, or a dict with details for the requested variable.\n\n\n\nFunction\nDataset\n\n\n\n\ngq.describe_personas(variable)\nPersonas\n\n\ngq.describe_hogares(variable)\nHogares\n\n\ngq.describe_viviendas(variable)\nViviendas\n\n\ngq.describe_emigracion(variable)\nEmigración\n\n\ngq.describe_lugares_poblados(variable)\nLugares Poblados\n\n\n\n\nimport geoquetzal as gq\n\ngq.describe_personas()\ngq.describe_personas(\"PCP12\")\n# {'variable': 'PCP12',\n#  'etiqueta': '...ethnic self-identification...',\n#  'tipo': 'étnica',\n#  'valores': {1: 'Maya', 2: 'Garífuna', 3: 'Xinka', ...}}\n\ngq.describe_lugares_poblados(\"pcp12_maya\")\n# {'variable': 'pcp12_maya',\n#  'etiqueta': 'Conteo: se identifica como Maya',\n#  'tipo': 'étnica',\n#  'fuente': 'persona'}",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "en/api/reference.html#coordinate-reference-systems",
+    "href": "en/api/reference.html#coordinate-reference-systems",
+    "title": "API Reference",
+    "section": "Coordinate Reference Systems",
+    "text": "Coordinate Reference Systems\n\nfrom geoquetzal.crs import to_gtm, to_utm16n, suggest_crs\n\ndeptos = gq.departamentos()\nsuggest_crs(deptos)\n\ndeptos_gtm = to_gtm(deptos)    # Guatemala Transverse Mercator (national standard)\ndeptos_utm = to_utm16n(deptos) # UTM Zone 16N (for area/distance calculations)\n\n\n\n\n\n\n\n\n\nCRS\nCode\nRecommended use\n\n\n\n\nWGS 84\nEPSG:4326\nDefault, web maps\n\n\nGuatemala TM (GTM)\nESRI:103598\nNational standard, official maps\n\n\nUTM Zone 16N\nEPSG:32616\nArea and distance calculations",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "en/examples/other_data_maps.html",
+    "href": "en/examples/other_data_maps.html",
+    "title": "Examples: Other Data + Maps",
+    "section": "",
+    "text": "This section combines external data sources with geographic visualizations. The general pattern is: aggregate microdata first, then merge with geometry. The merge requires data to be at the departmental or municipality level, by numerical code or name.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Other Data + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/other_data_maps.html#guatemalas-literacy-rate-projections-for-2024",
+    "href": "en/examples/other_data_maps.html#guatemalas-literacy-rate-projections-for-2024",
+    "title": "Examples: Other Data + Maps",
+    "section": "Guatemala’s Literacy Rate Projections for 2024",
+    "text": "Guatemala’s Literacy Rate Projections for 2024\nIn this example, we will work with the public dataset of CONALFA for literacy and illiteracy projections for 2024. The datasource can be downloaded from this link. In the first sheet “DEPARTAMENTO” we can find the projections at the departmental level. The first column has the names of the departments. We will use the department names to merge with the administrative boundary data from GeoQuetzal.\n\nPythonR\n\n\n\nimport geoquetzal as gq\nimport pandas as pd\n\n# CONALFA data\nxlsx = pd.ExcelFile(\"PROYECCION-ANALFABETISMO-POR-DEPARTAMENTO-Y-MUNICIPIO-GALP-2024.xlsx\")\nprojections_df = xlsx.parse('DEPARTAMENTO', skiprows=5, usecols=\"A,C\")\nprojections_df.columns = ['Depto_Name', 'Pct_literacy']\n\n# Administrative boundaries — instant loading, no internet needed\ndeptos = gq.departamentos()\n\n# Merge with geometry and visualize\nresultado = deptos.merge(projections_df, left_on=\"departamento\", right_on=\"Depto_Name\")\n\nresultado.explore(\n    column=\"Pct_literacy\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"Depto_Name\", \"Pct_literacy\"],\n    tooltip_kwds={\"aliases\": [\"Department\", \"% Literacy\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(readxl)\nlibrary(mapview)\n\n# CONALFA data\nprojections_df &lt;- read_excel(\n  \"PROYECCION-ANALFABETISMO-POR-DEPARTAMENTO-Y-MUNICIPIO-GALP-2024.xlsx\",\n  sheet     = \"DEPARTAMENTO\",\n  skip      = 5,\n  col_names = FALSE\n)[, c(1, 3)]\nnames(projections_df) &lt;- c(\"Depto_Name\", \"Pct_literacy\")\n\n# Administrative boundaries — instant loading, no internet needed\ndeptos &lt;- departamentos()\n\n# Merge with geometry and visualize\nresultado &lt;- merge(deptos, projections_df,\n                   by.x = \"departamento\", by.y = \"Depto_Name\")\n\nmapview(resultado,\n        zcol        = \"Pct_literacy\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name  = \"% Literacy\",\n        map.types   = \"CartoDB.Positron\",\n        label       = \"departamento\")\n\n\n\n\n\n\n\n\n\nAs can be seen, the flexibility of working with external data sources greatly increases GeoQuetzal’s potential on the scenarios it can handle. The only requirement is that the department and municipality numeric codes or names from the external data sources must match those used by the INE.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Other Data + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html",
+    "href": "en/examples/census.html",
+    "title": "Examples: Census Data",
+    "section": "",
+    "text": "This section shows how to explore and analyze the 2018 Census microdata without maps. To combine census data with geographic visualizations, see Census + Maps.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#explore-available-variables",
+    "href": "en/examples/census.html#explore-available-variables",
+    "title": "Examples: Census Data",
+    "section": "Explore available variables",
+    "text": "Explore available variables\nUse the describe_* functions to learn what variables are available and what values they take.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# List all variables in the household dataset\ngq.describe_hogares()\n\n# Details for a specific variable\ngq.describe_hogares(\"PCH4\")\n# Returns label, type, and coded values\n\n# Person-level variables\ngq.describe_personas(\"PCP12\")\n# Ethnic self-identification: Maya, Garífuna, Xinka, Ladino...\n\n\n\nlibrary(geoquetzal)\n\n# List all variables in the household dataset\ndescribe_hogares()\n\n# Details for a specific variable\ndescribe_hogares(\"PCH4\")\n# Returns label, type, and coded values\n\n# Person-level variables\ndescribe_personas(\"PCP12\")\n# Ethnic self-identification: Maya, Garífuna, Xinka, Ladino...",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#basic-services-access-by-department",
+    "href": "en/examples/census.html#basic-services-access-by-department",
+    "title": "Examples: Census Data",
+    "section": "Basic services access by department",
+    "text": "Basic services access by department\nWhat percentage of households has access to electricity in each department?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Download all households (~38 MB)\ndf = gq.hogares()\n\n# PCH8 = lighting type; 1 = Electric grid\nelectricidad = (\n    df.groupby(\"departamento\")[\"PCH8\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_electricity\")\n    .sort_values(\"pct_electricity\", ascending=False)\n)\nprint(electricidad.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\n# Download all households (~38 MB)\ndf &lt;- hogares()\n\n# PCH8 = lighting type; 1 = Electric grid\nelectricidad &lt;- df |&gt;\n  group_by(departamento) |&gt;\n  summarise(pct_electricity = round(mean(PCH8 == 1, na.rm = TRUE) * 100, 1)) |&gt;\n  arrange(desc(pct_electricity))\n\nprint(electricidad)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#ethnic-self-identification-in-sacatepéquez",
+    "href": "en/examples/census.html#ethnic-self-identification-in-sacatepéquez",
+    "title": "Examples: Census Data",
+    "section": "Ethnic self-identification in Sacatepéquez",
+    "text": "Ethnic self-identification in Sacatepéquez\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Sacatepequez\")\n\n# PCP12: ethnic self-identification\n# 1=Maya, 2=Garífuna, 3=Xinka, 4=Afrodescendiente, 5=Ladino, 6=Extranjero\netnicidad = (\n    df[\"PCP12\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(1)\n    .rename({1: \"Maya\", 2: \"Garífuna\", 3: \"Xinka\",\n             4: \"Afrodescendiente\", 5: \"Ladino\", 6: \"Extranjero\"})\n)\nprint(etnicidad)\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\ndf &lt;- personas(departamento = \"Sacatepequez\")\n\n# PCP12: ethnic self-identification\n# 1=Maya, 2=Garífuna, 3=Xinka, 4=Afrodescendiente, 5=Ladino, 6=Extranjero\netnicidad &lt;- df |&gt;\n  count(PCP12) |&gt;\n  mutate(\n    pct = round(n / sum(n) * 100, 1),\n    ethnicity = recode(as.character(PCP12),\n      \"1\" = \"Maya\", \"2\" = \"Garífuna\", \"3\" = \"Xinka\",\n      \"4\" = \"Afrodescendiente\", \"5\" = \"Ladino\", \"6\" = \"Extranjero\")\n  ) |&gt;\n  select(ethnicity, pct) |&gt;\n  arrange(desc(pct))\n\nprint(etnicidad)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#dominant-mother-tongue-per-municipality",
+    "href": "en/examples/census.html#dominant-mother-tongue-per-municipality",
+    "title": "Examples: Census Data",
+    "section": "Dominant mother tongue per municipality",
+    "text": "Dominant mother tongue per municipality\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Huehuetenango\")\n\n# PCP15: language learned to speak in\n# Mode per municipality = most frequent language\nidioma_dominante = (\n    df.groupby(\"MUNICIPIO\")[\"PCP15\"]\n    .agg(lambda x: x.mode()[0])\n    .reset_index(name=\"idioma_dominante\")\n)\n\n# Replace codes with labels\nvalores = gq.describe_personas(\"PCP15\")[\"valores\"]\nidioma_dominante[\"idioma_dominante\"] = idioma_dominante[\"idioma_dominante\"].map(valores)\n\nprint(idioma_dominante.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\ndf &lt;- personas(departamento = \"Huehuetenango\")\n\n# PCP15: language learned to speak in\n# Mode per municipality = most frequent language\nidioma_dominante &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(idioma_dominante = as.integer(names(which.max(table(PCP15))))) |&gt;\n  left_join(\n    data.frame(\n      idioma_dominante = as.integer(names(describe_personas(\"PCP15\")$valores)),\n      label = unlist(describe_personas(\"PCP15\")$valores)\n    ),\n    by = \"idioma_dominante\"\n  )\n\nprint(idioma_dominante)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#average-years-of-education-per-municipality",
+    "href": "en/examples/census.html#average-years-of-education-per-municipality",
+    "title": "Examples: Census Data",
+    "section": "Average years of education per municipality",
+    "text": "Average years of education per municipality\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Sacatepequez\")\n\n# ANEDUCA: years of education (derived numeric variable)\naneduca = (\n    df.groupby(\"MUNICIPIO\")[\"ANEDUCA\"]\n    .mean()\n    .round(1)\n    .reset_index(name=\"avg_years_education\")\n    .sort_values(\"avg_years_education\", ascending=False)\n)\nprint(aneduca.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\ndf &lt;- personas(departamento = \"Sacatepequez\")\n\n# ANEDUCA: years of education (stored as character — cast before aggregating)\naneduca &lt;- df |&gt;\n  mutate(ANEDUCA = as.numeric(ANEDUCA)) |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(avg_years_education = round(mean(ANEDUCA, na.rm = TRUE), 1)) |&gt;\n  arrange(desc(avg_years_education))\n\nprint(aneduca)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#digital-divide-technology-access",
+    "href": "en/examples/census.html#digital-divide-technology-access",
+    "title": "Examples: Census Data",
+    "section": "Digital divide — technology access",
+    "text": "Digital divide — technology access\nWhat percentage of households has computer and internet access in Quiché?\n\nPythonR\n\n\n\nimport geoquetzal as gq\nimport pandas as pd\n\ndf = gq.hogares(departamento=\"Quiche\")\n\n# PCH9_H = computer, PCH9_I = internet, PCH9_M = car (1=Yes, 2=No)\ntecnologia = pd.DataFrame({\n    \"Indicator\": [\"Computer\", \"Internet\", \"Car\"],\n    \"% households\": [\n        (df[\"PCH9_H\"] == 1).mean() * 100,\n        (df[\"PCH9_I\"] == 1).mean() * 100,\n        (df[\"PCH9_M\"] == 1).mean() * 100,\n    ]\n}).round(1)\nprint(tecnologia.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\n\ndf &lt;- hogares(departamento = \"Quiche\")\n\n# PCH9_H = computer, PCH9_I = internet, PCH9_M = car (1=Yes, 2=No)\ntecnologia &lt;- data.frame(\n  Indicator    = c(\"Computer\", \"Internet\", \"Car\"),\n  pct_households = round(c(\n    mean(df$PCH9_H == 1, na.rm = TRUE) * 100,\n    mean(df$PCH9_I == 1, na.rm = TRUE) * 100,\n    mean(df$PCH9_M == 1, na.rm = TRUE) * 100\n  ), 1)\n)\nprint(tecnologia)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/examples/census.html#sub-municipal-data-with-lugares-poblados",
+    "href": "en/examples/census.html#sub-municipal-data-with-lugares-poblados",
+    "title": "Examples: Census Data",
+    "section": "Sub-municipal data with lugares poblados",
+    "text": "Sub-municipal data with lugares poblados\nPre-aggregated lugar poblado data enables sub-municipal analysis without processing microdata.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Load indicators for Antigua Guatemala\nlp = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\n\n# Compute % of households with internet per lugar poblado\nlp[\"pct_internet\"] = (\n    lp[\"pch9_i_si\"] / (lp[\"pch9_i_si\"] + lp[\"pch9_i_no\"]) * 100\n).round(1)\n\n# Top 5 lugares by internet access\nprint(\n    lp[[\"nombre\", \"poblacion_total\", \"pct_internet\"]]\n    .sort_values(\"pct_internet\", ascending=False)\n    .head(5)\n    .to_string(index=False)\n)\n\n# Look up what a column means\ngq.describe_lugares_poblados(\"pch9_i_si\")\n# {'variable': 'pch9_i_si',\n#  'etiqueta': 'Conteo: tiene internet',\n#  'tipo': 'equipamiento',\n#  'fuente': 'hogar'}\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\n# Load indicators for Antigua Guatemala\nlp &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\n\n# Compute % of households with internet per lugar poblado\nlp$pct_internet &lt;- round(\n  lp$pch9_i_si / (lp$pch9_i_si + lp$pch9_i_no) * 100,\n  1\n)\n\n# Top 5 lugares by internet access\nlp |&gt;\n  select(nombre, poblacion_total, pct_internet) |&gt;\n  arrange(desc(pct_internet)) |&gt;\n  head(5)\n\n# Look up what a column means\ndescribe_lugares_poblados(\"pch9_i_si\")\n# $variable: \"pch9_i_si\"\n# $etiqueta: \"Conteo: tiene internet\"\n# $tipo: \"equipamiento\"\n# $fuente: \"hogar\"",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census Data"
+    ]
+  },
+  {
+    "objectID": "en/sources.html",
+    "href": "en/sources.html",
+    "title": "Data Sources & Attribution",
+    "section": "",
+    "text": "GeoQuetzal is a software library that facilitates access to public data from the census 2018 in Guatemala (Instituto Nacional de Estadística), and administraitve boundaries (Ministerio fr Finanzas). The package does not generate or modify the original data, but it reformats, partitions, and distributes it in optimized formats (Parquet, GeoJSON) to make computational analysis easier.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "en/sources.html#census-data-ine-guatemala",
+    "href": "en/sources.html#census-data-ine-guatemala",
+    "title": "Data Sources & Attribution",
+    "section": "Census Data — INE Guatemala",
+    "text": "Census Data — INE Guatemala\nPerson, household, housing unit, emigration, and lugar poblado microdata come from the XII National Population and Housing Census 2018, published by Guatemala’s National Institute of Statistics (INE).\n\n\n\nInstitution\nInstituto Nacional de Estadística (INE)\n\n\nDataset\nXII Censo Nacional de Población y VII de Vivienda 2018\n\n\nOriginal access\ncenso2018.ine.gob.gt/descarga\n\n\nType\nPublic data\n\n\nCoverage\nNational — 14,901,286 persons, 3,275,931 households\n\n\n\nThe Parquet files distributed via GitHub Releases are derived versions of INE’s original CSV files, converted to Parquet format and partitioned by department for efficient downloads. The data content has not been altered.\n\n\n\n\n\n\nNote\n\n\n\nIf you use the 2018 Census data in an academic publication, please cite both GeoQuetzal and INE as the original data source.\n\n\nHow to cite INE data:\n\nInstituto Nacional de Estadística (INE). (2018). XII Censo Nacional de Población y VII de Vivienda 2018. Guatemala: INE. Available at: https://censo2018.ine.gob.gt",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "en/sources.html#administrative-boundaries-minfin-guatemala",
+    "href": "en/sources.html#administrative-boundaries-minfin-guatemala",
+    "title": "Data Sources & Attribution",
+    "section": "Administrative Boundaries — MINFIN Guatemala",
+    "text": "Administrative Boundaries — MINFIN Guatemala\nDepartment and municipality boundaries come from TopoJSON files published by Guatemala’s Ministry of Finance (MINFIN).\n\n\n\nInstitution\nMinisterio de Finanzas Públicas de Guatemala (MINFIN)\n\n\nDataset\nMapas TopoJSON de Guatemala\n\n\nOriginal access\ngithub.com/minfin-bi/Mapas-TopoJSON-Guatemala\n\n\nType\nPublic data\n\n\nCoverage\n22 departments, 340 municipalities (as of 2026)\n\n\n\nBoundary files are bundled directly in the package, so they load instantly with no internet connection. GeoQuetzal replaces MINFIN’s names with official INE nomenclature to ensure reliable joins by numeric codew on DepartameNTOS, Municipios, and Lugares Poblados.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "en/sources.html#guatemala-city-zones-gadm-v4.1",
+    "href": "en/sources.html#guatemala-city-zones-gadm-v4.1",
+    "title": "Data Sources & Attribution",
+    "section": "Guatemala City Zones — GADM v4.1",
+    "text": "Guatemala City Zones — GADM v4.1\nThe 22 zone polygons for Guatemala City are obtained from GADM (Global Administrative Areas), version 4.1.\n\n\n\nSource\nGADM v4.1\n\n\nOriginal access\ngadm.org / geodata.ucdavis.edu\n\n\nLicense\nFree for academic and non-commercial use\n\n\nUse in GeoQuetzal\nOnly for gq.municipios(\"Guatemala\", zonas=True)\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nGADM data is subject to its own license — free for academic and non-commercial use, but may not be redistributed or used commercially without permission. GeoQuetzal downloads these data on demand directly from GADM servers (when it is needed to visualize the zones) and does not bundle them in the library.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "en/sources.html#voronoi-polygons-derived-from-ine-centroids",
+    "href": "en/sources.html#voronoi-polygons-derived-from-ine-centroids",
+    "title": "Data Sources & Attribution",
+    "section": "Voronoi Polygons — Derived from INE Centroids",
+    "text": "Voronoi Polygons — Derived from INE Centroids\nThe Voronoi polygons generated by gq.voronoi_lugares_poblados() are computational derivatives calculated from lugar poblado centroids present in INE’s census data. They are not official boundaries and have not been published by any government institution.\n\n\n\n\n\n\n\nType\nComputational approximation\n\n\nMethod\nVoronoi tessellation (scipy) clipped to municipal boundaries (MINFIN)\n\n\nCentroid source\nINE — XII Censo 2018\n\n\nRecommended use\nChoropleth visualization only\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese polygons are approximations for visualization purposes only. They should not be used for area analysis, official delimitations, or documents with precise cartographic requirements.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "en/sources.html#source-summary",
+    "href": "en/sources.html#source-summary",
+    "title": "Data Sources & Attribution",
+    "section": "Source summary",
+    "text": "Source summary\n\n\n\n\n\n\n\n\nGeoQuetzal function\nData source\nLicense\n\n\n\n\ngq.departamentos(), gq.municipios(), gq.lagos()\nMINFIN Guatemala\nPublic\n\n\ngq.municipios(\"Guatemala\", zonas=True)\nGADM v4.1\nAcademic/non-commercial\n\n\ngq.personas(), gq.hogares(), gq.viviendas(), gq.emigracion()\nINE — Censo 2018\nPublic\n\n\ngq.lugares_poblados()\nINE — Censo 2018 (pre-aggregated)\nPublic\n\n\ngq.voronoi_lugares_poblados()\nDerived from INE + MINFIN\nPublic (derived)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "en/sources.html#about-geoquetzal",
+    "href": "en/sources.html#about-geoquetzal",
+    "title": "Data Sources & Attribution",
+    "section": "About GeoQuetzal",
+    "text": "About GeoQuetzal\nGeoQuetzal is open-source software published under the MIT License. Source code is available at github.com/geoquetzal/geoquetzal.\nThe package authors make no claim of authorship over the original INE, MINFIN, or GADM data. The value GeoQuetzal provides is the integration, reformatting, grouping, and documentation of these datasets into a unified, reproducible interface.\nGeoQuetzal is distributed as-is (MIT License), without warranty of any kind. The authors assume no responsibility for how the data, analyses, visualizations, or conclusions derived from this library are used. It is the user’s responsibility to verify results, choose appropriate denominators for each analysis, and consult the original INE metadata and documentation before publishing or making decisions based on the data. Voronoi polygons generated by voronoi_lugares_poblados() are computational approximations for visualization only and should not be used as official boundaries in any context requiring cartographic precision.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "api/referencia.html",
+    "href": "api/referencia.html",
+    "title": "Referencia de la API",
+    "section": "",
+    "text": "Esta página documenta todas las funciones disponibles en GeoQuetzal. Para instalar la librería:",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "api/referencia.html#geografía",
+    "href": "api/referencia.html#geografía",
+    "title": "Referencia de la API",
+    "section": "Geografía",
+    "text": "Geografía\nFunciones para acceder a los límites administrativos de Guatemala. Los datos fueron descargados del Github de los límites geográficos disponibles del Ministerio de Finanzas (MINFIN) y se cargan instantáneamente desde la librería, not del Github del MINFIN, por lo que no requieren conexión a Internet.\n\ngq.country()\nRetorna el contorno del país de Guatemala como un GeoDataFrame.\n\nimport geoquetzal as gq\npais = gq.country()\npais.plot(color=\"lightgreen\", edgecolor=\"gray\")\n\n\n\n\ngq.departamentos()\nRetorna los 22 departamentos de Guatemala con sus códigos INE y geometría.\nParámetros:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\nname\nstr | int\nNombre o código del departamento (insensible a acentos)\n\n\nregion\nstr\nFiltra por región (ej. \"V - Central\")\n\n\n\n\nimport geoquetzal as gq\n\n# Todos los departamentos\ndeptos = gq.departamentos()\n\n# Por nombre (con o sin acentos)\ngq.departamentos(\"Sacatepequez\")\ngq.departamentos(\"Sacatepéquez\")\n\n# Por código INE\ngq.departamentos(3)\n\n# Por región\ngq.departamentos(region=\"V - Central\")\n\n\n\n\ngq.municipios()\nRetorna los 340 municipios de Guatemala con sus códigos INE y geometría.\nParámetros:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\nstr | int\nFiltra por departamento\n\n\nname\nstr | int\nRetorna un municipio específico por nombre o código\n\n\nzonas\nbool\nSi True, retorna las 22 zonas de la Ciudad de Guatemala (usa GADM)\n\n\n\n\nimport geoquetzal as gq\n\n# Todos los municipios de un departamento\ngq.municipios(\"Sacatepequez\")\n\n# Un municipio específico\ngq.municipios(name=\"Antigua Guatemala\")\ngq.municipios(name=301)\n\n# Zonas de Guatemala City\ngq.municipios(\"Guatemala\", zonas=True)\n\n\n\n\ngq.lagos()\nRetorna los dos principales lagos de Guatemala (Amatitlán y Atitlán) para superposición en mapas.\n\nimport geoquetzal as gq\n\nax = gq.departamentos().plot(color=\"lightyellow\", edgecolor=\"gray\")\ngq.lagos().plot(ax=ax, color=\"lightblue\", edgecolor=\"steelblue\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "api/referencia.html#microdatos-censales",
+    "href": "api/referencia.html#microdatos-censales",
+    "title": "Referencia de la API",
+    "section": "Microdatos Censales",
+    "text": "Microdatos Censales\nFunciones para acceder a los microdatos del XII Censo Nacional de Población y VII de Vivienda 2018 (INE). Los datos se descargan en formato Parquet desde GitHub Releases y se almacenan en caché localmente. Para limpiar el caché:\n\nfrom geoquetzal.cache import clear_cache\nclear_cache()\n\nTodas las funciones de microdatos comparten los mismos parámetros de filtro:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\nstr | int\nFiltra por departamento (descarga solo ese archivo)\n\n\nmunicipio\nstr | int\nFiltra por municipio (descarga el archivo del departamento padre)\n\n\ngeometry\nstr\nUne geometría: \"departamento\" o \"municipio\"\n\n\n\n\n\ngq.personas()\nMicrodatos a nivel de persona. 14,901,286 registros, 84 variables. Cada fila representa una persona.\nVariables principales: sexo (PCP6), edad (PCP7), autoidentificación étnica (PCP12), comunidad lingüística maya (PCP13), lengua materna (PCP15), discapacidad (PCP16_A–PCP16_F), escolaridad (PCP17_A), alfabetismo (PCP22), acceso a tecnología (PCP26_A–PCP26_C), empleo (PCP27), fecundidad (PCP35–PCP39).\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Huehuetenango\")\ndf = gq.personas(municipio=\"Antigua Guatemala\")\ndf = gq.personas()  # Todo Guatemala (~333 MB)\n\n\n\n\ngq.hogares()\nMicrodatos a nivel de hogar. 3,275,931 registros, 37 variables. Cada fila representa un hogar.\nVariables principales: fuente de agua (PCH4), saneamiento (PCH5), electricidad (PCH8), equipamiento del hogar — radio, TV, refrigeradora, internet, carro (PCH9_A–PCH9_M), combustible para cocinar (PCH14), remesas (PCH15).\n\nimport geoquetzal as gq\n\ndf = gq.hogares(departamento=\"Sacatepequez\")\ndf = gq.hogares(municipio=\"Antigua Guatemala\")\ndf = gq.hogares()  # Todo Guatemala (~38 MB)\n\n\n\n\ngq.viviendas()\nMicrodatos a nivel de vivienda. ~3,300,000 registros, 11 variables. Cada fila representa una vivienda.\nVariables principales: tipo de vivienda (PCV1), material de paredes (PCV2), techo (PCV3), condición (PCV4), piso (PCV5).\n\nimport geoquetzal as gq\n\ndf = gq.viviendas(departamento=\"Sacatepequez\")\ndf = gq.viviendas()  # Todo Guatemala (~30 MB)\n\n\n\n\ngq.emigracion()\nRegistros de emigración internacional. 242,203 registros, 11 variables. Cada fila es una persona que emigró desde un hogar.\nVariables principales: sexo (PEI3), edad al emigrar (PEI4), año de partida (PEI5).\n\nimport geoquetzal as gq\n\ndf = gq.emigracion(departamento=\"Huehuetenango\")\ndf = gq.emigracion()  # Todo Guatemala (~1.6 MB)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "api/referencia.html#datos-sub-municipales",
+    "href": "api/referencia.html#datos-sub-municipales",
+    "title": "Referencia de la API",
+    "section": "Datos Sub-Municipales",
+    "text": "Datos Sub-Municipales\n\ngq.lugares_poblados()\nIndicadores pre-agregados a nivel de lugar poblado. 20,254 localidades, 200+ columnas. Cada fila representa un lugar poblado.\nLos datos se derivan de las tres tablas censales (personas, hogares, viviendas) y se almacenan como conteos (no porcentajes). El denominador correcto depende del análisis a realizar.\n\n\n\n\n\n\nNote\n\n\n\nLos lugares poblados con códigos terminados en 999 (ej. 102999) representan asentamientos sin nombre oficial (“Otros Lugares Poblados”) y tienen coordenadas nulas. Se incluyen en los datos pero no pueden mapearse con geometría.\n\n\nParámetros:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\nstr | int\nFiltra por departamento\n\n\nmunicipio\nstr | int\nFiltra por municipio\n\n\ngeometry\nbool\nSi True, retorna GeoDataFrame con geometría de puntos (centroides)\n\n\n\n\nimport geoquetzal as gq\n\n# Todos los lugares poblados\ndf = gq.lugares_poblados()\n\n# Filtrar\ndf = gq.lugares_poblados(departamento=\"Sacatepéquez\") #Carga todos los lugares poblados de Sacatepéquez\ndf = gq.lugares_poblados(municipio=\"Antigua Guatemala\") #Carga todos los lugares poblados del municipio de Antigua Guatemala\ndf = gq.lugares_poblados(lugar_poblado=301001) #Carga los datos del lugar poblado 301001 (Antigua Guatemala), del municipio Antigua Guatemala, Sacatepéquez\n\n# Como GeoDataFrame con puntos (centroides)\ngdf = gq.lugares_poblados(geometry=True)\n\nColumnas disponibles por tema:\n\n\n\n\n\n\n\n\nTema\nPrefijo de columna\nFuente\n\n\n\n\nEscalares (población, PEA, años de estudio)\npoblacion_total, pea_total, aneduca_promedio…\npersona\n\n\nAutoidentificación étnica\npcp12_maya, pcp12_ladino…\npersona\n\n\nComunidad lingüística maya\npcp13_kiche, pcp13_mam…\npersona\n\n\nLengua materna\npcp15_espanol, pcp15_kiche…\npersona\n\n\nDiscapacidad\npcp16_a_sin_dificultad…\npersona\n\n\nEscolaridad\npcp17_a_ninguno, pcp17_a_primaria…\npersona\n\n\nAlfabetismo\npcp22_alfabeto, pcp22_no_alfabeto\npersona\n\n\nEmpleo\npcp30_1d_agropecuarios…\npersona\n\n\nTipo de vivienda\npcv1_casa_formal, pcv1_rancho…\nvivienda\n\n\nMaterial de paredes\npcv2_block, pcv2_adobe…\nvivienda\n\n\nMaterial de piso\npcv5_tierra, pcv5_torta_cemento…\nvivienda\n\n\nFuente de agua\npch4_tuberia_dentro, pch4_rio…\nhogar\n\n\nSaneamiento\npch5_inodoro_red_drenajes…\nhogar\n\n\nElectricidad\npch8_red_electrica, pch8_candela…\nhogar\n\n\nEquipamiento del hogar\npch9_i_si (internet), pch9_m_si (carro)…\nhogar\n\n\nCombustible para cocinar\npch14_lena, pch14_gas_propano…\nhogar\n\n\nRemesas\npch15_si, pch15_no\nhogar\n\n\nEmigración desde 2002\npei1_si, pei1_no\nhogar\n\n\n\n\n\n\ngq.voronoi_lugares_poblados()\nGenera polígonos Voronoi aproximados como límites de lugares poblados, recortados a los límites municipales. Estos polígonos son aproximaciones para visualización coroplética — el INE no publica límites oficiales de lugares poblados.\n\n\n\n\n\n\nWarning\n\n\n\nLos lugares poblados con coordenadas nulas (códigos terminados en 999) son excluidos automáticamente. Los municipios con un solo lugar poblado retornan el polígono completo del municipio.\n\n\nParámetros:\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\nstr | int\nFiltra por departamento\n\n\nmunicipio\nstr | int\nFiltra por municipio\n\n\n\n\nimport geoquetzal as gq\n\n# Polígonos Voronoi para un municipio\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\n\n# Para un departamento completo\nvor = gq.voronoi_lugares_poblados(departamento=\"Sacatepéquez\")\n\n# Patrón típico: unir con datos censales para coropleta\nlp  = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\ngdf[\"pct_internet\"] = gdf[\"pch9_i_si\"] / (gdf[\"pch9_i_si\"] + gdf[\"pch9_i_no\"]) * 100\ngdf.plot(column=\"pct_internet\", cmap=\"YlGnBu\", legend=True)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "api/referencia.html#funciones-de-descripción",
+    "href": "api/referencia.html#funciones-de-descripción",
+    "title": "Referencia de la API",
+    "section": "Funciones de Descripción",
+    "text": "Funciones de Descripción\nTodas las funciones de descripción retornan un DataFrame con todas las variables si no se especifica ninguna, o un dict con los detalles de la variable solicitada.\n\n\n\nFunción\nDataset\n\n\n\n\ngq.describe_personas(variable)\nPersonas\n\n\ngq.describe_hogares(variable)\nHogares\n\n\ngq.describe_viviendas(variable)\nViviendas\n\n\ngq.describe_emigracion(variable)\nEmigración\n\n\ngq.describe_lugares_poblados(variable)\nLugares Poblados\n\n\n\n\nimport geoquetzal as gq\n\n# Listar todas las variables de un dataset\ngq.describe_personas()\ngq.describe_hogares()\n\n# Detalle de una variable específica\ngq.describe_personas(\"PCP12\")\n# {'variable': 'PCP12',\n#  'etiqueta': 'Según su origen o historia, ¿cómo se considera o auto identifica?',\n#  'tipo': 'étnica',\n#  'valores': {1: 'Maya', 2: 'Garífuna', 3: 'Xinka', ...}}\n\ngq.describe_lugares_poblados(\"pcp12_maya\")\n# {'variable': 'pcp12_maya',\n#  'etiqueta': 'Conteo: se identifica como Maya',\n#  'tipo': 'étnica',\n#  'fuente': 'persona'}",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "api/referencia.html#sistemas-de-referencia-de-coordenadas",
+    "href": "api/referencia.html#sistemas-de-referencia-de-coordenadas",
+    "title": "Referencia de la API",
+    "section": "Sistemas de Referencia de Coordenadas",
+    "text": "Sistemas de Referencia de Coordenadas\n\nfrom geoquetzal.crs import to_gtm, to_utm16n, suggest_crs\n\ndeptos = gq.departamentos()\nsuggest_crs(deptos)               # Muestra recomendaciones\n\ndeptos_gtm = to_gtm(deptos)       # Guatemala Transversa de Mercator (estándar nacional)\ndeptos_utm = to_utm16n(deptos)    # UTM Zona 16N (para cálculos de área y distancia)\n\n\n\n\n\n\n\n\n\nCRS\nCódigo\nUso recomendado\n\n\n\n\nWGS 84\nEPSG:4326\nDefault, mapas web\n\n\nGuatemala TM (GTM)\nESRI:103598\nEstándar nacional, mapas oficiales\n\n\nUTM Zona 16N\nEPSG:32616\nCálculos de área y distancia",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "Python"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html",
+    "href": "ejemplos/mapas.html",
+    "title": "Ejemplos: Mapas",
+    "section": "",
+    "text": "Esta sección muestra cómo visualizar los límites administrativos de Guatemala. Para combinar mapas con datos del censo, consulte Censo + Mapas.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#mapa-de-departamentos",
+    "href": "ejemplos/mapas.html#mapa-de-departamentos",
+    "title": "Ejemplos: Mapas",
+    "section": "Mapa de departamentos",
+    "text": "Mapa de departamentos\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndeptos = gq.departamentos()\nax = deptos.plot(color=\"lightyellow\", edgecolor=\"gray\", figsize=(8, 8))\ngq.lagos().plot(ax=ax, color=\"lightblue\", edgecolor=\"steelblue\")\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nprint(ggplot() +\n  geom_sf(data = departamentos(), fill = \"lightyellow\", color = \"gray\") +\n  geom_sf(data = lagos(), fill = \"lightblue\", color = \"steelblue\") +\n  theme_void())",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#mapa-de-municipios",
+    "href": "ejemplos/mapas.html#mapa-de-municipios",
+    "title": "Ejemplos: Mapas",
+    "section": "Mapa de municipios",
+    "text": "Mapa de municipios\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nmunis = gq.municipios()\nax = munis.plot(color=\"lightyellow\", edgecolor=\"gray\", linewidth=0.4, figsize=(8, 8))\ngq.lagos().plot(ax=ax, color=\"lightblue\", edgecolor=\"steelblue\")\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = municipios(), fill = \"lightyellow\", color = \"gray\", linewidth = 0.4) +\n  geom_sf(data = lagos(), fill = \"lightblue\", color = \"steelblue\") +\n  theme_void()",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#municipios-de-un-departamento",
+    "href": "ejemplos/mapas.html#municipios-de-un-departamento",
+    "title": "Ejemplos: Mapas",
+    "section": "Municipios de un departamento",
+    "text": "Municipios de un departamento\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nmunis = gq.municipios(\"Sacatepequez\")\nax = munis.plot(color=\"green\", edgecolor=\"white\", figsize=(8, 8))\nax.set_title(\"Municipios de Sacatepéquez\", fontsize=14)\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = municipios(\"Sacatepequez\"), fill = \"darkgreen\", color = \"white\") +\n  ggtitle(\"Municipios de Sacatepéquez\") +\n  theme_void()",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#mapa-interactivo-con-hover",
+    "href": "ejemplos/mapas.html#mapa-interactivo-con-hover",
+    "title": "Ejemplos: Mapas",
+    "section": "Mapa interactivo con hover",
+    "text": "Mapa interactivo con hover\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nmunis = gq.municipios(\"Sacatepequez\")\nmunis.explore(\n    tooltip=[\"municipio\", \"codigo_muni\"],\n    tooltip_kwds={\"aliases\": [\"Municipio\", \"Código INE\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"green\", \"fillOpacity\": 0.3},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nmapview(\n  municipios(\"Sacatepequez\"),\n  map.types = \"CartoDB.Positron\",\n  color      = \"green\",\n  alpha.regions = 0.3,\n  lwd        = 1,\n  label      = \"municipio\"\n)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#zonas-de-la-ciudad-de-guatemala",
+    "href": "ejemplos/mapas.html#zonas-de-la-ciudad-de-guatemala",
+    "title": "Ejemplos: Mapas",
+    "section": "Zonas de la Ciudad de Guatemala",
+    "text": "Zonas de la Ciudad de Guatemala\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nzonas = gq.municipios(\"Guatemala\", zonas=True)\nzonas.explore(\n    tooltip=[\"zona\"],\n    tooltip_kwds={\"aliases\": [\"Zona\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"steelblue\", \"fillOpacity\": 0.3},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nEl parámetro zonas=TRUE no está disponible en el paquete R. Use los municipios estándar de Guatemala City como alternativa.\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nmapview(\n  municipios(\"Guatemala\"),\n  map.types    = \"CartoDB.Positron\",\n  color        = \"steelblue\",\n  alpha.regions = 0.3,\n  lwd          = 1,\n  label        = \"municipio\"\n)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#centroides-de-lugares-poblados",
+    "href": "ejemplos/mapas.html#centroides-de-lugares-poblados",
+    "title": "Ejemplos: Mapas",
+    "section": "Centroides de lugares poblados",
+    "text": "Centroides de lugares poblados\nLos lugares poblados tienen coordenadas de centroide que permiten visualizarlos como puntos.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Cargar con geometría de puntos\ngdf = gq.lugares_poblados(departamento=\"Sacatepequez\", geometry=True)\n\n   ℹ 22 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n\n\n# Superponer sobre municipios\nax = gq.municipios(\"Sacatepequez\").plot(\n    color=\"lightyellow\", edgecolor=\"gray\", figsize=(8, 8)\n)\ngdf.plot(ax=ax, color=\"steelblue\", markersize=5, alpha=0.7)\nax.set_title(\"Lugares Poblados — Sacatepéquez\", fontsize=14)\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(sf)\n\nLinking to GEOS 3.14.1, GDAL 3.12.3, PROJ 9.8.0; sf_use_s2() is TRUE\n\nlibrary(ggplot2)\n\n# Cargar con geometría de puntos (centroide)\nlp &lt;- lugares_poblados(departamento = \"Sacatepequez\")\n\n⬇  Descargando lugares poblados depto 03 (Sacatepéquez)...\n\n\n   ✓ 264 lugares poblados cargados\n\nlp_valid &lt;- lp[!is.na(lp$longitud) & !is.na(lp$lat), ]\nlp_sf &lt;- sf::st_as_sf(lp_valid, coords = c(\"longitud\", \"lat\"), crs = 4326)\n\n# Superponer sobre municipios\nggplot() +\n  geom_sf(data = municipios(\"Sacatepequez\"), fill = \"lightyellow\", color = \"gray\") +\n  geom_sf(data = lp_sf, color = \"steelblue\", size = 1, alpha = 0.7) +\n  ggtitle(\"Lugares Poblados — Sacatepéquez\") +\n  theme_void()",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/mapas.html#polígonos-voronoi-de-lugares-poblados",
+    "href": "ejemplos/mapas.html#polígonos-voronoi-de-lugares-poblados",
+    "title": "Ejemplos: Mapas",
+    "section": "Polígonos Voronoi de lugares poblados",
+    "text": "Polígonos Voronoi de lugares poblados\nComo el INE no publica límites oficiales de lugares poblados, GeoQuetzal genera aproximaciones mediante teselación Voronoi recortada a los límites municipales.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 57 polígonos Voronoi generados\n\nvor.explore(\n    tooltip=[\"nombre\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"green\", \"fillOpacity\": 0.3},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\n\nSpherical geometry (s2) switched off\n\n\n⬇  Descargando lugares poblados depto 03 (Sacatepéquez)...\n\n\n   ✓ 264 lugares poblados cargados\n\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999).\n\n\n   ✓ 57 polígonos Voronoi generados\n\n\nSpherical geometry (s2) switched on\n\nmapview(\n  vor,\n  map.types    = \"CartoDB.Positron\",\n  color        = \"green\",\n  alpha.regions = 0.3,\n  lwd          = 0.5,\n  label        = \"nombre\"\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLos lugares poblados con coordenadas nulas (códigos terminados en 999) son excluidos automáticamente del Voronoi. Son asentamientos informales sin ubicación oficial.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html",
+    "href": "ejemplos/censo_mapas.html",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "",
+    "text": "Esta sección combina datos del Censo 2018 con visualizaciones geográficas. El patrón general es: agregar los microdatos primero, luego hacer merge con la geometría.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html#acceso-a-internet-por-municipio",
+    "href": "ejemplos/censo_mapas.html#acceso-a-internet-por-municipio",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "Acceso a Internet por municipio",
+    "text": "Acceso a Internet por municipio\n¿Qué porcentaje de hogares tiene acceso a internet en cada municipio de Sacatepéquez?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Datos censales\ndf = gq.hogares(departamento=\"Sacatepequez\")\n\n# PCH9_I: ¿Cuenta este hogar con servicio de internet? (1=Sí, 2=No)\nacceso_internet = (\n    df.groupby(\"MUNICIPIO\")[\"PCH9_I\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_internet\")\n)\n\n# Geometría\nmunis = gq.municipios(\"Sacatepequez\")\n\n# Join por código de municipio\nresultado = munis.merge(acceso_internet, left_on=\"codigo_muni\", right_on=\"MUNICIPIO\")\n\n# Mapa interactivo\nresultado.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"municipio\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Municipio\", \"% Internet\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\n# Datos censales\ndf &lt;- hogares(departamento = \"Sacatepequez\")\n\n# PCH9_I: ¿Cuenta este hogar con servicio de internet? (1=Sí, 2=No)\nacceso_internet &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(pct_internet = round(mean(PCH9_I == 1, na.rm = TRUE) * 100, 1))\n\n# Geometría + join por código de municipio\nresultado &lt;- merge(\n  municipios(\"Sacatepequez\"), acceso_internet,\n  by.x = \"codigo_muni\", by.y = \"MUNICIPIO\"\n)\n\n# Mapa interactivo\nmapview(resultado,\n        zcol       = \"pct_internet\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name = \"% Internet\",\n        map.types  = \"CartoDB.Positron\",\n        label      = \"municipio\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html#mayoría-étnica-por-municipio",
+    "href": "ejemplos/censo_mapas.html#mayoría-étnica-por-municipio",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "Mayoría étnica por municipio",
+    "text": "Mayoría étnica por municipio\n¿Qué grupo étnico es mayoritario en cada municipio de Huehuetenango?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Huehuetenango\")\n\n# PCP12: autoidentificación étnica (modo = grupo mayoritario)\netnia_dominante = (\n    df.groupby(\"MUNICIPIO\")[\"PCP12\"]\n    .agg(lambda x: x.mode()[0])\n    .reset_index(name=\"etnia_cod\")\n)\n\n# Reemplazar códigos por etiquetas\nvalores = gq.describe_personas(\"PCP12\")[\"valores\"]\netnia_dominante[\"etnia\"] = etnia_dominante[\"etnia_cod\"].map(valores)\n\n# Geometría\nmunis = gq.municipios(\"Huehuetenango\")\nresultado = munis.merge(etnia_dominante, left_on=\"codigo_muni\", right_on=\"MUNICIPIO\")\n\n# Mapa interactivo\nresultado.explore(\n    column=\"etnia\",\n    tooltip=[\"municipio\", \"etnia\"],\n    tooltip_kwds={\"aliases\": [\"Municipio\", \"Grupo Étnico Mayoritario\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\ndf &lt;- personas(departamento = \"Huehuetenango\")\n\n# PCP12: autoidentificación étnica (modo = grupo mayoritario)\netnia_dominante &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(etnia_cod = as.integer(names(which.max(table(PCP12))))) |&gt;\n  mutate(etnia = recode(as.character(etnia_cod),\n    \"1\" = \"Maya\", \"2\" = \"Garífuna\", \"3\" = \"Xinka\",\n    \"4\" = \"Afrodescendiente\", \"5\" = \"Ladino\", \"6\" = \"Extranjero\"))\n\n# Geometría + join\nresultado &lt;- merge(\n  municipios(\"Huehuetenango\"), etnia_dominante,\n  by.x = \"codigo_muni\", by.y = \"MUNICIPIO\"\n)\n\n# Mapa interactivo\nmapview(resultado,\n        zcol      = \"etnia\",\n        map.types = \"CartoDB.Positron\",\n        label     = \"municipio\",\n        layer.name = \"Grupo Étnico Mayoritario\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html#emigración-acumulada-por-departamento",
+    "href": "ejemplos/censo_mapas.html#emigración-acumulada-por-departamento",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "Emigración acumulada por departamento",
+    "text": "Emigración acumulada por departamento\n¿Cuántas personas emigraron desde cada departamento entre 2002 y 2018? Use el deslizador horizontal para cambiar de año y visualizar la emigración acumulada.\n\nPythonR\n\n\n\nimport geoquetzal as gq\nimport plotly.express as px\nimport json\n\ndf = gq.emigracion()\n\n# Clean: remove unknown years and future years\ndf = df[(df[\"PEI5\"] != 9999) & (df[\"PEI5\"] &lt;= 2018)]\nmin_year = int(df[\"PEI5\"].min())\n\n# Get department names\ndeptos = gq.departamentos()\ndepto_names = deptos[[\"codigo_depto\", \"departamento\"]].copy()\n\n# Count emigrants per department per year\nagg = (\n    df.groupby([\"DEPARTAMENTO\", \"PEI5\"])\n    .size()\n    .reset_index(name=\"emigrantes_año\")\n)\n\n# Fill all dept × year combinations (so missing = 0, not blank)\nimport pandas as pd\nfull_grid = pd.MultiIndex.from_product(\n    [sorted(deptos[\"codigo_depto\"].unique()), range(min_year, 2019)],\n    names=[\"DEPARTAMENTO\", \"PEI5\"]\n).to_frame(index=False)\n\nagg = full_grid.merge(agg, on=[\"DEPARTAMENTO\", \"PEI5\"], how=\"left\").fillna(0)\nagg[\"emigrantes_año\"] = agg[\"emigrantes_año\"].astype(int)\n\n# Cumulative per department\nagg = agg.sort_values([\"DEPARTAMENTO\", \"PEI5\"])\nagg[\"emigrantes_acum\"] = agg.groupby(\"DEPARTAMENTO\")[\"emigrantes_año\"].cumsum()\n\n# Add department names\nagg = agg.merge(depto_names, left_on=\"DEPARTAMENTO\", right_on=\"codigo_depto\")\n\n# Build GeoJSON with feature IDs = codigo_depto\nimport tempfile, os\ntmp = tempfile.NamedTemporaryFile(suffix=\".geojson\", delete=False)\ndeptos.to_file(tmp.name, driver=\"GeoJSON\")\nwith open(tmp.name) as f:\n    geojson = json.load(f)\nos.unlink(tmp.name)\nfor feat in geojson[\"features\"]:\n    feat[\"id\"] = feat[\"properties\"][\"codigo_depto\"]\n\nagg[\"texto\"] = (\n    \"&lt;b&gt;\" + agg[\"departamento\"] + \"&lt;/b&gt;&lt;br&gt;\" +\n    \"Ese año: \" + agg[\"emigrantes_año\"].apply(lambda x: f\"{x:,}\") + \"&lt;br&gt;\" +\n    \"Acumulado: \" + agg[\"emigrantes_acum\"].apply(lambda x: f\"{x:,}\")\n)\n\nfig = px.choropleth(\n    agg,\n    geojson=geojson,\n    locations=\"DEPARTAMENTO\",\n    color=\"emigrantes_acum\",\n    animation_frame=\"PEI5\",\n    hover_name=\"departamento\",\n    hover_data={\"emigrantes_año\": True, \"emigrantes_acum\": True, \"DEPARTAMENTO\": False},\n    color_continuous_scale=\"OrRd\",\n    range_color=[0, agg[\"emigrantes_acum\"].max()],\n    labels={\n        \"emigrantes_acum\": \"Acumulado\",\n        \"emigrantes_año\": \"Ese año\",\n        \"PEI5\": \"Año\"\n    },\n    title=\"Emigración acumulada por departamento — Censo 2018\"\n)\n\nfig.update_geos(fitbounds=\"locations\", visible=False)\n\n                        \n                                            \n\nfig.update_layout(\n    margin={\"r\": 0, \"t\": 50, \"l\": 0, \"b\": 0},\n    width=800,\n    height=650,\n    coloraxis_colorbar=dict(title=\"Emigrantes&lt;br&gt;acumulados\"),\n)\n\n                        \n                                            \n\nfig.update_traces(\n    hovertemplate=\"&lt;b&gt;%{hovertext}&lt;/b&gt;&lt;br&gt;Ese año: %{customdata[0]:,}&lt;br&gt;Acumulado: %{z:,}&lt;extra&gt;&lt;/extra&gt;\"\n)\n\n                        \n                                            \n\nfig.layout.updatemenus[0].buttons[0].args[1][\"frame\"][\"duration\"] = 400\nfig.layout.updatemenus[0].buttons[0].args[1][\"transition\"][\"duration\"] = 200\n\nfig.show()\n\n                        \n                                            \n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(plotly)\n\ndf &lt;- emigracion()\n\n# Limpiar: remover años desconocidos y futuros\ndf &lt;- df[df$PEI5 != 9999 & df$PEI5 &lt;= 2018, ]\nmin_year &lt;- min(df$PEI5, na.rm = TRUE)\n\ndeptos     &lt;- departamentos()\ndepto_names &lt;- as.data.frame(deptos)[, c(\"codigo_depto\", \"departamento\")]\n\n# Conteo por departamento y año\nagg &lt;- df |&gt;\n  group_by(DEPARTAMENTO, PEI5) |&gt;\n  summarise(emigrantes_año = n(), .groups = \"drop\")\n\n# Completar todas las combinaciones depto × año (faltantes = 0)\nfull_grid &lt;- expand.grid(\n  DEPARTAMENTO = sort(unique(deptos$codigo_depto)),\n  PEI5         = seq(min_year, 2018)\n)\nagg &lt;- full_grid |&gt;\n  left_join(agg, by = c(\"DEPARTAMENTO\", \"PEI5\")) |&gt;\n  mutate(emigrantes_año = replace(emigrantes_año, is.na(emigrantes_año), 0L))\n\n# Acumulado por departamento\nagg &lt;- agg |&gt;\n  arrange(DEPARTAMENTO, PEI5) |&gt;\n  group_by(DEPARTAMENTO) |&gt;\n  mutate(emigrantes_acum = cumsum(emigrantes_año)) |&gt;\n  ungroup() |&gt;\n  left_join(depto_names, by = c(\"DEPARTAMENTO\" = \"codigo_depto\"))\n\n# GeoJSON con IDs = codigo_depto\ntmp &lt;- tempfile(fileext = \".geojson\")\nsf::st_write(deptos, tmp, driver = \"GeoJSON\", quiet = TRUE)\ngeojson &lt;- jsonlite::read_json(tmp)\nfile.remove(tmp)\n\n[1] TRUE\n\nfor (i in seq_along(geojson$features)) {\n  geojson$features[[i]]$id &lt;- geojson$features[[i]]$properties$codigo_depto\n}\n\n# Mapa animado\nfig &lt;- plot_ly(\n  data        = agg,\n  type        = \"choropleth\",\n  geojson     = geojson,\n  locations   = ~DEPARTAMENTO,\n  z           = ~emigrantes_acum,\n  text        = ~paste0(\"&lt;b&gt;\", departamento, \"&lt;/b&gt;&lt;br&gt;\",\n                        \"Ese año: \", format(emigrantes_año, big.mark = \",\"), \"&lt;br&gt;\",\n                        \"Acumulado: \", format(emigrantes_acum, big.mark = \",\")),\n  hoverinfo   = \"text\",\n  colorscale  = \"Reds\",\n  reversescale = TRUE,\n  zmin        = 0,\n  zmax        = max(agg$emigrantes_acum),\n  frame       = ~PEI5,\n  width       = 800,\n  height      = 650\n) |&gt;\n  layout(\n    title = \"Emigración acumulada por departamento — Censo 2018\",\n    geo   = list(fitbounds = \"locations\", visible = FALSE),\n    margin = list(r = 0, t = 50, l = 0, b = 0),\n    coloraxis = list(colorbar = list(title = \"Emigrantes&lt;br&gt;acumulados\"))\n  ) |&gt;\n  animation_slider(currentvalue = list(prefix = \"Año: \"))\n\nfig",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html#coropleta-sub-municipal-con-voronoi",
+    "href": "ejemplos/censo_mapas.html#coropleta-sub-municipal-con-voronoi",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "Coropleta sub-municipal con Voronoi",
+    "text": "Coropleta sub-municipal con Voronoi\nAcceso a internet a nivel de lugar poblado en Antigua Guatemala — primera visualización sub-municipal disponible para Guatemala.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Polígonos Voronoi (aproximación de límites sub-municipales)\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 57 polígonos Voronoi generados\n\n# Datos censales pre-agregados por lugar poblado\nlp = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\nlp = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\n# Join\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# Calcular % de hogares con internet\ngdf[\"pct_internet\"] = (\n    gdf[\"pch9_i_si\"] / (gdf[\"pch9_i_si\"] + gdf[\"pch9_i_no\"]) * 100\n).round(1)\n\n# Mapa interactivo con hover\ngdf.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"nombre\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% con Internet\"]},\n    popup=[\"nombre\", \"pct_internet\", \"pch9_i_si\", \"pch9_i_no\"],\n    popup_kwds={\"aliases\": [\n        \"Lugar Poblado\", \"% con Internet\",\n        \"Hogares con Internet\", \"Hogares sin Internet\"\n    ]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\n# Polígonos Voronoi (aproximación de límites sub-municipales)\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\n\n# Datos censales pre-agregados por lugar poblado\nlp &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\nlp &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\n# Join\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# Calcular % de hogares con internet\ngdf$pct_internet &lt;- round(\n  gdf$pch9_i_si / (gdf$pch9_i_si + gdf$pch9_i_no) * 100, 1\n)\n\n# Mapa interactivo\nmapview(gdf,\n        zcol        = \"pct_internet\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name  = \"% Internet\",\n        map.types   = \"CartoDB.Positron\",\n        lwd         = 0.5,\n        color       = \"white\",\n        label       = \"nombre\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLos polígonos Voronoi son aproximaciones para visualización — el INE no publica límites oficiales de lugares poblados. Cada polígono representa la zona de influencia del centroide del lugar poblado dentro de su municipio.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html#porcentaje-de-población-maya-por-lugar-poblado",
+    "href": "ejemplos/censo_mapas.html#porcentaje-de-población-maya-por-lugar-poblado",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "Porcentaje de población Maya por lugar poblado",
+    "text": "Porcentaje de población Maya por lugar poblado\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(departamento=\"Sacatepequez\")\n\n   ℹ 22 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 237 polígonos Voronoi generados\n\nlp  = gq.lugares_poblados(departamento=\"Sacatepequez\")\nlp  = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# Usar total de respondidos como denominador (excluir nulos)\npcp12_cols = [c for c in gdf.columns if c.startswith(\"pcp12_\") and c != \"pcp12_nulo\"]\ngdf[\"pcp12_total_respondido\"] = gdf[pcp12_cols].sum(axis=1)\ngdf[\"pct_maya\"] = (\n    gdf[\"pcp12_maya\"] / gdf[\"pcp12_total_respondido\"] * 100\n).round(1)\n\ngdf.explore(\n    column=\"pct_maya\",\n    cmap=\"Purples\",\n    tooltip=[\"nombre\", \"pct_maya\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% Población Maya\"]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# Usar total de respondidos como denominador (excluir nulos)\npcp12_cols &lt;- grep(\"^pcp12_\", names(gdf), value = TRUE)\npcp12_cols &lt;- pcp12_cols[pcp12_cols != \"pcp12_nulo\"]\ngdf$pcp12_total_respondido &lt;- rowSums(as.data.frame(gdf)[, pcp12_cols], na.rm = TRUE)\ngdf$pct_maya &lt;- round(gdf$pcp12_maya / gdf$pcp12_total_respondido * 100, 1)\n\nmapview(gdf,\n        zcol        = \"pct_maya\",\n        col.regions = RColorBrewer::brewer.pal(9, \"Purples\"),\n        layer.name  = \"% Población Maya\",\n        map.types   = \"CartoDB.Positron\",\n        lwd         = 0.5,\n        color       = \"white\",\n        label       = \"nombre\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo_mapas.html#piso-de-tierra-como-indicador-de-pobreza",
+    "href": "ejemplos/censo_mapas.html#piso-de-tierra-como-indicador-de-pobreza",
+    "title": "Ejemplos: Censo + Mapas",
+    "section": "Piso de tierra como indicador de pobreza",
+    "text": "Piso de tierra como indicador de pobreza\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(departamento=\"Sacatepequez\")\n\n   ℹ 22 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 237 polígonos Voronoi generados\n\nlp  = gq.lugares_poblados(departamento=\"Sacatepequez\")\nlp  = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# pcv5_tierra = viviendas con piso de tierra\ngdf[\"pct_tierra\"] = (\n    gdf[\"pcv5_tierra\"] / gdf[\"poblacion_total\"] * 100\n).round(1)\n\ngdf.explore(\n    column=\"pct_tierra\",\n    cmap=\"YlOrBr\",\n    tooltip=[\"nombre\", \"pct_tierra\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% Piso de Tierra\"]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# pcv5_tierra = viviendas con piso de tierra\ngdf$pct_tierra &lt;- round(gdf$pcv5_tierra / gdf$poblacion_total * 100, 1)\n\nmapview(gdf,\n        zcol        = \"pct_tierra\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlOrBr\"),\n        layer.name  = \"% Piso de Tierra\",\n        map.types   = \"CartoDB.Positron\",\n        lwd         = 0.5,\n        color       = \"white\",\n        label       = \"nombre\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Censo + Mapas"
+    ]
+  },
+  {
+    "objectID": "acerca_de.html",
+    "href": "acerca_de.html",
+    "title": "Acerca de GeoQuetzal",
+    "section": "",
+    "text": "Durante el 2025 trabajé como mentor de un grupo de estudiantes de licenciatura en el programa de Data Science for Public Good (DSPG) en la Universidad Estatal de Iowa (ISU). Durante el programa, aprendimos a utilizar librerías en R que permiten acceder a los datos de los censos en Estados Unidos, así como a librerías que permiten visualizar esos datos en mapas. Era la primera vez que utilizaba este tipo de datos, y me impresionó cómo lograban transmitir ideas y/o tendencias sobre los temas que investigábamos. Aprendí que estas librerías se utilizaban en decenas y cientos de investigaciones académicas, gubernamentales y de industria, y le proporcionaban a investigadores, profesores, estudiantes, profesionales y entusiastas de los mapas herramientas poderosas para el análisis de información.\nInspirado por ese potencial, hablé con Anasilvia sobre lo importante que son estas herramientas para la investigación, y fue una sorpresa descubrir que no existían librerías similares para Guatemala ni para ningún otro país de Centroamérica. El semestre terminó y la idea quedó ahí, dormida pero latente.\nEste año 2026 tuvimos que viajar a Guatemala a realizar trámites administrativos. Aprovechando el Spring Break y mientras estábamos en nuestro hermoso país, la idea resurgió. Decidimos encarar el proyecto como un hackaton personal y significativo: sabíamos del potencial de la librería, y sabíamos que podíamos construirla. En una semana, con la ayuda de Claude (inteligencia artificial de Anthropic) planificamos, desarrollamos y evaluamos una prueba de concepto de las librerías para Python y R. El uso explícito de IA generativa como herramienta de desarrollo fue una decisión consciente que aceleró el desarrollo y pruebas y nos permitió finalizar este proyecto en poco tiempo. Luego de comprobar que las librerías eran útiles y factibles, procedimos a mejorarlas para ampliar sus casos de uso, por ejemplo, utilizamos los límites territoriales del MINFIN (más actualizados que los disponibles por el GADM), agrupamos datos a nivel de lugar poblado, introdujimos polígonos Voronoi para mapas coropléticos a nivel de los lugares poblados, escribimos la documentación bilingüe y el sitio web de ejemplos, con el objetivo de acercar el análisis de datos mediante mapas a todas aquellas personas interesadas en Guatemala.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Acerca de"
+    ]
+  },
+  {
+    "objectID": "acerca_de.html#por-qué-es-importante",
+    "href": "acerca_de.html#por-qué-es-importante",
+    "title": "Acerca de GeoQuetzal",
+    "section": "¿Por qué es importante?",
+    "text": "¿Por qué es importante?\nGuatemala tiene millones de datos públicos disponibles. El INE realizó un censo exhaustivo en 2018 con información de más de 14 millones de personas. El MINFIN publicó los límites administrativos del país. Pero acceder a esos datos de manera programática, limpiarlos, unirlos y visualizarlos en un mapa requería horas de trabajo manual, descargando archivos, resolviendo inconsistencias de nombres, escribiendo código desde cero cada vez.\nGeoQuetzal elimina esa fricción. En pocas líneas de código se tienen los datos listos para analizar o visualizar.\nEsperamos que GeoQuetzal sea útil para investigadores académicos, estudiantes, periodistas, analistas de datos, funcionarios de gobierno, y cualquier persona curiosa sobre Guatemala. Si encuentra un error, tiene una sugerencia, o quiere contribuir, el código está disponible en GitHub.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Acerca de"
+    ]
+  },
+  {
+    "objectID": "acerca_de.html#los-autores",
+    "href": "acerca_de.html#los-autores",
+    "title": "Acerca de GeoQuetzal",
+    "section": "Los autores",
+    "text": "Los autores\nJorge Yass es docente en línea en la Universidad del Valle de Guatemala (UVG) y estudiante a doctorado en Interacción Humano-Computador (HCI) en Iowa State University. \nAnasilvia Salazar es docente en la Universidad del Valle de Guatemala (UVG), donde imparte cursos de HCI, y candidata a doctorado en Interacción Humano-Computador (HCI) en Iowa State University. \nAmbos comparten la convicción de que las herramientas de análisis de datos deben ser accesibles para todos, y que dicho acceso puede potenciar la investigación a nivel técnico y social en pro del beneficio de la sociedad.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Acerca de"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "GeoQuetzal",
+    "section": "",
+    "text": "Datos geográficos y censales de Guatemala.\nGeoQuetzal le da a investigadores acceso programático a los límites administrativos de Guatemala y los microdatos del Censo 2018 (INE), siguiendo la filosofía de tidycensus para Estados Unidos y geobr para Brasil.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Inicio"
+    ]
+  },
+  {
+    "objectID": "index.html#qué-es-geoquetzal",
+    "href": "index.html#qué-es-geoquetzal",
+    "title": "GeoQuetzal",
+    "section": "¿Qué es GeoQuetzal?",
+    "text": "¿Qué es GeoQuetzal?\nGeoQuetzal unifica en una sola librería tres cosas que normalmente requieren trabajo manual:\n\nLímites administrativos: 22 departamentos y 340 municipios con códigos INE correctos, listos para hacer join con cualquier dataset que mantenga los códigos de departamentos y municipios.\nMicrodatos censales: personas, hogares, viviendas y emigración del Censo 2018, particionados por departamento para descargas rápidas y eficientes. Se pueden cargar todos los datos a nivel de departamentos o municipios.\nDatos sub-municipales: 20,254 lugares poblados con indicadores pre-agregados de demografía, etnicidad, educación, vivienda y servicios. Se pueden cargar todos los datos a nivel de departamentos, municipios, o lugares poblados.\n\n\n\n  \n    \n  \n\n\nNiveles geográficos en GeoQuetzal\n\n\n\n1 país\nContorno nacional · gq.country()\n\n\n\n\n\n\n22 departamentos\nUnidades administrativas mayores · gq.departamentos()\n\n\n\n\n\n\n340 municipios\nUnidades administrativas menores · gq.municipios()\n\n\n\n\n\n\n20,254 lugares poblados\nIndicadores pre-agregados · gq.lugares_poblados()\n\n\nPrimera base de datos sub-municipal para Guatemala y Centroamérica",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Inicio"
+    ]
+  },
+  {
+    "objectID": "index.html#instalación",
+    "href": "index.html#instalación",
+    "title": "GeoQuetzal",
+    "section": "Instalación",
+    "text": "Instalación\n\nPythonR\n\n\npip install geoquetzal\n\n\ndevtools::install_github(\"geoquetzal/geoquetzal-r\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Inicio"
+    ]
+  },
+  {
+    "objectID": "index.html#ejemplo",
+    "href": "index.html#ejemplo",
+    "title": "GeoQuetzal",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nGeoQuetzal permite el análisis y la visualización de la mayoría de variables del censo 2018 a nivel de país, departamento y municipio. El análisis a nivel geográfico ofrece más detalle, inmersión y comprensión de los resultados. Por ejemplo, ¿qué porcentaje de acceso a Internet existe en Guatemala? (variable PCH9_I). Haga click en el mapa y pase el puntero encima de las áreas para ver su nombre y porcentaje de acceso a Internet.\n\nAnálisis a nivel país\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Límites administrativos, carga instantánea, sin necesidad de internet\ndeptos = gq.departamentos()\n\n# Microdatos censales\ndf = gq.hogares() #Todos los departamentos, esto puede llevar unos segundos dependiendo de la velocidad de descarga, pero quedan en caché\n\n⬇  Descargando hogares para los 22 departamentos...\n   ✓ 3,275,931 hogares cargados\n\n# % de hogares con internet por departamento\nacceso_internet = (\n    df.groupby(\"DEPARTAMENTO\")[\"PCH9_I\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_internet\")\n)\n\n# Unir con geometría y visualizar\nresultado = deptos.merge(acceso_internet, left_on=\"codigo_depto\", right_on=\"DEPARTAMENTO\")\nresultado.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"departamento\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Departamento\", \"% Internet\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nif (!requireNamespace(\"geoquetzal\", quietly = TRUE)) {\n  remotes::install_github(\"geoquetzal/geoquetzal-r\")\n}\nlibrary(geoquetzal)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(mapview)\n\n# Límites administrativos, carga instantánea, sin necesidad de internet\ndeptos &lt;- departamentos()\n\n# Microdatos censales\ndf &lt;- hogares()  # Todos los departamentos, queda en caché\n\n⬇  Descargando hogar para los 22 departamentos...\n\n\n⬇  Descargando hogar depto 01 (Guatemala)...\n\n\n⬇  Descargando hogar depto 02 (El Progreso)...\n\n\n⬇  Descargando hogar depto 03 (Sacatepéquez)...\n\n\n⬇  Descargando hogar depto 04 (Chimaltenango)...\n\n\n⬇  Descargando hogar depto 05 (Escuintla)...\n\n\n⬇  Descargando hogar depto 06 (Santa Rosa)...\n\n\n⬇  Descargando hogar depto 07 (Sololá)...\n\n\n⬇  Descargando hogar depto 08 (Totonicapán)...\n\n\n⬇  Descargando hogar depto 09 (Quetzaltenango)...\n\n\n⬇  Descargando hogar depto 10 (Suchitepéquez)...\n\n\n⬇  Descargando hogar depto 11 (Retalhuleu)...\n\n\n⬇  Descargando hogar depto 12 (San Marcos)...\n\n\n⬇  Descargando hogar depto 13 (Huehuetenango)...\n\n\n⬇  Descargando hogar depto 14 (Quiché)...\n\n\n⬇  Descargando hogar depto 15 (Baja Verapaz)...\n\n\n⬇  Descargando hogar depto 16 (Alta Verapaz)...\n\n\n⬇  Descargando hogar depto 17 (Petén)...\n\n\n⬇  Descargando hogar depto 18 (Izabal)...\n\n\n⬇  Descargando hogar depto 19 (Zacapa)...\n\n\n⬇  Descargando hogar depto 20 (Chiquimula)...\n\n\n⬇  Descargando hogar depto 21 (Jalapa)...\n\n\n⬇  Descargando hogar depto 22 (Jutiapa)...\n\n\n   ✓ 3,275,931 registros cargados\n\n# % de hogares con internet por departamento\nacceso_internet &lt;- df |&gt;\n  group_by(DEPARTAMENTO) |&gt;\n  summarise(pct_internet = round(mean(PCH9_I == 1, na.rm = TRUE) * 100, 1))\n\n# Unir con geometría y visualizar\nresultado &lt;- merge(deptos, acceso_internet,\n                   by.x = \"codigo_depto\", by.y = \"DEPARTAMENTO\")\n\nmapview(resultado,\n        zcol        = \"pct_internet\",\n        layer.name  = \"% Internet\",\n        label       = \"departamento\")\n\n\n\n\n\n\n\n\n\n\n\nAnálisis a nivel de departamento (Sacatepéquez)\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Límites administrativos\ndeptos = gq.departamentos()\n\n# Microdatos censales para Sacatepéquez\ndf = gq.hogares(departamento=\"Sacatepequez\")\n\n# % de hogares con internet por municipio\nacceso_internet = (\n    df.groupby(\"MUNICIPIO\")[\"PCH9_I\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_internet\")\n)\n\n# Unir con geometría y visualizar\nmunis = gq.municipios(\"Sacatepequez\")\nresultado = munis.merge(acceso_internet, left_on=\"codigo_muni\", right_on=\"MUNICIPIO\")\nresultado.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"municipio\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Municipio\", \"% Internet\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nif (!requireNamespace(\"geoquetzal\", quietly = TRUE)) {\n  remotes::install_github(\"geoquetzal/geoquetzal-r\")\n}\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\n# Límites administrativos, carga instantánea, sin necesidad de internet\nmunicipios &lt;- municipios()\n\n# Microdatos censales para Sacatepequez\ndf &lt;- hogares(\"Sacatepéquez\")  # Departamento de Sacatepéquez, queda en caché\n\n⬇  Descargando hogar depto 03 (Sacatepéquez)...\n\n# % de hogares con internet por municipio\nacceso_internet &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(pct_internet = round(mean(PCH9_I == 1, na.rm = TRUE) * 100, 1))\n\n# Unir con geometría y visualizar\nresultado &lt;- merge(municipios, acceso_internet,\n                   by.x = \"codigo_muni\", by.y = \"MUNICIPIO\")\n\nmapview(resultado,\n        zcol        = \"pct_internet\",\n        layer.name  = \"% Internet\",\n        label       = \"municipio\")\n\n\n\n\n\n\n\n\n\n\n\nAnálisis a nivel de municipio (Sacatepéquez, Antigua Guatemala)\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Polígonos Voronoi (aproximación de límites sub-municipales)\n\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\") #También se puede por código de municipio, en este caso el 301\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 57 polígonos Voronoi generados\n\n# Datos censales pre-agregados por lugar poblado\nlp = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\n\n# Eliminar columnas duplicadas antes del merge\nlp = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\n# Join\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# Calcular % de hogares con internet\n# pch9_i_si = hogares CON internet, pch9_i_no = hogares SIN internet\ngdf[\"pct_internet\"] = (\n    gdf[\"pch9_i_si\"] / (gdf[\"pch9_i_si\"] + gdf[\"pch9_i_no\"]) * 100\n).round(1)\n\n# Mapa interactivo con hover\ngdf.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"nombre\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% con Internet\"]},\n    popup=[\"nombre\", \"pct_internet\", \"pch9_i_si\", \"pch9_i_no\"],\n    popup_kwds={\"aliases\": [\n        \"Lugar Poblado\", \"% con Internet\",\n        \"Hogares con Internet\", \"Hogares sin Internet\"\n    ]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nif (!requireNamespace(\"geoquetzal\", quietly = TRUE)) {\n  remotes::install_github(\"geoquetzal/geoquetzal-r\")\n}\nlibrary(geoquetzal)\nlibrary(mapview)\n\n# Polígonos Voronoi (aproximación de límites sub-municipales)\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\n\nSpherical geometry (s2) switched off\n\n\n⬇  Descargando lugares poblados depto 03 (Sacatepéquez)...\n\n\n   ✓ 264 lugares poblados cargados\n\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999).\n\n\n   ✓ 57 polígonos Voronoi generados\n\n\nSpherical geometry (s2) switched on\n\n# Datos censales pre-agregados por lugar poblado\nlp &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\n\n⬇  Descargando lugares poblados depto 03 (Sacatepéquez)...\n\n\n   ✓ 264 lugares poblados cargados\n\n# Eliminar columnas duplicadas antes del merge\nlp &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\n# Join\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# Calcular % de hogares con internet\ngdf$pct_internet &lt;- round(\n  gdf$pch9_i_si / (gdf$pch9_i_si + gdf$pch9_i_no) * 100,\n  1\n)\n\n# Mapa interactivo con hover\nmapview(gdf,\n        zcol        = \"pct_internet\",\n        layer.name  = \"% Internet\",\n        label       = \"nombre\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Inicio"
+    ]
+  },
+  {
+    "objectID": "index.html#datos-disponibles",
+    "href": "index.html#datos-disponibles",
+    "title": "GeoQuetzal",
+    "section": "Datos disponibles",
+    "text": "Datos disponibles\n\n\n\n\n\n\n\n\nDataset\nRegistros\nAlmacenamiento\n\n\n\n\nLímites administrativos\n22 deptos / 340 municipios\nIncluido en el paquete\n\n\nPersonas\n14,901,286\nGitHub (~333 MB)\n\n\nHogares\n3,275,931\nGitHub (~38 MB)\n\n\nViviendas\n~3,300,000\nGitHub (~30 MB)\n\n\nEmigración\n242,203\nGitHub (~1.6 MB)\n\n\nLugares Poblados\n20,254\nGitHub",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Inicio"
+    ]
+  },
+  {
+    "objectID": "index.html#autores",
+    "href": "index.html#autores",
+    "title": "GeoQuetzal",
+    "section": "Autores",
+    "text": "Autores\nDesarrollado por Jorge Yass y Anasilvia Salazar — docentes en la Universidad del Valle de Guatemala (UVG) y estudiantes de doctorado en Iowa State University (ISU).\n📦 PyPI · 🐙 GitHub · 📄 Licencia MIT",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Inicio"
+    ]
+  },
+  {
+    "objectID": "ejemplos/otros_datos_mapas.html",
+    "href": "ejemplos/otros_datos_mapas.html",
+    "title": "Ejemplos: Otros Datos + Mapas",
+    "section": "",
+    "text": "Esta sección combina datos de fuentes externas con visualizaciones geográficas. El patrón general es: agregar los microdatos con pandas, luego hacer merge con la geometría. Para el merge se necesita que los datos estén al nivel de departamento o municipio, por código o nombre.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Otros datos + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/otros_datos_mapas.html#índice-de-alfabetismo-proyectado-en-2024-para-guatemala",
+    "href": "ejemplos/otros_datos_mapas.html#índice-de-alfabetismo-proyectado-en-2024-para-guatemala",
+    "title": "Ejemplos: Otros Datos + Mapas",
+    "section": "Índice de Alfabetismo Proyectado en 2024 para Guatemala",
+    "text": "Índice de Alfabetismo Proyectado en 2024 para Guatemala\nEn este ejemplo trabajaremos con el conjunto de datos público de CONALFA con las proyecciones de alfabetismo y analfabetismo para 2024. El archivo se puede descargar en este enlace. En la primera hoja “DEPARTAMENTO” se encuentran las proyecciones a nivel departamental. En la primera columna se encuentra el nombre de los departamentos. Se utilizarán los nombres de los departamentos para hacer el merge con los datos geográficos de los departamentos en GeoQuetzal.\n\nPythonR\n\n\n\nimport geoquetzal as gq\nimport pandas as pd\n\n# Datos CONALFA\nxlsx = pd.ExcelFile(\"PROYECCION-ANALFABETISMO-POR-DEPARTAMENTO-Y-MUNICIPIO-GALP-2024.xlsx\")\nproyecciones_df = xlsx.parse('DEPARTAMENTO', skiprows=5, usecols=\"A,C\")\nproyecciones_df.columns = ['Nombre_Depto', 'Porcentaje_Alfabetismo']\n\n# Límites administrativos — carga instantánea, sin internet\ndeptos = gq.departamentos()\n\n# Unir con geometría y visualizar\nresultado = deptos.merge(proyecciones_df, left_on=\"departamento\", right_on=\"Nombre_Depto\")\n\nresultado.explore(\n    column=\"Porcentaje_Alfabetismo\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"departamento\", \"Porcentaje_Alfabetismo\"],\n    tooltip_kwds={\"aliases\": [\"Departamento\", \"% Alfabetismo\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(readxl)\nlibrary(mapview)\n\n# Datos CONALFA\nproyecciones_df &lt;- read_excel(\n  \"PROYECCION-ANALFABETISMO-POR-DEPARTAMENTO-Y-MUNICIPIO-GALP-2024.xlsx\",\n  sheet     = \"DEPARTAMENTO\",\n  skip      = 5,\n  col_names = FALSE\n)[, c(1, 3)]\nnames(proyecciones_df) &lt;- c(\"Nombre_Depto\", \"Porcentaje_Alfabetismo\")\n\n# Límites administrativos — carga instantánea, sin internet\ndeptos &lt;- departamentos()\n\n# Unir con geometría y visualizar\nresultado &lt;- merge(deptos, proyecciones_df,\n                   by.x = \"departamento\", by.y = \"Nombre_Depto\")\n\nmapview(resultado,\n        zcol        = \"Porcentaje_Alfabetismo\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name  = \"% Alfabetismo\",\n        map.types   = \"CartoDB.Positron\",\n        label       = \"departamento\")\n\n\n\n\n\n\n\n\n\nComo se puede observar, esta flexibilidad de trabajar con datos de otras fuentes amplía el potencial de GeoQuetzal en los escenarios que es capaz de manejar. El único requerimiento es que los nombres o códigos de los departamentos y municipios de la fuente de datos externos deben coincidir con los nombres y códigos de departamentos y municipios manejados por el INE.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Otros datos + Mapas"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html",
+    "href": "ejemplos/censo.html",
+    "title": "Ejemplos: Datos Censales",
+    "section": "",
+    "text": "Esta sección muestra cómo explorar y analizar los microdatos del Censo 2018 sin necesidad de mapas. Para combinar datos censales con visualizaciones geográficas, consulte Censo + Mapas.",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#explorar-variables-disponibles",
+    "href": "ejemplos/censo.html#explorar-variables-disponibles",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Explorar variables disponibles",
+    "text": "Explorar variables disponibles\nAntes de analizar, use las funciones describe_* para conocer qué variables están disponibles y qué valores toman.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Listar todas las variables del dataset de hogares\ngq.describe_hogares()\n\n# Detalle de una variable específica\ngq.describe_hogares(\"PCH4\")\n# Retorna etiqueta, tipo y valores codificados\n\n# Variables de personas\ngq.describe_personas(\"PCP12\")\n# Autoidentificación étnica: Maya, Garífuna, Xinka, Ladino...\n\n\n\nlibrary(geoquetzal)\n\n# Listar todas las variables del dataset de hogares\ndescribe_hogares()\n\n# Detalle de una variable específica\ndescribe_hogares(\"PCH4\")\n# Retorna etiqueta, tipo y valores codificados\n\n# Variables de personas\ndescribe_personas(\"PCP12\")\n# Autoidentificación étnica: Maya, Garífuna, Xinka, Ladino...",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#acceso-a-servicios-básicos-por-departamento",
+    "href": "ejemplos/censo.html#acceso-a-servicios-básicos-por-departamento",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Acceso a servicios básicos por departamento",
+    "text": "Acceso a servicios básicos por departamento\n¿Qué porcentaje de hogares tiene acceso a electricidad de red en cada departamento?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Descargar hogares de todo Guatemala (~38 MB)\ndf = gq.hogares()\n\n# PCH8 = tipo de alumbrado; 1 = Red de energía eléctrica\nelectricidad = (\n    df.groupby(\"departamento\")[\"PCH8\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_electricidad\")\n    .sort_values(\"pct_electricidad\", ascending=False)\n)\nprint(electricidad.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\n# Descargar hogares de todo Guatemala (~38 MB)\ndf &lt;- hogares()\n\n# PCH8 = tipo de alumbrado; 1 = Red de energía eléctrica\nelectricidad &lt;- df |&gt;\n  group_by(departamento) |&gt;\n  summarise(pct_electricidad = round(mean(PCH8 == 1, na.rm = TRUE) * 100, 1)) |&gt;\n  arrange(desc(pct_electricidad))\n\nprint(electricidad)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#autoidentificación-étnica-en-sacatepéquez",
+    "href": "ejemplos/censo.html#autoidentificación-étnica-en-sacatepéquez",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Autoidentificación étnica en Sacatepéquez",
+    "text": "Autoidentificación étnica en Sacatepéquez\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Sacatepequez\")\n\n# PCP12: autoidentificación étnica\n# 1=Maya, 2=Garífuna, 3=Xinka, 4=Afrodescendiente, 5=Ladino, 6=Extranjero\netnicidad = (\n    df[\"PCP12\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(1)\n    .rename({1: \"Maya\", 2: \"Garífuna\", 3: \"Xinka\",\n             4: \"Afrodescendiente\", 5: \"Ladino\", 6: \"Extranjero\"})\n)\nprint(etnicidad)\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\ndf &lt;- personas(departamento = \"Sacatepequez\")\n\n# PCP12: autoidentificación étnica\n# 1=Maya, 2=Garífuna, 3=Xinka, 4=Afrodescendiente, 5=Ladino, 6=Extranjero\netnicidad &lt;- df |&gt;\n  count(PCP12) |&gt;\n  mutate(\n    pct = round(n / sum(n) * 100, 1),\n    etnia = recode(as.character(PCP12),\n      \"1\" = \"Maya\", \"2\" = \"Garífuna\", \"3\" = \"Xinka\",\n      \"4\" = \"Afrodescendiente\", \"5\" = \"Ladino\", \"6\" = \"Extranjero\")\n  ) |&gt;\n  select(etnia, pct) |&gt;\n  arrange(desc(pct))\n\nprint(etnicidad)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#lengua-materna-más-hablada-por-municipio",
+    "href": "ejemplos/censo.html#lengua-materna-más-hablada-por-municipio",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Lengua materna más hablada por municipio",
+    "text": "Lengua materna más hablada por municipio\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Huehuetenango\")\n\n# PCP15: idioma en que aprendió a hablar\n# Mode por municipio = idioma más frecuente\nidioma_dominante = (\n    df.groupby(\"MUNICIPIO\")[\"PCP15\"]\n    .agg(lambda x: x.mode()[0])\n    .reset_index(name=\"idioma_dominante\")\n)\n\n# Reemplazar códigos por etiquetas\nvalores = gq.describe_personas(\"PCP15\")[\"valores\"]\nidioma_dominante[\"idioma_dominante\"] = idioma_dominante[\"idioma_dominante\"].map(valores)\n\nprint(idioma_dominante.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\ndf &lt;- personas(departamento = \"Huehuetenango\")\n\n# PCP15: idioma en que aprendió a hablar\n# Mode por municipio = idioma más frecuente\nidioma_dominante &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(idioma_dominante = as.integer(names(which.max(table(PCP15))))) |&gt;\n  left_join(\n    data.frame(\n      idioma_dominante = as.integer(names(describe_personas(\"PCP15\")$valores)),\n      etiqueta = unlist(describe_personas(\"PCP15\")$valores)\n    ),\n    by = \"idioma_dominante\"\n  )\n\nprint(idioma_dominante)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#años-de-estudio-promedio-por-municipio",
+    "href": "ejemplos/censo.html#años-de-estudio-promedio-por-municipio",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Años de estudio promedio por municipio",
+    "text": "Años de estudio promedio por municipio\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Sacatepequez\")\n\n# ANEDUCA: años de estudio (variable derivada, numérica)\naneduca = (\n    df.groupby(\"MUNICIPIO\")[\"ANEDUCA\"]\n    .mean()\n    .round(1)\n    .reset_index(name=\"aneduca_promedio\")\n    .sort_values(\"aneduca_promedio\", ascending=False)\n)\nprint(aneduca.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\ndf &lt;- personas(departamento = \"Sacatepequez\")\n\n# ANEDUCA: años de estudio (variable derivada, numérica)\n# Se almacena como character en los datos — convertir antes de calcular\naneduca &lt;- df |&gt;\n  mutate(ANEDUCA = as.numeric(ANEDUCA)) |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(aneduca_promedio = round(mean(ANEDUCA, na.rm = TRUE), 1)) |&gt;\n  arrange(desc(aneduca_promedio))\n\nprint(aneduca)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#acceso-a-tecnología-brecha-digital",
+    "href": "ejemplos/censo.html#acceso-a-tecnología-brecha-digital",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Acceso a tecnología — brecha digital",
+    "text": "Acceso a tecnología — brecha digital\n¿Cuántos hogares tienen computadora e internet en Quiché?\n\nPythonR\n\n\n\nimport geoquetzal as gq\nimport pandas as pd\n\ndf = gq.hogares(departamento=\"Quiche\")\n\n# PCH9_H=computadora, PCH9_I=internet, PCH9_M=carro (1=Sí, 2=No)\ntecnologia = pd.DataFrame({\n    \"Indicador\": [\"Computadora\", \"Internet\", \"Carro\"],\n    \"% hogares\": [\n        (df[\"PCH9_H\"] == 1).mean() * 100,\n        (df[\"PCH9_I\"] == 1).mean() * 100,\n        (df[\"PCH9_M\"] == 1).mean() * 100,\n    ]\n}).round(1)\nprint(tecnologia.to_string(index=False))\n\n\n\nlibrary(geoquetzal)\n\ndf &lt;- hogares(departamento = \"Quiche\")\n\n# PCH9_H=computadora, PCH9_I=internet, PCH9_M=carro (1=Sí, 2=No)\ntecnologia &lt;- data.frame(\n  Indicador   = c(\"Computadora\", \"Internet\", \"Carro\"),\n  pct_hogares = round(c(\n    mean(df$PCH9_H == 1, na.rm = TRUE) * 100,\n    mean(df$PCH9_I == 1, na.rm = TRUE) * 100,\n    mean(df$PCH9_M == 1, na.rm = TRUE) * 100\n  ), 1)\n)\nprint(tecnologia)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "ejemplos/censo.html#datos-de-lugares-poblados",
+    "href": "ejemplos/censo.html#datos-de-lugares-poblados",
+    "title": "Ejemplos: Datos Censales",
+    "section": "Datos de lugares poblados",
+    "text": "Datos de lugares poblados\nLos datos pre-agregados de lugares poblados permiten análisis sub-municipales sin necesidad de procesar los microdatos.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Cargar indicadores de Antigua Guatemala\nlp = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\n\n# Ver columnas disponibles\nprint(lp.columns.tolist())\n\n# Calcular % de hogares con internet por lugar poblado\nlp[\"pct_internet\"] = (\n    lp[\"pch9_i_si\"] / (lp[\"pch9_i_si\"] + lp[\"pch9_i_no\"]) * 100\n).round(1)\n\n# Top 5 lugares con más acceso a internet\nprint(\n    lp[[\"nombre\", \"poblacion_total\", \"pct_internet\"]]\n    .sort_values(\"pct_internet\", ascending=False)\n    .head(5)\n    .to_string(index=False)\n)\n\n# Consultar qué significa una columna\ngq.describe_lugares_poblados(\"pch9_i_si\")\n# {'variable': 'pch9_i_si',\n#  'etiqueta': 'Conteo: tiene internet',\n#  'tipo': 'equipamiento',\n#  'fuente': 'hogar'}\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\n\n# Cargar indicadores de Antigua Guatemala\nlp &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\n\n# Ver columnas disponibles\nnames(lp)\n\n# Calcular % de hogares con internet por lugar poblado\nlp$pct_internet &lt;- round(\n  lp$pch9_i_si / (lp$pch9_i_si + lp$pch9_i_no) * 100,\n  1\n)\n\n# Top 5 lugares con más acceso a internet\nlp |&gt;\n  select(nombre, poblacion_total, pct_internet) |&gt;\n  arrange(desc(pct_internet)) |&gt;\n  head(5)\n\n# Consultar qué significa una columna\ndescribe_lugares_poblados(\"pch9_i_si\")\n# $variable: \"pch9_i_si\"\n# $etiqueta: \"Conteo: tiene internet\"\n# $tipo: \"equipamiento\"\n# $fuente: \"hogar\"",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Ejemplos",
+      "Datos Censales"
+    ]
+  },
+  {
+    "objectID": "api/referencia-r.html",
+    "href": "api/referencia-r.html",
+    "title": "Referencia de la API — R",
+    "section": "",
+    "text": "Esta página documenta todas las funciones disponibles en el paquete R de GeoQuetzal. Para instalar:",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "R"
+    ]
+  },
+  {
+    "objectID": "api/referencia-r.html#geografía",
+    "href": "api/referencia-r.html#geografía",
+    "title": "Referencia de la API — R",
+    "section": "Geografía",
+    "text": "Geografía\nFunciones para acceder a los límites administrativos de Guatemala. Los datos se cargan instantáneamente desde el paquete — no requieren conexión a Internet.\n\ncountry()\nRetorna el contorno del país de Guatemala como un objeto sf.\nlibrary(geoquetzal)\npais &lt;- country()\nplot(sf::st_geometry(pais), col = \"lightgreen\", border = \"gray\")\n\n\n\ndepartamentos()\nRetorna los 22 departamentos de Guatemala con sus códigos INE y geometría.\nParámetros:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\nname\ncharacter \\| integer\nNombre o código del departamento (insensible a acentos)\n\n\nregion\ncharacter\nFiltra por región (ej. \"V - Central\")\n\n\n\nlibrary(geoquetzal)\n\n# Todos los departamentos\ndeptos &lt;- departamentos()\n\n# Por nombre (con o sin acentos)\ndepartamentos(\"Sacatepequez\")\ndepartamentos(\"Sacatepéquez\")\n\n# Por código INE\ndepartamentos(3)\n\n# Por región\ndepartamentos(region = \"V - Central\")\n\n\n\nmunicipios()\nRetorna los 340 municipios de Guatemala con sus códigos INE y geometría.\nParámetros:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\ncharacter \\| integer\nFiltra por departamento\n\n\nname\ncharacter \\| integer\nRetorna un municipio específico por nombre o código\n\n\n\nlibrary(geoquetzal)\n\n# Todos los municipios de un departamento\nmunicipios(\"Sacatepequez\")\n\n# Un municipio específico\nmunicipios(name = \"Antigua Guatemala\")\nmunicipios(name = 301)\n\n\n\nlagos()\nRetorna los dos principales lagos de Guatemala (Amatitlán y Atitlán) para superposición en mapas.\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = departamentos(), fill = \"lightyellow\", color = \"gray\") +\n  geom_sf(data = lagos(), fill = \"lightblue\", color = \"steelblue\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "R"
+    ]
+  },
+  {
+    "objectID": "api/referencia-r.html#microdatos-censales",
+    "href": "api/referencia-r.html#microdatos-censales",
+    "title": "Referencia de la API — R",
+    "section": "Microdatos Censales",
+    "text": "Microdatos Censales\nFunciones para acceder a los microdatos del XII Censo Nacional de Población y VII de Vivienda 2018 (INE). Los datos se descargan en formato Parquet desde GitHub Releases y se almacenan en caché localmente.\nPara administrar el caché:\ngq_cache_dir()    # Ver la ubicación del caché\ngq_clear_cache()  # Limpiar el caché\ngq_set_cache(\"/ruta/custom\")  # Cambiar la ubicación\nTodas las funciones de microdatos comparten los mismos parámetros de filtro:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\ncharacter \\| integer\nFiltra por departamento (descarga solo ese archivo)\n\n\nmunicipio\ncharacter \\| integer\nFiltra por municipio (descarga el archivo del departamento padre)\n\n\n\n\n\npersonas()\nMicrodatos a nivel de persona. 14,901,286 registros, 84 variables. Cada fila representa una persona.\nVariables principales: sexo (PCP6), edad (PCP7), autoidentificación étnica (PCP12), comunidad lingüística maya (PCP13), lengua materna (PCP15), discapacidad (PCP16_A–PCP16_F), escolaridad (PCP17_A), alfabetismo (PCP22), acceso a tecnología (PCP26_A–PCP26_C), empleo (PCP27), fecundidad (PCP35–PCP39).\nlibrary(geoquetzal)\n\ndf &lt;- personas(departamento = \"Huehuetenango\")\ndf &lt;- personas(municipio = \"Antigua Guatemala\")\ndf &lt;- personas()  # Todo Guatemala (~333 MB)\n\n\n\nhogares()\nMicrodatos a nivel de hogar. 3,275,931 registros, 37 variables. Cada fila representa un hogar.\nVariables principales: fuente de agua (PCH4), saneamiento (PCH5), electricidad (PCH8), equipamiento — radio, TV, refrigeradora, internet, carro (PCH9_A–PCH9_M), combustible para cocinar (PCH14), remesas (PCH15).\nlibrary(geoquetzal)\n\ndf &lt;- hogares(departamento = \"Sacatepequez\")\ndf &lt;- hogares(municipio = \"Antigua Guatemala\")\ndf &lt;- hogares()  # Todo Guatemala (~38 MB)\n\n\n\nviviendas()\nMicrodatos a nivel de vivienda. ~3,300,000 registros, 11 variables. Cada fila representa una vivienda.\nVariables principales: tipo de vivienda (PCV1), material de paredes (PCV2), techo (PCV3), condición (PCV4), piso (PCV5).\nlibrary(geoquetzal)\n\ndf &lt;- viviendas(departamento = \"Sacatepequez\")\ndf &lt;- viviendas()  # Todo Guatemala (~30 MB)\n\n\n\nemigracion()\nRegistros de emigración internacional. 242,203 registros, 11 variables. Cada fila es una persona que emigró desde un hogar.\nVariables principales: sexo (PEI3), edad al emigrar (PEI4), año de partida (PEI5).\nlibrary(geoquetzal)\n\ndf &lt;- emigracion(departamento = \"Huehuetenango\")\ndf &lt;- emigracion()  # Todo Guatemala (~1.6 MB)",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "R"
+    ]
+  },
+  {
+    "objectID": "api/referencia-r.html#datos-sub-municipales",
+    "href": "api/referencia-r.html#datos-sub-municipales",
+    "title": "Referencia de la API — R",
+    "section": "Datos Sub-Municipales",
+    "text": "Datos Sub-Municipales\n\nlugares_poblados()\nIndicadores pre-agregados a nivel de lugar poblado. 20,254 localidades, 200+ columnas. Cada fila representa un lugar poblado.\n\n\n\n\n\n\nNote\n\n\n\nLos lugares poblados con códigos terminados en 999 (ej. 102999) representan asentamientos sin nombre oficial (“Otros Lugares Poblados”) y tienen coordenadas nulas. Se incluyen en los datos pero no pueden mapearse.\n\n\nParámetros:\n\n\n\n\n\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\ncharacter \\| integer\nFiltra por departamento (descarga solo ese archivo)\n\n\nmunicipio\ncharacter \\| integer\nFiltra por municipio\n\n\nlugar_poblado\ninteger\nCódigo de 6 dígitos (ej. 301001L)\n\n\n\nlibrary(geoquetzal)\n\n# Todos los lugares poblados\ndf &lt;- lugares_poblados()\n\n# Filtrar por departamento (descarga solo ese archivo)\ndf &lt;- lugares_poblados(departamento = \"Sacatepéquez\")\n\n# Filtrar por municipio\ndf &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\n\n# Un lugar poblado específico\ndf &lt;- lugares_poblados(lugar_poblado = 301001L)\nColumnas disponibles por tema:\n\n\n\n\n\n\n\n\nTema\nPrefijo de columna\nFuente\n\n\n\n\nEscalares (población, PEA, años de estudio)\npoblacion_total, pea_total, aneduca_promedio…\npersona\n\n\nAutoidentificación étnica\npcp12_maya, pcp12_ladino…\npersona\n\n\nComunidad lingüística maya\npcp13_kiche, pcp13_mam…\npersona\n\n\nLengua materna\npcp15_espanol, pcp15_kiche…\npersona\n\n\nDiscapacidad\npcp16_a_sin_dificultad…\npersona\n\n\nEscolaridad\npcp17_a_ninguno, pcp17_a_primaria…\npersona\n\n\nAlfabetismo\npcp22_alfabeto, pcp22_no_alfabeto\npersona\n\n\nEmpleo\npcp30_1d_agropecuarios…\npersona\n\n\nTipo de vivienda\npcv1_casa_formal, pcv1_rancho…\nvivienda\n\n\nMaterial de paredes\npcv2_block, pcv2_adobe…\nvivienda\n\n\nMaterial de piso\npcv5_tierra, pcv5_torta_cemento…\nvivienda\n\n\nFuente de agua\npch4_tuberia_dentro, pch4_rio…\nhogar\n\n\nSaneamiento\npch5_inodoro_red_drenajes…\nhogar\n\n\nElectricidad\npch8_red_electrica, pch8_candela…\nhogar\n\n\nEquipamiento del hogar\npch9_i_si (internet), pch9_m_si (carro)…\nhogar\n\n\nCombustible para cocinar\npch14_lena, pch14_gas_propano…\nhogar\n\n\nRemesas\npch15_si, pch15_no\nhogar\n\n\nEmigración desde 2002\npei1_si, pei1_no\nhogar\n\n\n\n\n\n\nvoronoi_lugares_poblados()\nGenera polígonos Voronoi aproximados como límites de lugares poblados, recortados a los límites municipales. Estos polígonos son aproximaciones para visualización coroplética — el INE no publica límites oficiales de lugares poblados.\n\n\n\n\n\n\nWarning\n\n\n\nLos lugares poblados con coordenadas nulas (códigos terminados en 999) son excluidos automáticamente. Los municipios con un solo lugar poblado retornan el polígono completo del municipio.\n\n\nParámetros:\n\n\n\nParámetro\nTipo\nDescripción\n\n\n\n\ndepartamento\ncharacter \\| integer\nFiltra por departamento\n\n\nmunicipio\ncharacter \\| integer\nFiltra por municipio\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\n# Polígonos Voronoi para un municipio\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\n\n# Para un departamento completo\nvor &lt;- voronoi_lugares_poblados(departamento = \"Sacatepéquez\")\n\n# Patrón típico: unir con datos censales para coropleta\nlp  &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\nlp  &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\ngdf$pct_internet &lt;- gdf$pch9_i_si / (gdf$pch9_i_si + gdf$pch9_i_no) * 100\n\nmapview(gdf, zcol = \"pct_internet\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name = \"% con Internet\")",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "R"
+    ]
+  },
+  {
+    "objectID": "api/referencia-r.html#funciones-de-descripción",
+    "href": "api/referencia-r.html#funciones-de-descripción",
+    "title": "Referencia de la API — R",
+    "section": "Funciones de Descripción",
+    "text": "Funciones de Descripción\nTodas las funciones de descripción retornan un data.frame con todas las variables si no se especifica ninguna, o una list con los detalles de la variable solicitada.\n\n\n\nFunción\nDataset\n\n\n\n\ndescribe_personas(variable)\nPersonas\n\n\ndescribe_hogares(variable)\nHogares\n\n\ndescribe_viviendas(variable)\nViviendas\n\n\ndescribe_emigracion(variable)\nEmigración\n\n\ndescribe_lugares_poblados(variable)\nLugares Poblados\n\n\n\nlibrary(geoquetzal)\n\n# Listar todas las variables\ndescribe_personas()\ndescribe_hogares()\n\n# Detalle de una variable específica\ndescribe_personas(\"PCP12\")\n# $variable: \"PCP12\"\n# $etiqueta: \"Según su origen o historia, ¿cómo se considera o auto identifica?\"\n# $tipo: \"étnica\"\n# $valores: list(1 = \"Maya\", 2 = \"Garífuna\", 3 = \"Xinka\", ...)\n\ndescribe_lugares_poblados(\"pcp12_maya\")\n# $variable: \"pcp12_maya\"\n# $etiqueta: \"Conteo: se identifica como Maya\"\n# $tipo: \"étnica\"\n# $fuente: \"persona\"",
+    "crumbs": [
+      "🇬🇹 Español",
+      "Referencia API",
+      "R"
+    ]
+  },
+  {
+    "objectID": "en/index.html",
+    "href": "en/index.html",
+    "title": "GeoQuetzal",
+    "section": "",
+    "text": "Geographic and census data for Guatemala.\nGeoQuetzal gives researchers programmatic access to Guatemala’s administrative boundaries and 2018 Census microdata (INE), following the same philosophy as tidycensus for the US and geobr for Brazil.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "en/index.html#what-is-geoquetzal",
+    "href": "en/index.html#what-is-geoquetzal",
+    "title": "GeoQuetzal",
+    "section": "What is GeoQuetzal?",
+    "text": "What is GeoQuetzal?\nGeoQuetzal brings together three things that normally require manual work:\n\nAdministrative boundaries: 22 departments and 340 municipalities with correct INE codes, ready to join with any dataset that uses the same codes for departments and municipalities.\nCensus microdata: persons, households, housing units, and emigration from the 2018 Census, partitioned by department for efficient downloads. Data can be load at level of departments or municipalities.\nSub-municipal data: 20,254 lugares poblados with pre-aggregated indicators for demographics, ethnicity, education, housing, and services.\n\n\n\n  \n    \n  \n\n\nNiveles geográficos en GeoQuetzal\n\n\n\n1 país\nContorno nacional · gq.country()\n\n\n\n\n\n\n22 departamentos\nUnidades administrativas mayores · gq.departamentos()\n\n\n\n\n\n\n340 municipios\nUnidades administrativas menores · gq.municipios()\n\n\n\n\n\n\n20,254 lugares poblados\nIndicadores pre-agregados · gq.lugares_poblados()\n\n\nPrimera base de datos sub-municipal para Guatemala y Centroamérica",
+    "crumbs": [
+      "🇺🇸 English",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "en/index.html#installation",
+    "href": "en/index.html#installation",
+    "title": "GeoQuetzal",
+    "section": "Installation",
+    "text": "Installation\n\nPythonR\n\n\npip install geoquetzal\n\n\ndevtools::install_github(\"geoquetzal/geoquetzal-r\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "en/index.html#example",
+    "href": "en/index.html#example",
+    "title": "GeoQuetzal",
+    "section": "Example",
+    "text": "Example\nGeoQuetzal enables the analysis and visualization of the census variables at the country, department, and municipality levels. The geographical analysis offers more detailed, immersive, and comprehensive results. Example, What is Guatemala’s Internet access rate? Hover over each area to see the locality name and percentage.\n\nCountry-level analysis\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Administrative boundaries, instant loading, no Internet required\ndeptos = gq.departamentos()\n\n# Microdatos censales\ndf = gq.hogares() #Downloads all departments data, it might take some time depending on the Internet speed\n\n⬇  Descargando hogares para los 22 departamentos...\n   ✓ 3,275,931 hogares cargados\n\n# % of households with Internet per department\nacceso_internet = (\n    df.groupby(\"DEPARTAMENTO\")[\"PCH9_I\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_internet\")\n)\n\n#Join geometry, visualization\nresultado = deptos.merge(acceso_internet, left_on=\"codigo_depto\", right_on=\"DEPARTAMENTO\")\nresultado.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"departamento\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Departamento\", \"% Internet\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nif (!requireNamespace(\"geoquetzal\", quietly = TRUE)) {\n  remotes::install_github(\"geoquetzal/geoquetzal-r\")\n}\nlibrary(geoquetzal)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(mapview)\n\n# Administratives boundaries, instant loading, no Internet access required\ndeptos &lt;- departamentos()\n\n#Census microdata\ndf &lt;- hogares()  # All the departments\n\n⬇  Descargando hogar para los 22 departamentos...\n\n\n⬇  Descargando hogar depto 01 (Guatemala)...\n\n\n⬇  Descargando hogar depto 02 (El Progreso)...\n\n\n⬇  Descargando hogar depto 03 (Sacatepéquez)...\n\n\n⬇  Descargando hogar depto 04 (Chimaltenango)...\n\n\n⬇  Descargando hogar depto 05 (Escuintla)...\n\n\n⬇  Descargando hogar depto 06 (Santa Rosa)...\n\n\n⬇  Descargando hogar depto 07 (Sololá)...\n\n\n⬇  Descargando hogar depto 08 (Totonicapán)...\n\n\n⬇  Descargando hogar depto 09 (Quetzaltenango)...\n\n\n⬇  Descargando hogar depto 10 (Suchitepéquez)...\n\n\n⬇  Descargando hogar depto 11 (Retalhuleu)...\n\n\n⬇  Descargando hogar depto 12 (San Marcos)...\n\n\n⬇  Descargando hogar depto 13 (Huehuetenango)...\n\n\n⬇  Descargando hogar depto 14 (Quiché)...\n\n\n⬇  Descargando hogar depto 15 (Baja Verapaz)...\n\n\n⬇  Descargando hogar depto 16 (Alta Verapaz)...\n\n\n⬇  Descargando hogar depto 17 (Petén)...\n\n\n⬇  Descargando hogar depto 18 (Izabal)...\n\n\n⬇  Descargando hogar depto 19 (Zacapa)...\n\n\n⬇  Descargando hogar depto 20 (Chiquimula)...\n\n\n⬇  Descargando hogar depto 21 (Jalapa)...\n\n\n⬇  Descargando hogar depto 22 (Jutiapa)...\n\n\n   ✓ 3,275,931 registros cargados\n\n# % of households with Internet access per department\nacceso_internet &lt;- df |&gt;\n  group_by(DEPARTAMENTO) |&gt;\n  summarise(pct_internet = round(mean(PCH9_I == 1, na.rm = TRUE) * 100, 1))\n\n# Merge with geometry, visualization\nresultado &lt;- merge(deptos, acceso_internet,\n                   by.x = \"codigo_depto\", by.y = \"DEPARTAMENTO\")\n\nmapview(resultado,\n        zcol        = \"pct_internet\",\n        layer.name  = \"% Internet\",\n        label       = \"departamento\")\n\n\n\n\n\n\n\n\n\n\n\nDepartment-level analysis (Sacatepéquez)\n\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Administrative boundaries — instant load, no internet needed\ndeptos = gq.departamentos()\n\n# Census microdata — downloads only the department you need\ndf = gq.hogares(departamento=\"Sacatepequez\")\n\n# % of households with internet per municipality\nacceso_internet = (\n    df.groupby(\"MUNICIPIO\")[\"PCH9_I\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_internet\")\n)\n\n# Join with geometry and visualize\nmunis = gq.municipios(\"Sacatepequez\")\nresultado = munis.merge(acceso_internet, left_on=\"codigo_muni\", right_on=\"MUNICIPIO\")\nresultado.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"municipio\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Municipality\", \"% Internet\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nif (!requireNamespace(\"geoquetzal\", quietly = TRUE)) {\n  remotes::install_github(\"geoquetzal/geoquetzal-r\")\n}\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\n# Administratives boundaries, instant loading, no Internet access required\nmunicipios &lt;- municipios()\n\n# Census microdata for Sacatepequez\ndf &lt;- hogares(\"Sacatepéquez\")  # Departament of Sacatepéquez\n\n⬇  Descargando hogar depto 03 (Sacatepéquez)...\n\n# % of households with Internet access per department\nacceso_internet &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(pct_internet = round(mean(PCH9_I == 1, na.rm = TRUE) * 100, 1))\n\n# Merge with geometry, visualization\nresultado &lt;- merge(municipios, acceso_internet,\n                   by.x = \"codigo_muni\", by.y = \"MUNICIPIO\")\n\nmapview(resultado,\n        zcol        = \"pct_internet\",\n        layer.name  = \"% Internet\",\n        label       = \"municipio\")\n\n\n\n\n\n\n\n\n\n\n\nMunicipaly-level analysis (Sacatepéquez, Antigua Guatemala)\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Voronoi polygons — approximation of sub-municipal boundaries\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 57 polígonos Voronoi generados\n\n# Pre-aggregated indicators per lugar poblado\nlp = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\nlp = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\n# Join\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# % of households with internet\ngdf[\"pct_internet\"] = (\n    gdf[\"pch9_i_si\"] / (gdf[\"pch9_i_si\"] + gdf[\"pch9_i_no\"]) * 100\n).round(1)\n\n# Interactive map\ngdf.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"nombre\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% with Internet\"]},\n    popup=[\"nombre\", \"pct_internet\", \"pch9_i_si\", \"pch9_i_no\"],\n    popup_kwds={\"aliases\": [\n        \"Lugar Poblado\", \"% with Internet\",\n        \"HH with Internet\", \"HH without Internet\"\n    ]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nif (!requireNamespace(\"geoquetzal\", quietly = TRUE)) {\n  remotes::install_github(\"geoquetzal/geoquetzal-r\")\n}\nlibrary(geoquetzal)\nlibrary(mapview)\n\n# Voronoi polygons - approximations\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\n\nSpherical geometry (s2) switched off\n\n\n⬇  Descargando lugares poblados depto 03 (Sacatepéquez)...\n\n\n   ✓ 264 lugares poblados cargados\n\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999).\n\n\n   ✓ 57 polígonos Voronoi generados\n\n\nSpherical geometry (s2) switched on\n\n# Census data pre-agregated by populated place\nlp &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\n\n⬇  Descargando lugares poblados depto 03 (Sacatepéquez)...\n\n\n   ✓ 264 lugares poblados cargados\n\n# Drop duplicate columns before the merge\nlp &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\n# Join\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# Compute % of households with Internet access\ngdf$pct_internet &lt;- round(\n  gdf$pch9_i_si / (gdf$pch9_i_si + gdf$pch9_i_no) * 100,\n  1\n)\n\n# Interactive map\nmapview(gdf,\n        zcol        = \"pct_internet\",\n        layer.name  = \"% Internet\",\n        label       = \"nombre\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "en/index.html#available-datasets",
+    "href": "en/index.html#available-datasets",
+    "title": "GeoQuetzal",
+    "section": "Available datasets",
+    "text": "Available datasets\n\n\n\n\n\n\n\n\nDataset\nRecords\nStorage\n\n\n\n\nAdministrative boundaries\n22 depts / 340 municipalities\nBundled in package\n\n\nPersons\n14,901,286\nGitHub (~333 MB)\n\n\nHouseholds\n3,275,931\nGitHub (~38 MB)\n\n\nHousing units\n~3,300,000\nGitHub (~30 MB)\n\n\nEmigration\n242,203\nGitHub (~1.6 MB)\n\n\nLugares Poblados\n20,254\nGitHub",
+    "crumbs": [
+      "🇺🇸 English",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "en/index.html#authors",
+    "href": "en/index.html#authors",
+    "title": "GeoQuetzal",
+    "section": "Authors",
+    "text": "Authors\nDeveloped by Jorge Yass and Anasilvia Salazar, lecturers at Universidad del Valle de Guatemala (UVG) and PhD students at Iowa State University (ISU).\n📦 PyPI · 🐙 GitHub · 📄 MIT License",
+    "crumbs": [
+      "🇺🇸 English",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "en/about.html",
+    "href": "en/about.html",
+    "title": "About GeoQuetzal",
+    "section": "",
+    "text": "In 2025, I worked as a mentor for a group of undergraduate students in the Data Science for Public Good (DSPG) program at Iowa State University (ISU). During the program, we learned about R libraries that provide programmatic access to US Census data, as well as libraries for visualizing that data on maps. It was the first time I had worked with this kind of data, and it was remarkable how effectively it could communicate ideas and trends about the topics we were studying. I learned that these libraries were used in hundreds of academic, government, and industry research projects, giving researchers, professors, students, professionals, and map enthusiasts powerful tools for data analysis.\nInspired by that potential, I talked with Anasilvia about how important these tools are for research, and we were surprised to discover that no equivalent libraries existed for Guatemala, or for any other country in Central America. The semester ended and the idea stayed there, dormant but alive.\nIn 2026, we had to travel to Guatemala for administrative errands during Spring Break. While we were in our beautiful country, the idea resurfaced. We decided to tackle the project as a personal and meaningful hackathon: we knew the potential of the library, and we knew we could build it. In one week, with the help of Claude (the artificial intelligence from Anthropic), we planned, developed, and tested a proof of concept for both the Python and R libraries. The explicit use of generative AI as a development tool was a conscious decision that accelerated development and testing, and allowed us to complete the project in a very short timeframe.\nAfter confirming that the libraries were both useful and feasible, we continued improving them, e.g., adding lugar poblado-level data, Voronoi polygons for sub-municipal choropleth mapping, bilingual documentation, and an examples website, with the goal of making map-based data analysis accessible to everyone interested in Guatemala.",
+    "crumbs": [
+      "🇺🇸 English",
+      "About"
+    ]
+  },
+  {
+    "objectID": "en/about.html#why-does-it-matter",
+    "href": "en/about.html#why-does-it-matter",
+    "title": "About GeoQuetzal",
+    "section": "Why does it matter?",
+    "text": "Why does it matter?\nGuatemala has millions of public data. The INE conducted a comprehensive census in 2018 covering more than 14 million people. MINFIN publishes the country’s administrative boundaries. But accessing that data programmatically, cleaning it, joining it, and visualizing it on a map required hours of manual work: downloading files, resolving name inconsistencies, writing code from scratch every time.\nGeoQuetzal eliminates that friction. A few lines of code returns data ready to analyze or visualize.\nWe hope GeoQuetzal is useful for academic researchers, students, data journalists, government officials, and anyone curious about Guatemala. If you find a bug, have a suggestion, or want to contribute, the code is available on GitHub.",
+    "crumbs": [
+      "🇺🇸 English",
+      "About"
+    ]
+  },
+  {
+    "objectID": "en/about.html#the-authors",
+    "href": "en/about.html#the-authors",
+    "title": "About GeoQuetzal",
+    "section": "The authors",
+    "text": "The authors\nJorge Yass is an online lecturer at Universidad del Valle de Guatemala (UVG) and a doctoral student in Human-Computer Interaction (HCI) at Iowa State University. \nAnasilvia Salazar is a lecturer at Universidad del Valle de Guatemala (UVG), where she teaches HCI courses, and a doctoral candidate in Human-Computer Interaction (HCI) at Iowa State University. \nBoth share the conviction that data analysis tools should be accessible to everyone and that such access can potentiate investigation at technical and social levels to benefit society.",
+    "crumbs": [
+      "🇺🇸 English",
+      "About"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html",
+    "href": "en/examples/maps.html",
+    "title": "Examples: Maps",
+    "section": "",
+    "text": "This section shows how to visualize Guatemala’s administrative boundaries. To combine maps with census data, see Census + Maps.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#department-map",
+    "href": "en/examples/maps.html#department-map",
+    "title": "Examples: Maps",
+    "section": "Department map",
+    "text": "Department map\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndeptos = gq.departamentos()\nax = deptos.plot(color=\"lightyellow\", edgecolor=\"gray\", figsize=(8, 8))\ngq.lagos().plot(ax=ax, color=\"lightblue\", edgecolor=\"steelblue\")\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = departamentos(), fill = \"lightyellow\", color = \"gray\") +\n  geom_sf(data = lagos(), fill = \"lightblue\", color = \"steelblue\") +\n  theme_void()",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#municipality-map",
+    "href": "en/examples/maps.html#municipality-map",
+    "title": "Examples: Maps",
+    "section": "Municipality map",
+    "text": "Municipality map\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nmunis = gq.municipios()\nax = munis.plot(color=\"lightyellow\", edgecolor=\"gray\", linewidth=0.4, figsize=(8, 8))\ngq.lagos().plot(ax=ax, color=\"lightblue\", edgecolor=\"steelblue\")\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = municipios(), fill = \"lightyellow\", color = \"gray\", linewidth = 0.4) +\n  geom_sf(data = lagos(), fill = \"lightblue\", color = \"steelblue\") +\n  theme_void()",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#municipalities-of-a-single-department",
+    "href": "en/examples/maps.html#municipalities-of-a-single-department",
+    "title": "Examples: Maps",
+    "section": "Municipalities of a single department",
+    "text": "Municipalities of a single department\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nmunis = gq.municipios(\"Sacatepequez\")\nax = munis.plot(color=\"green\", edgecolor=\"white\", figsize=(8, 8))\nax.set_title(\"Municipios de Sacatepéquez\", fontsize=14)\nax.set_axis_off()\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = municipios(\"Sacatepequez\"), fill = \"green\", color = \"white\") +\n  ggtitle(\"Municipios de Sacatepéquez\") +\n  theme_void()",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#interactive-map-with-hover-tooltips",
+    "href": "en/examples/maps.html#interactive-map-with-hover-tooltips",
+    "title": "Examples: Maps",
+    "section": "Interactive map with hover tooltips",
+    "text": "Interactive map with hover tooltips\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nmunis = gq.municipios(\"Sacatepequez\")\nmunis.explore(\n    tooltip=[\"municipio\", \"codigo_muni\"],\n    tooltip_kwds={\"aliases\": [\"Municipality\", \"INE Code\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"green\", \"fillOpacity\": 0.3},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nmapview(\n  municipios(\"Sacatepequez\"),\n  map.types     = \"CartoDB.Positron\",\n  color         = \"green\",\n  alpha.regions = 0.3,\n  lwd           = 1,\n  label         = \"municipio\"\n)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#guatemala-city-zones",
+    "href": "en/examples/maps.html#guatemala-city-zones",
+    "title": "Examples: Maps",
+    "section": "Guatemala City zones",
+    "text": "Guatemala City zones\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nzonas = gq.municipios(\"Guatemala\", zonas=True)\nzonas.explore(\n    tooltip=[\"zona\"],\n    tooltip_kwds={\"aliases\": [\"Zone\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"steelblue\", \"fillOpacity\": 0.3},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe zonas=TRUE parameter is not available in the R package. Standard Guatemala City municipalities are shown instead.\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nmapview(\n  municipios(\"Guatemala\"),\n  map.types     = \"CartoDB.Positron\",\n  color         = \"steelblue\",\n  alpha.regions = 0.3,\n  lwd           = 1,\n  label         = \"municipio\"\n)",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#lugar-poblado-centroids",
+    "href": "en/examples/maps.html#lugar-poblado-centroids",
+    "title": "Examples: Maps",
+    "section": "Lugar poblado centroids",
+    "text": "Lugar poblado centroids\nLugares poblados have centroid coordinates for point visualization.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Load with point geometry\ngdf = gq.lugares_poblados(departamento=\"Sacatepequez\", geometry=True)\n\n# Overlay on municipality boundaries\nax = gq.municipios(\"Sacatepequez\").plot(\n    color=\"lightyellow\", edgecolor=\"gray\", figsize=(8, 8)\n)\ngdf.plot(ax=ax, color=\"steelblue\", markersize=5, alpha=0.7)\nax.set_title(\"Lugares Poblados — Sacatepéquez\", fontsize=14)\nax.set_axis_off()\n\n   ℹ 22 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n\n\n\n\n\n\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(sf)\nlibrary(ggplot2)\n\n# Load and convert to sf points (centroids)\nlp &lt;- lugares_poblados(departamento = \"Sacatepequez\")\nlp_valid &lt;- lp[!is.na(lp$longitud) & !is.na(lp$lat), ]\nlp_sf &lt;- sf::st_as_sf(lp_valid, coords = c(\"longitud\", \"lat\"), crs = 4326)\n\n# Overlay on municipality boundaries\nggplot() +\n  geom_sf(data = municipios(\"Sacatepequez\"), fill = \"lightyellow\", color = \"gray\") +\n  geom_sf(data = lp_sf, color = \"steelblue\", size = 1, alpha = 0.7) +\n  ggtitle(\"Lugares Poblados — Sacatepéquez\") +\n  theme_void()",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/maps.html#voronoi-polygons-for-lugares-poblados",
+    "href": "en/examples/maps.html#voronoi-polygons-for-lugares-poblados",
+    "title": "Examples: Maps",
+    "section": "Voronoi polygons for lugares poblados",
+    "text": "Voronoi polygons for lugares poblados\nSince INE does not publish official lugar poblado boundaries, GeoQuetzal generates Voronoi tessellation approximations clipped to municipio boundaries.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\nvor.explore(\n    tooltip=[\"nombre\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"green\", \"fillOpacity\": 0.3},\n)\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 57 polígonos Voronoi generados\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\nmapview(\n  vor,\n  map.types     = \"CartoDB.Positron\",\n  color         = \"green\",\n  alpha.regions = 0.3,\n  lwd           = 0.5,\n  label         = \"nombre\"\n)\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLugares poblados with NULL coordinates (codes ending in 999) are automatically excluded from the Voronoi. These are informal settlements without an official location.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html",
+    "href": "en/examples/census_maps.html",
+    "title": "Examples: Census + Maps",
+    "section": "",
+    "text": "This section combines 2018 Census data with geographic visualizations. The general pattern is: aggregate microdata first, then merge with geometry.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html#internet-access-by-municipality",
+    "href": "en/examples/census_maps.html#internet-access-by-municipality",
+    "title": "Examples: Census + Maps",
+    "section": "Internet access by municipality",
+    "text": "Internet access by municipality\nWhat percentage of households has internet access in each municipality of Sacatepéquez?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Census data\ndf = gq.hogares(departamento=\"Sacatepequez\")\n\n# PCH9_I: Does this household have internet? (1=Yes, 2=No)\nacceso_internet = (\n    df.groupby(\"MUNICIPIO\")[\"PCH9_I\"]\n    .apply(lambda x: (x == 1).mean() * 100)\n    .round(1)\n    .reset_index(name=\"pct_internet\")\n)\n\n# Geometry\nmunis = gq.municipios(\"Sacatepequez\")\n\n# Join using INE municipality code\nresultado = munis.merge(acceso_internet, left_on=\"codigo_muni\", right_on=\"MUNICIPIO\")\n\n# Interactive map\nresultado.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"municipio\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Municipality\", \"% Internet\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\n# Census data\ndf &lt;- hogares(departamento = \"Sacatepequez\")\n\n# PCH9_I: Does this household have internet? (1=Yes, 2=No)\nacceso_internet &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(pct_internet = round(mean(PCH9_I == 1, na.rm = TRUE) * 100, 1))\n\n# Geometry + join using INE municipality code\nresultado &lt;- merge(\n  municipios(\"Sacatepequez\"), acceso_internet,\n  by.x = \"codigo_muni\", by.y = \"MUNICIPIO\"\n)\n\n# Interactive map\nmapview(resultado,\n        zcol        = \"pct_internet\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name  = \"% Internet\",\n        map.types   = \"CartoDB.Positron\",\n        label       = \"municipio\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html#dominant-ethnic-group-by-municipality",
+    "href": "en/examples/census_maps.html#dominant-ethnic-group-by-municipality",
+    "title": "Examples: Census + Maps",
+    "section": "Dominant ethnic group by municipality",
+    "text": "Dominant ethnic group by municipality\nWhich ethnic group is the majority in each municipality of Huehuetenango?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.personas(departamento=\"Huehuetenango\")\n\n# PCP12: ethnic self-identification (mode = majority group)\netnia_dominante = (\n    df.groupby(\"MUNICIPIO\")[\"PCP12\"]\n    .agg(lambda x: x.mode()[0])\n    .reset_index(name=\"etnia_cod\")\n)\n\n# Replace codes with labels\nvalores = gq.describe_personas(\"PCP12\")[\"valores\"]\netnia_dominante[\"etnia\"] = etnia_dominante[\"etnia_cod\"].map(valores)\n\n# Geometry\nmunis = gq.municipios(\"Huehuetenango\")\nresultado = munis.merge(etnia_dominante, left_on=\"codigo_muni\", right_on=\"MUNICIPIO\")\n\n# Interactive map\nresultado.explore(\n    column=\"etnia\",\n    tooltip=[\"municipio\", \"etnia\"],\n    tooltip_kwds={\"aliases\": [\"Municipality\", \"Majority Ethnic Group\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\ndf &lt;- personas(departamento = \"Huehuetenango\")\n\n# PCP12: ethnic self-identification (mode = majority group)\netnia_dominante &lt;- df |&gt;\n  group_by(MUNICIPIO) |&gt;\n  summarise(etnia_cod = as.integer(names(which.max(table(PCP12))))) |&gt;\n  mutate(etnia = recode(as.character(etnia_cod),\n    \"1\" = \"Maya\", \"2\" = \"Garífuna\", \"3\" = \"Xinka\",\n    \"4\" = \"Afrodescendiente\", \"5\" = \"Ladino\", \"6\" = \"Extranjero\"))\n\n# Geometry + join\nresultado &lt;- merge(\n  municipios(\"Huehuetenango\"), etnia_dominante,\n  by.x = \"codigo_muni\", by.y = \"MUNICIPIO\"\n)\n\n# Interactive map\nmapview(resultado,\n        zcol       = \"etnia\",\n        map.types  = \"CartoDB.Positron\",\n        label      = \"municipio\",\n        layer.name = \"Majority Ethnic Group\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html#cumulative-emigration-by-department",
+    "href": "en/examples/census_maps.html#cumulative-emigration-by-department",
+    "title": "Examples: Census + Maps",
+    "section": "Cumulative emigration by department",
+    "text": "Cumulative emigration by department\nHow many people emigrated from each department between 2002 and 2018?\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\ndf = gq.emigracion()\n\nemigracion = (\n    df.groupby(\"DEPARTAMENTO\")\n    .size()\n    .reset_index(name=\"emigrants\")\n)\n\ndeptos = gq.departamentos()\nresultado = deptos.merge(emigracion, left_on=\"codigo_depto\", right_on=\"DEPARTAMENTO\")\n\nresultado.explore(\n    column=\"emigrants\",\n    cmap=\"OrRd\",\n    tooltip=[\"departamento\", \"emigrants\"],\n    tooltip_kwds={\"aliases\": [\"Department\", \"Emigrants\"]},\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 1, \"color\": \"white\", \"fillOpacity\": 0.8},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(dplyr)\nlibrary(mapview)\n\ndf &lt;- emigracion()\n\nemigracion_agg &lt;- df |&gt;\n  group_by(DEPARTAMENTO) |&gt;\n  summarise(emigrants = n())\n\nresultado &lt;- merge(\n  departamentos(), emigracion_agg,\n  by.x = \"codigo_depto\", by.y = \"DEPARTAMENTO\"\n)\n\nmapview(resultado,\n        zcol        = \"emigrants\",\n        col.regions = RColorBrewer::brewer.pal(9, \"OrRd\"),\n        layer.name  = \"Emigrants\",\n        map.types   = \"CartoDB.Positron\",\n        label       = \"departamento\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html#sub-municipal-choropleth-with-voronoi",
+    "href": "en/examples/census_maps.html#sub-municipal-choropleth-with-voronoi",
+    "title": "Examples: Census + Maps",
+    "section": "Sub-municipal choropleth with Voronoi",
+    "text": "Sub-municipal choropleth with Voronoi\nInternet access at lugar poblado level in Antigua Guatemala — the first sub-municipal census visualization available for Guatemala.\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\n# Voronoi polygons (approximation of sub-municipal boundaries)\nvor = gq.voronoi_lugares_poblados(municipio=\"Antigua Guatemala\")\n\n   ℹ 2 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 57 polígonos Voronoi generados\n\n# Pre-aggregated census data by lugar poblado\nlp = gq.lugares_poblados(municipio=\"Antigua Guatemala\")\nlp = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\n# Join\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# % of households with internet\ngdf[\"pct_internet\"] = (\n    gdf[\"pch9_i_si\"] / (gdf[\"pch9_i_si\"] + gdf[\"pch9_i_no\"]) * 100\n).round(1)\n\n# Interactive map with hover tooltips\ngdf.explore(\n    column=\"pct_internet\",\n    cmap=\"YlGnBu\",\n    tooltip=[\"nombre\", \"pct_internet\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% with Internet\"]},\n    popup=[\"nombre\", \"pct_internet\", \"pch9_i_si\", \"pch9_i_no\"],\n    popup_kwds={\"aliases\": [\n        \"Lugar Poblado\", \"% with Internet\",\n        \"HH with Internet\", \"HH without Internet\"\n    ]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\n# Voronoi polygons (approximation of sub-municipal boundaries)\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\n\n# Pre-aggregated census data by lugar poblado\nlp &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\nlp &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\n# Join\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# % of households with internet\ngdf$pct_internet &lt;- round(\n  gdf$pch9_i_si / (gdf$pch9_i_si + gdf$pch9_i_no) * 100, 1\n)\n\n# Interactive map\nmapview(gdf,\n        zcol        = \"pct_internet\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name  = \"% Internet\",\n        map.types   = \"CartoDB.Positron\",\n        lwd         = 0.5,\n        color       = \"white\",\n        label       = \"nombre\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nVoronoi polygons are approximations for visualization — INE does not publish official lugar poblado boundaries. Each polygon represents the zone of influence of the lugar poblado centroid within its municipio.",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html#maya-population-percentage-by-lugar-poblado",
+    "href": "en/examples/census_maps.html#maya-population-percentage-by-lugar-poblado",
+    "title": "Examples: Census + Maps",
+    "section": "Maya population percentage by lugar poblado",
+    "text": "Maya population percentage by lugar poblado\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(departamento=\"Sacatepequez\")\n\n   ℹ 22 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 237 polígonos Voronoi generados\n\nlp  = gq.lugares_poblados(departamento=\"Sacatepequez\")\nlp  = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# Use total answered as denominator (exclude non-responses)\npcp12_cols = [c for c in gdf.columns if c.startswith(\"pcp12_\") and c != \"pcp12_nulo\"]\ngdf[\"pcp12_total_respondido\"] = gdf[pcp12_cols].sum(axis=1)\ngdf[\"pct_maya\"] = (\n    gdf[\"pcp12_maya\"] / gdf[\"pcp12_total_respondido\"] * 100\n).round(1)\n\ngdf.explore(\n    column=\"pct_maya\",\n    cmap=\"Purples\",\n    tooltip=[\"nombre\", \"pct_maya\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% Maya Population\"]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# Use total answered as denominator (exclude non-responses)\npcp12_cols &lt;- grep(\"^pcp12_\", names(gdf), value = TRUE)\npcp12_cols &lt;- pcp12_cols[pcp12_cols != \"pcp12_nulo\"]\ngdf$pcp12_total_respondido &lt;- rowSums(as.data.frame(gdf)[, pcp12_cols], na.rm = TRUE)\ngdf$pct_maya &lt;- round(gdf$pcp12_maya / gdf$pcp12_total_respondido * 100, 1)\n\nmapview(gdf,\n        zcol        = \"pct_maya\",\n        col.regions = RColorBrewer::brewer.pal(9, \"Purples\"),\n        layer.name  = \"% Maya Population\",\n        map.types   = \"CartoDB.Positron\",\n        lwd         = 0.5,\n        color       = \"white\",\n        label       = \"nombre\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/examples/census_maps.html#dirt-floor-as-a-poverty-indicator",
+    "href": "en/examples/census_maps.html#dirt-floor-as-a-poverty-indicator",
+    "title": "Examples: Census + Maps",
+    "section": "Dirt floor as a poverty indicator",
+    "text": "Dirt floor as a poverty indicator\n\nPythonR\n\n\n\nimport geoquetzal as gq\n\nvor = gq.voronoi_lugares_poblados(departamento=\"Sacatepequez\")\n\n   ℹ 22 lugares poblados excluidos por coordenadas nulas (códigos terminados en 999 — asentamientos sin nombre oficial).\n   ✓ 237 polígonos Voronoi generados\n\nlp  = gq.lugares_poblados(departamento=\"Sacatepequez\")\nlp  = lp.drop(columns=[\"nombre\", \"lat\", \"longitud\", \"area\"])\n\ngdf = vor.merge(lp, on=[\"departamento\", \"municipio\", \"lugar_poblado\"])\n\n# pcv5_tierra = housing units with dirt floor\ngdf[\"pct_dirt_floor\"] = (\n    gdf[\"pcv5_tierra\"] / gdf[\"poblacion_total\"] * 100\n).round(1)\n\ngdf.explore(\n    column=\"pct_dirt_floor\",\n    cmap=\"YlOrBr\",\n    tooltip=[\"nombre\", \"pct_dirt_floor\"],\n    tooltip_kwds={\"aliases\": [\"Lugar Poblado\", \"% Dirt Floor\"]},\n    legend=True,\n    tiles=\"CartoDB positron\",\n    style_kwds={\"weight\": 0.5, \"color\": \"white\"},\n)\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lugares_poblados(departamento = \"Sacatepequez\")\nlp  &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\n\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\n\n# pcv5_tierra = housing units with dirt floor\ngdf$pct_dirt_floor &lt;- round(gdf$pcv5_tierra / gdf$poblacion_total * 100, 1)\n\nmapview(gdf,\n        zcol        = \"pct_dirt_floor\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlOrBr\"),\n        layer.name  = \"% Dirt Floor\",\n        map.types   = \"CartoDB.Positron\",\n        lwd         = 0.5,\n        color       = \"white\",\n        label       = \"nombre\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "Examples",
+      "Census + Maps"
+    ]
+  },
+  {
+    "objectID": "en/api/reference-r.html",
+    "href": "en/api/reference-r.html",
+    "title": "API Reference — R",
+    "section": "",
+    "text": "This page documents all available functions in the GeoQuetzal R package. To install:",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "R"
+    ]
+  },
+  {
+    "objectID": "en/api/reference-r.html#geography",
+    "href": "en/api/reference-r.html#geography",
+    "title": "API Reference — R",
+    "section": "Geography",
+    "text": "Geography\nFunctions for accessing Guatemala’s administrative boundaries. Data loads instantly from the package — no internet connection required.\n\ncountry()\nReturns the country outline of Guatemala as an sf object.\nlibrary(geoquetzal)\npais &lt;- country()\nplot(sf::st_geometry(pais), col = \"lightgreen\", border = \"gray\")\n\n\n\ndepartamentos()\nReturns Guatemala’s 22 departments with INE codes and geometry.\nParameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\nname\ncharacter \\| integer\nDepartment name or code (accent-insensitive)\n\n\nregion\ncharacter\nFilter by region (e.g. \"V - Central\")\n\n\n\nlibrary(geoquetzal)\n\ndeptos &lt;- departamentos()\ndepartamentos(\"Sacatepequez\")       # accent-insensitive\ndepartamentos(3)                    # by INE code\ndepartamentos(region = \"V - Central\")\n\n\n\nmunicipios()\nReturns Guatemala’s 340 municipalities with INE codes and geometry.\nParameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\ncharacter \\| integer\nFilter by department\n\n\nname\ncharacter \\| integer\nReturn a specific municipality by name or code\n\n\n\nlibrary(geoquetzal)\n\nmunicipios(\"Sacatepequez\")\nmunicipios(name = \"Antigua Guatemala\")\nmunicipios(name = 301)\n\n\n\nlagos()\nReturns Guatemala’s two main lakes (Amatitlán and Atitlán) for map overlays.\nlibrary(geoquetzal)\nlibrary(ggplot2)\n\nggplot() +\n  geom_sf(data = departamentos(), fill = \"lightyellow\", color = \"gray\") +\n  geom_sf(data = lagos(), fill = \"lightblue\", color = \"steelblue\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "R"
+    ]
+  },
+  {
+    "objectID": "en/api/reference-r.html#census-microdata",
+    "href": "en/api/reference-r.html#census-microdata",
+    "title": "API Reference — R",
+    "section": "Census Microdata",
+    "text": "Census Microdata\nFunctions for accessing the XII National Population and Housing Census 2018 microdata (INE). Data is downloaded as Parquet files from GitHub Releases and cached locally.\nTo manage the cache:\ngq_cache_dir()               # View cache location\ngq_clear_cache()             # Clear the cache\ngq_set_cache(\"/custom/path\") # Change cache location\nAll microdata functions share the same filter parameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\ncharacter \\| integer\nFilter by department (downloads only that file)\n\n\nmunicipio\ncharacter \\| integer\nFilter by municipality (downloads the parent department’s file)\n\n\n\n\n\npersonas()\nPerson-level microdata. 14,901,286 records, 84 variables. Each row represents one person.\nKey variables: sex (PCP6), age (PCP7), ethnic self-identification (PCP12), Mayan linguistic community (PCP13), mother tongue (PCP15), disability (PCP16_A–PCP16_F), education level (PCP17_A), literacy (PCP22), technology access (PCP26_A–PCP26_C), employment (PCP27), fertility (PCP35–PCP39).\nlibrary(geoquetzal)\n\ndf &lt;- personas(departamento = \"Huehuetenango\")\ndf &lt;- personas(municipio = \"Antigua Guatemala\")\ndf &lt;- personas()  # All of Guatemala (~333 MB)\n\n\n\nhogares()\nHousehold microdata. 3,275,931 records, 37 variables. Each row represents one household.\nKey variables: water source (PCH4), sanitation (PCH5), electricity (PCH8), household appliances — radio, TV, fridge, internet, car (PCH9_A–PCH9_M), cooking fuel (PCH14), remittances (PCH15).\nlibrary(geoquetzal)\n\ndf &lt;- hogares(departamento = \"Sacatepequez\")\ndf &lt;- hogares(municipio = \"Antigua Guatemala\")\ndf &lt;- hogares()  # All of Guatemala (~38 MB)\n\n\n\nviviendas()\nHousing unit microdata. ~3,300,000 records, 11 variables. Each row represents one housing unit.\nKey variables: housing type (PCV1), wall material (PCV2), roof (PCV3), condition (PCV4), floor (PCV5).\nlibrary(geoquetzal)\n\ndf &lt;- viviendas(departamento = \"Sacatepequez\")\ndf &lt;- viviendas()  # All of Guatemala (~30 MB)\n\n\n\nemigracion()\nInternational emigration records. 242,203 records, 11 variables. Each row represents one person who emigrated from a household.\nKey variables: sex (PEI3), age at departure (PEI4), year of departure (PEI5).\nlibrary(geoquetzal)\n\ndf &lt;- emigracion(departamento = \"Huehuetenango\")\ndf &lt;- emigracion()  # All of Guatemala (~1.6 MB)",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "R"
+    ]
+  },
+  {
+    "objectID": "en/api/reference-r.html#sub-municipal-data",
+    "href": "en/api/reference-r.html#sub-municipal-data",
+    "title": "API Reference — R",
+    "section": "Sub-Municipal Data",
+    "text": "Sub-Municipal Data\n\nlugares_poblados()\nPre-aggregated indicators at the lugar poblado (sub-municipal locality) level. 20,254 localities, 200+ columns. Each row represents one lugar poblado.\n\n\n\n\n\n\nNote\n\n\n\nLugares poblados with codes ending in 999 (e.g. 102999) represent unnamed informal settlements (“Otros Lugares Poblados”) with NULL coordinates. They are included in the data but cannot be mapped.\n\n\nParameters:\n\n\n\n\n\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\ncharacter \\| integer\nFilter by department (downloads only that file)\n\n\nmunicipio\ncharacter \\| integer\nFilter by municipality\n\n\nlugar_poblado\ninteger\n6-digit code (e.g. 301001L)\n\n\n\nlibrary(geoquetzal)\n\ndf &lt;- lugares_poblados()\ndf &lt;- lugares_poblados(departamento = \"Sacatepéquez\")\ndf &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\ndf &lt;- lugares_poblados(lugar_poblado = 301001L)\nAvailable columns by topic:\n\n\n\n\n\n\n\n\nTopic\nColumn prefix\nSource\n\n\n\n\nScalars (population, PEA, years of education)\npoblacion_total, pea_total, aneduca_promedio…\npersona\n\n\nEthnic self-identification\npcp12_maya, pcp12_ladino…\npersona\n\n\nMayan linguistic community\npcp13_kiche, pcp13_mam…\npersona\n\n\nMother tongue\npcp15_espanol, pcp15_kiche…\npersona\n\n\nDisability\npcp16_a_sin_dificultad…\npersona\n\n\nEducation level\npcp17_a_ninguno, pcp17_a_primaria…\npersona\n\n\nLiteracy\npcp22_alfabeto, pcp22_no_alfabeto\npersona\n\n\nEmployment\npcp30_1d_agropecuarios…\npersona\n\n\nHousing type\npcv1_casa_formal, pcv1_rancho…\nvivienda\n\n\nWall material\npcv2_block, pcv2_adobe…\nvivienda\n\n\nFloor material\npcv5_tierra, pcv5_torta_cemento…\nvivienda\n\n\nWater source\npch4_tuberia_dentro, pch4_rio…\nhogar\n\n\nSanitation\npch5_inodoro_red_drenajes…\nhogar\n\n\nElectricity\npch8_red_electrica, pch8_candela…\nhogar\n\n\nHousehold appliances\npch9_i_si (internet), pch9_m_si (car)…\nhogar\n\n\nCooking fuel\npch14_lena, pch14_gas_propano…\nhogar\n\n\nRemittances\npch15_si, pch15_no\nhogar\n\n\nEmigration since 2002\npei1_si, pei1_no\nhogar\n\n\n\n\n\n\nvoronoi_lugares_poblados()\nGenerates Voronoi polygon approximations as lugar poblado boundaries, clipped to municipio boundaries. These polygons are approximations for choropleth visualization — INE does not publish official lugar poblado boundaries.\n\n\n\n\n\n\nWarning\n\n\n\nLugares poblados with NULL coordinates (codes ending in 999) are automatically excluded. Municipios with only one lugar poblado return the full municipio polygon.\n\n\nParameters:\n\n\n\nParameter\nType\nDescription\n\n\n\n\ndepartamento\ncharacter \\| integer\nFilter by department\n\n\nmunicipio\ncharacter \\| integer\nFilter by municipality\n\n\n\nlibrary(geoquetzal)\nlibrary(mapview)\n\nvor &lt;- voronoi_lugares_poblados(municipio = \"Antigua Guatemala\")\nvor &lt;- voronoi_lugares_poblados(departamento = \"Sacatepéquez\")\n\n# Typical pattern: join with census data for a choropleth\nlp  &lt;- lugares_poblados(municipio = \"Antigua Guatemala\")\nlp  &lt;- lp[, !names(lp) %in% c(\"nombre\", \"lat\", \"longitud\", \"area\")]\ngdf &lt;- merge(vor, lp, by = c(\"departamento\", \"municipio\", \"lugar_poblado\"))\ngdf$pct_internet &lt;- gdf$pch9_i_si / (gdf$pch9_i_si + gdf$pch9_i_no) * 100\n\nmapview(gdf, zcol = \"pct_internet\",\n        col.regions = RColorBrewer::brewer.pal(9, \"YlGnBu\"),\n        layer.name  = \"% with Internet\")",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "R"
+    ]
+  },
+  {
+    "objectID": "en/api/reference-r.html#describe-functions",
+    "href": "en/api/reference-r.html#describe-functions",
+    "title": "API Reference — R",
+    "section": "Describe Functions",
+    "text": "Describe Functions\nAll describe functions return a data.frame with all variables if none is specified, or a list with details for the requested variable.\n\n\n\nFunction\nDataset\n\n\n\n\ndescribe_personas(variable)\nPersonas\n\n\ndescribe_hogares(variable)\nHogares\n\n\ndescribe_viviendas(variable)\nViviendas\n\n\ndescribe_emigracion(variable)\nEmigración\n\n\ndescribe_lugares_poblados(variable)\nLugares Poblados\n\n\n\nlibrary(geoquetzal)\n\ndescribe_personas()\ndescribe_personas(\"PCP12\")\n# $variable: \"PCP12\"\n# $etiqueta: \"...ethnic self-identification...\"\n# $tipo: \"étnica\"\n# $valores: list(\"1\" = \"Maya\", \"2\" = \"Garífuna\", \"3\" = \"Xinka\", ...)\n\ndescribe_lugares_poblados(\"pcp12_maya\")\n# $variable: \"pcp12_maya\"\n# $etiqueta: \"Conteo: se identifica como Maya\"\n# $tipo: \"étnica\"\n# $fuente: \"persona\"",
+    "crumbs": [
+      "🇺🇸 English",
+      "API Reference",
+      "R"
+    ]
+  }
+]

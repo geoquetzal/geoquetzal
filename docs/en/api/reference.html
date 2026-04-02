@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>API Reference – GeoQuetzal</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">GeoQuetzal</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">🇬🇹 Español</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../en/index.html" aria-current="page"> 
+<span class="menu-text">🇺🇸 English</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../en/api/reference.html">API Reference</a></li><li class="breadcrumb-item"><a href="../../en/api/reference.html">Python</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">API Reference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/api/reference.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/api/reference-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/examples/census.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Census Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/examples/maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/examples/census_maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Census + Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/examples/other_data_maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Other Data + Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Sources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../en/about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../en/api/reference.html">API Reference</a></li><li class="breadcrumb-item"><a href="../../en/api/reference.html">Python</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">API Reference</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This page documents all available functions in GeoQuetzal.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install geoquetzal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<section id="geography" class="level2">
+<h2 class="anchored" data-anchor-id="geography">Geography</h2>
+<p>Functions for accessing Guatemala’s administrative boundaries. Data was downloaded from MINFIN’s Github for administrative boundaries and loads instantly from the library, so no internet connection is required.</p>
+<section id="gq.country" class="level3">
+<h3 class="anchored" data-anchor-id="gq.country"><code>gq.country()</code></h3>
+<p>Returns the country outline of Guatemala as a GeoDataFrame.</p>
+<div id="1cb73b92" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pais <span class="op">=</span> gq.country()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pais.plot(color<span class="op">=</span><span class="st">"lightgreen"</span>, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="gq.departamentos" class="level3">
+<h3 class="anchored" data-anchor-id="gq.departamentos"><code>gq.departamentos()</code></h3>
+<p>Returns Guatemala’s 22 departments with INE codes and geometry.</p>
+<p><strong>Parameters:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name</code></td>
+<td><code>str | int</code></td>
+<td>Department name or code (accent-insensitive)</td>
+</tr>
+<tr class="even">
+<td><code>region</code></td>
+<td><code>str</code></td>
+<td>Filter by region (e.g.&nbsp;<code>"V - Central"</code>)</td>
+</tr>
+</tbody>
+</table>
+<div id="bc80d71d" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> gq.departamentos()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gq.departamentos(<span class="st">"Sacatepequez"</span>)   <span class="co"># accent-insensitive</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>gq.departamentos(<span class="dv">3</span>)                <span class="co"># by INE code</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>gq.departamentos(region<span class="op">=</span><span class="st">"V - Central"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="gq.municipios" class="level3">
+<h3 class="anchored" data-anchor-id="gq.municipios"><code>gq.municipios()</code></h3>
+<p>Returns Guatemala’s 340 municipalities with INE codes and geometry.</p>
+<p><strong>Parameters:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>departamento</code></td>
+<td><code>str | int</code></td>
+<td>Filter by department</td>
+</tr>
+<tr class="even">
+<td><code>name</code></td>
+<td><code>str | int</code></td>
+<td>Return a specific municipality by name or code</td>
+</tr>
+<tr class="odd">
+<td><code>zonas</code></td>
+<td><code>bool</code></td>
+<td>If <code>True</code>, returns Guatemala City’s 22 zones (uses GADM)</td>
+</tr>
+</tbody>
+</table>
+<div id="6945370e" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>gq.municipios(<span class="st">"Sacatepequez"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gq.municipios(name<span class="op">=</span><span class="st">"Antigua Guatemala"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>gq.municipios(name<span class="op">=</span><span class="dv">301</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>gq.municipios(<span class="st">"Guatemala"</span>, zonas<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="gq.lagos" class="level3">
+<h3 class="anchored" data-anchor-id="gq.lagos"><code>gq.lagos()</code></h3>
+<p>Returns Guatemala’s two main lakes (Amatitlán and Atitlán) for map overlays.</p>
+<div id="385fbe7c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> gq.departamentos().plot(color<span class="op">=</span><span class="st">"lightyellow"</span>, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>gq.lagos().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"lightblue"</span>, edgecolor<span class="op">=</span><span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+</section>
+<section id="census-microdata" class="level2">
+<h2 class="anchored" data-anchor-id="census-microdata">Census Microdata</h2>
+<p>Functions for accessing the XII National Population and Housing Census 2018 microdata (INE). Data is downloaded as Parquet files from GitHub Releases and cached locally. To clean the cache:</p>
+<div id="cb09dbe6" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geoquetzal.cache <span class="im">import</span> clear_cache</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clear_cache()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>All microdata functions share the same filter parameters:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>departamento</code></td>
+<td><code>str | int</code></td>
+<td>Filter by department (downloads only that file)</td>
+</tr>
+<tr class="even">
+<td><code>municipio</code></td>
+<td><code>str | int</code></td>
+<td>Filter by municipality</td>
+</tr>
+<tr class="odd">
+<td><code>geometry</code></td>
+<td><code>str</code></td>
+<td>Join geometry: <code>"departamento"</code> or <code>"municipio"</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="gq.personas" class="level3">
+<h3 class="anchored" data-anchor-id="gq.personas"><code>gq.personas()</code></h3>
+<p>Person-level microdata. <strong>14,901,286 records</strong>, 84 variables. Each row is represents one person.</p>
+<p>Key variables: sex (<code>PCP6</code>), age (<code>PCP7</code>), ethnic self-identification (<code>PCP12</code>), Mayan linguistic community (<code>PCP13</code>), mother tongue (<code>PCP15</code>), disability (<code>PCP16_A</code>–<code>PCP16_F</code>), education level (<code>PCP17_A</code>), literacy (<code>PCP22</code>), technology access (<code>PCP26_A</code>–<code>PCP26_C</code>), employment (<code>PCP27</code>), fertility (<code>PCP35</code>–<code>PCP39</code>).</p>
+<div id="57c200c6" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.personas(departamento<span class="op">=</span><span class="st">"Huehuetenango"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.personas(municipio<span class="op">=</span><span class="st">"Antigua Guatemala"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.personas()  <span class="co"># All of Guatemala (~333 MB)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="gq.hogares" class="level3">
+<h3 class="anchored" data-anchor-id="gq.hogares"><code>gq.hogares()</code></h3>
+<p>Household microdata. <strong>3,275,931 records</strong>, 37 variables. Each row represents one household.</p>
+<p>Key variables: water source (<code>PCH4</code>), sanitation (<code>PCH5</code>), electricity (<code>PCH8</code>), household appliances — radio, TV, fridge, internet, car (<code>PCH9_A</code>–<code>PCH9_M</code>), cooking fuel (<code>PCH14</code>), remittances (<code>PCH15</code>).</p>
+<div id="2f1bc702" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.hogares(departamento<span class="op">=</span><span class="st">"Sacatepequez"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.hogares(municipio<span class="op">=</span><span class="st">"Antigua Guatemala"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.hogares()  <span class="co"># All of Guatemala (~38 MB)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="gq.viviendas" class="level3">
+<h3 class="anchored" data-anchor-id="gq.viviendas"><code>gq.viviendas()</code></h3>
+<p>Housing unit microdata. <strong>~3,300,000 records</strong>, 11 variables. Each row represents one housing unit.</p>
+<p>Key variables: housing type (<code>PCV1</code>), wall material (<code>PCV2</code>), roof (<code>PCV3</code>), condition (<code>PCV4</code>), floor (<code>PCV5</code>).</p>
+<div id="3481f431" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.viviendas(departamento<span class="op">=</span><span class="st">"Sacatepequez"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.viviendas()  <span class="co"># All of Guatemala (~30 MB)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="gq.emigracion" class="level3">
+<h3 class="anchored" data-anchor-id="gq.emigracion"><code>gq.emigracion()</code></h3>
+<p>International emigration records. <strong>242,203 records</strong>, 11 variables. Each row represents one person who emigrated from a household.</p>
+<p>Key variables: sex (<code>PEI3</code>), age at departure (<code>PEI4</code>), year of departure (<code>PEI5</code>).</p>
+<div id="927d4ffc" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.emigracion(departamento<span class="op">=</span><span class="st">"Huehuetenango"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.emigracion()  <span class="co"># All of Guatemala (~1.6 MB)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+</section>
+<section id="sub-municipal-data" class="level2">
+<h2 class="anchored" data-anchor-id="sub-municipal-data">Sub-Municipal Data</h2>
+<section id="gq.lugares_poblados" class="level3">
+<h3 class="anchored" data-anchor-id="gq.lugares_poblados"><code>gq.lugares_poblados()</code></h3>
+<p>Pre-aggregated indicators at the lugar poblado (sub-municipal locality) level. <strong>20,254 localities</strong>, 200+ columns. Each row represents one lugar poblado.</p>
+<p>Data is derived from all three census tables (personas, hogares, viviendas) and stored as counts (not percentages). The correct denominator depends on the type of analysis intended.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lugares poblados with codes ending in <code>999</code> (e.g.&nbsp;<code>102999</code>) represent unnamed informal settlements (<em>“Otros Lugares Poblados”</em>) with NULL coordinates. They are included in the data but cannot be mapped.</p>
+</div>
+</div>
+<p><strong>Parameters:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>departamento</code></td>
+<td><code>str | int</code></td>
+<td>Filter by department</td>
+</tr>
+<tr class="even">
+<td><code>municipio</code></td>
+<td><code>str | int</code></td>
+<td>Filter by municipality</td>
+</tr>
+<tr class="odd">
+<td><code>geometry</code></td>
+<td><code>bool</code></td>
+<td>If <code>True</code>, returns GeoDataFrame with point geometry (centroids)</td>
+</tr>
+</tbody>
+</table>
+<div id="387ebc74" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df  <span class="op">=</span> gq.lugares_poblados()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df  <span class="op">=</span> gq.lugares_poblados(departamento<span class="op">=</span><span class="st">"Sacatepéquez"</span>) <span class="co">#Loads all populated places from the department of Sacatepéquez</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>df  <span class="op">=</span> gq.lugares_poblados(municipio<span class="op">=</span><span class="st">"Antigua Guatemala"</span>) <span class="co">#Loads all populated places from the municipality of Antigua Guatemala</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.lugares_poblados(lugar_poblado<span class="op">=</span><span class="dv">301001</span>) <span class="co">#Loads populated place 301001 (Antigua Guatemala) data, from the municipality of Antigua Guatemala, Sacatepéquez</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gq.lugares_poblados(geometry<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Available columns by topic:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 48%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Column prefix</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scalars (population, PEA, years of education)</td>
+<td><code>poblacion_total</code>, <code>pea_total</code>, <code>aneduca_promedio</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="even">
+<td>Ethnic self-identification</td>
+<td><code>pcp12_maya</code>, <code>pcp12_ladino</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="odd">
+<td>Mayan linguistic community</td>
+<td><code>pcp13_kiche</code>, <code>pcp13_mam</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="even">
+<td>Mother tongue</td>
+<td><code>pcp15_espanol</code>, <code>pcp15_kiche</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="odd">
+<td>Disability</td>
+<td><code>pcp16_a_sin_dificultad</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="even">
+<td>Education level</td>
+<td><code>pcp17_a_ninguno</code>, <code>pcp17_a_primaria</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="odd">
+<td>Literacy</td>
+<td><code>pcp22_alfabeto</code>, <code>pcp22_no_alfabeto</code></td>
+<td>persona</td>
+</tr>
+<tr class="even">
+<td>Employment</td>
+<td><code>pcp30_1d_agropecuarios</code>…</td>
+<td>persona</td>
+</tr>
+<tr class="odd">
+<td>Housing type</td>
+<td><code>pcv1_casa_formal</code>, <code>pcv1_rancho</code>…</td>
+<td>vivienda</td>
+</tr>
+<tr class="even">
+<td>Wall material</td>
+<td><code>pcv2_block</code>, <code>pcv2_adobe</code>…</td>
+<td>vivienda</td>
+</tr>
+<tr class="odd">
+<td>Floor material</td>
+<td><code>pcv5_tierra</code>, <code>pcv5_torta_cemento</code>…</td>
+<td>vivienda</td>
+</tr>
+<tr class="even">
+<td>Water source</td>
+<td><code>pch4_tuberia_dentro</code>, <code>pch4_rio</code>…</td>
+<td>hogar</td>
+</tr>
+<tr class="odd">
+<td>Sanitation</td>
+<td><code>pch5_inodoro_red_drenajes</code>…</td>
+<td>hogar</td>
+</tr>
+<tr class="even">
+<td>Electricity</td>
+<td><code>pch8_red_electrica</code>, <code>pch8_candela</code>…</td>
+<td>hogar</td>
+</tr>
+<tr class="odd">
+<td>Household appliances</td>
+<td><code>pch9_i_si</code> (internet), <code>pch9_m_si</code> (car)…</td>
+<td>hogar</td>
+</tr>
+<tr class="even">
+<td>Cooking fuel</td>
+<td><code>pch14_lena</code>, <code>pch14_gas_propano</code>…</td>
+<td>hogar</td>
+</tr>
+<tr class="odd">
+<td>Remittances</td>
+<td><code>pch15_si</code>, <code>pch15_no</code></td>
+<td>hogar</td>
+</tr>
+<tr class="even">
+<td>Emigration since 2002</td>
+<td><code>pei1_si</code>, <code>pei1_no</code></td>
+<td>hogar</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="gq.voronoi_lugares_poblados" class="level3">
+<h3 class="anchored" data-anchor-id="gq.voronoi_lugares_poblados"><code>gq.voronoi_lugares_poblados()</code></h3>
+<p>Generates Voronoi polygon approximations as lugar poblado boundaries, clipped to municipio boundaries. These polygons are <strong>approximations</strong> for choropleth visualization. The INE does not publish official lugar poblado boundaries.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lugares poblados with NULL coordinates (codes ending in <code>999</code>) are automatically excluded. Municipios with only one lugar poblado return the full municipio polygon.</p>
+</div>
+</div>
+<p><strong>Parameters:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>departamento</code></td>
+<td><code>str | int</code></td>
+<td>Filter by department</td>
+</tr>
+<tr class="even">
+<td><code>municipio</code></td>
+<td><code>str | int</code></td>
+<td>Filter by municipality</td>
+</tr>
+</tbody>
+</table>
+<div id="eee5adc0" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>vor <span class="op">=</span> gq.voronoi_lugares_poblados(municipio<span class="op">=</span><span class="st">"Antigua Guatemala"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>vor <span class="op">=</span> gq.voronoi_lugares_poblados(departamento<span class="op">=</span><span class="st">"Sacatepéquez"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Typical pattern: join with census data for a choropleth</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>lp  <span class="op">=</span> gq.lugares_poblados(municipio<span class="op">=</span><span class="st">"Antigua Guatemala"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>lp  <span class="op">=</span> lp.drop(columns<span class="op">=</span>[<span class="st">"nombre"</span>, <span class="st">"lat"</span>, <span class="st">"longitud"</span>, <span class="st">"area"</span>])</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> vor.merge(lp, on<span class="op">=</span>[<span class="st">"departamento"</span>, <span class="st">"municipio"</span>, <span class="st">"lugar_poblado"</span>])</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>gdf[<span class="st">"pct_internet"</span>] <span class="op">=</span> gdf[<span class="st">"pch9_i_si"</span>] <span class="op">/</span> (gdf[<span class="st">"pch9_i_si"</span>] <span class="op">+</span> gdf[<span class="st">"pch9_i_no"</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>gdf.plot(column<span class="op">=</span><span class="st">"pct_internet"</span>, cmap<span class="op">=</span><span class="st">"YlGnBu"</span>, legend<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+</section>
+<section id="describe-functions" class="level2">
+<h2 class="anchored" data-anchor-id="describe-functions">Describe Functions</h2>
+<p>All describe functions return a <code>DataFrame</code> with all variables if none is specified, or a <code>dict</code> with details for the requested variable.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Dataset</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>gq.describe_personas(variable)</code></td>
+<td>Personas</td>
+</tr>
+<tr class="even">
+<td><code>gq.describe_hogares(variable)</code></td>
+<td>Hogares</td>
+</tr>
+<tr class="odd">
+<td><code>gq.describe_viviendas(variable)</code></td>
+<td>Viviendas</td>
+</tr>
+<tr class="even">
+<td><code>gq.describe_emigracion(variable)</code></td>
+<td>Emigración</td>
+</tr>
+<tr class="odd">
+<td><code>gq.describe_lugares_poblados(variable)</code></td>
+<td>Lugares Poblados</td>
+</tr>
+</tbody>
+</table>
+<div id="4097542a" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>gq.describe_personas()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>gq.describe_personas(<span class="st">"PCP12"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># {'variable': 'PCP12',</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  'etiqueta': '...ethnic self-identification...',</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  'tipo': 'étnica',</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  'valores': {1: 'Maya', 2: 'Garífuna', 3: 'Xinka', ...}}</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>gq.describe_lugares_poblados(<span class="st">"pcp12_maya"</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># {'variable': 'pcp12_maya',</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  'etiqueta': 'Conteo: se identifica como Maya',</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  'tipo': 'étnica',</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  'fuente': 'persona'}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+<section id="coordinate-reference-systems" class="level2">
+<h2 class="anchored" data-anchor-id="coordinate-reference-systems">Coordinate Reference Systems</h2>
+<div id="13763f17" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geoquetzal.crs <span class="im">import</span> to_gtm, to_utm16n, suggest_crs</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> gq.departamentos()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>suggest_crs(deptos)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>deptos_gtm <span class="op">=</span> to_gtm(deptos)    <span class="co"># Guatemala Transverse Mercator (national standard)</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>deptos_utm <span class="op">=</span> to_utm16n(deptos) <span class="co"># UTM Zone 16N (for area/distance calculations)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>CRS</th>
+<th>Code</th>
+<th>Recommended use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>WGS 84</td>
+<td><code>EPSG:4326</code></td>
+<td>Default, web maps</td>
+</tr>
+<tr class="even">
+<td>Guatemala TM (GTM)</td>
+<td><code>ESRI:103598</code></td>
+<td>National standard, official maps</td>
+</tr>
+<tr class="odd">
+<td>UTM Zone 16N</td>
+<td><code>EPSG:32616</code></td>
+<td>Area and distance calculations</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+(function () {
+  const pathMap = {
+    "/index.html":                    "/en/index.html",
+    "/api/referencia.html":           "/en/api/reference.html",
+    "/api/referencia-r.html":         "/en/api/reference-r.html",
+    "/ejemplos/censo.html":           "/en/examples/census.html",
+    "/ejemplos/mapas.html":           "/en/examples/maps.html",
+    "/ejemplos/censo_mapas.html":     "/en/examples/census_maps.html",
+    "/ejemplos/otros_datos_mapas.html":     "/en/examples/other_data_maps.html",
+    "/fuentes.html":                  "/en/sources.html",
+    "/acerca_de.html":                "/en/about.html",
+    "/en/index.html":                 "/index.html",
+    "/en/api/reference.html":         "/api/referencia.html",
+    "/en/api/reference-r.html":       "/api/referencia-r.html",
+    "/en/examples/census.html":       "/ejemplos/censo.html",
+    "/en/examples/maps.html":         "/ejemplos/mapas.html",
+    "/en/examples/census_maps.html":  "/ejemplos/censo_mapas.html",
+    "/en/sources.html":               "/fuentes.html",
+    "/en/about.html":                 "/acerca_de.html",
+  };
+
+  const path = window.location.pathname;
+  const isEnglish = path.includes("/en/");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const navEs = document.getElementById("nav-es");
+    const navEn = document.getElementById("nav-en");
+
+    if (navEs && navEn) {
+      if (isEnglish) {
+        navEn.style.fontWeight = "bold";
+        navEs.style.opacity = "0.6";
+      } else {
+        navEs.style.fontWeight = "bold";
+        navEn.style.opacity = "0.6";
+      }
+    }
+
+    let equivalent = pathMap[path];
+    if (!equivalent) {
+      equivalent = isEnglish ? "/index.html" : "/en/index.html";
+    }
+
+    if (isEnglish && navEs) navEs.href = equivalent;
+    else if (!isEnglish && navEn) navEn.href = equivalent;
+  });
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Jorge Yass &amp; Anasilvia Salazar · <a href="https://github.com/geoquetzal/geoquetzal/blob/main/LICENSE">MIT License</a> · Datos censales: <a href="https://censo2018.ine.gob.gt">INE Guatemala</a> · Límites: <a href="https://github.com/minfin-bi/Mapas-TopoJSON-Guatemala">MINFIN</a> · <a href="https://geoquetzal.org">geoquetzal.org</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
