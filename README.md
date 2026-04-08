@@ -1,6 +1,6 @@
 # GeoQuetzal
 
-🌐 **English** | [Leer en español](README.es.md)
+🌐 **English** | [Leer en Español](https://github.com/geoquetzal/geoquetzal/blob/main/README.es.md) | [Website](https://geoquetzal.org/en/)
 
 **Geographic and census data for Guatemala — the first library of its kind for Central America.**
 

@@ -56,7 +56,7 @@ Data sources
   https://github.com/geoquetzal/censo2018/releases
 """
 
-__version__ = "1.1.1"
+__version__ = "1.1.3"
 __author__ = "Jorge Yass"
 
 # Geography — top level

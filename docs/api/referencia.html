@@ -105,9 +105,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link rel="alternate" hreflang="es" href="https://geoquetzal.org/api/referencia.html">
+<link rel="alternate" hreflang="en" href="https://geoquetzal.org/en/api/reference.html">
+<link rel="alternate" hreflang="x-default" href="https://geoquetzal.org/api/referencia.html">
 
 
 <link rel="stylesheet" href="../custom.css">
+<meta property="og:title" content="Referencia de la API – GeoQuetzal">
+<meta property="og:description" content="Acceso y visualización programática de los límites geográficos y microdatos del Censo 2018 de Guatemala">
+<meta property="og:site_name" content="GeoQuetzal">
+<meta property="og:locale" content="es_GT">
+<meta name="twitter:title" content="Referencia de la API – GeoQuetzal">
+<meta name="twitter:description" content="Acceso y visualización programática de los límites geográficos y microdatos del Censo 2018 de Guatemala">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
@@ -271,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gq.country" class="level3">
 <h3 class="anchored" data-anchor-id="gq.country"><code>gq.country()</code></h3>
 <p>Retorna el contorno del país de Guatemala como un GeoDataFrame.</p>
-<div id="213b2189" class="cell" data-execution_count="1">
+<div id="213f974f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pais <span class="op">=</span> gq.country()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pais.plot(color<span class="op">=</span><span class="st">"lightgreen"</span>, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -308,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="757ea7fe" class="cell" data-execution_count="2">
+<div id="2eec9889" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Todos los departamentos</span></span>
@@ -361,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="dec0516b" class="cell" data-execution_count="3">
+<div id="1aa58414" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Todos los municipios de un departamento</span></span>
@@ -379,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gq.lagos" class="level3">
 <h3 class="anchored" data-anchor-id="gq.lagos"><code>gq.lagos()</code></h3>
 <p>Retorna los dos principales lagos de Guatemala (Amatitlán y Atitlán) para superposición en mapas.</p>
-<div id="07596fae" class="cell" data-execution_count="4">
+<div id="83d683d2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> gq.departamentos().plot(color<span class="op">=</span><span class="st">"lightyellow"</span>, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span>
@@ -391,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="microdatos-censales" class="level2">
 <h2 class="anchored" data-anchor-id="microdatos-censales">Microdatos Censales</h2>
 <p>Funciones para acceder a los microdatos del XII Censo Nacional de Población y VII de Vivienda 2018 (INE). Los datos se descargan en formato Parquet desde GitHub Releases y se almacenan en caché localmente. Para limpiar el caché:</p>
-<div id="c9a962e0" class="cell" data-execution_count="5">
+<div id="e1d837f3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geoquetzal.cache <span class="im">import</span> clear_cache</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clear_cache()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -432,7 +442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="gq.personas"><code>gq.personas()</code></h3>
 <p>Microdatos a nivel de persona. <strong>14,901,286 registros</strong>, 84 variables. Cada fila representa una persona.</p>
 <p>Variables principales: sexo (<code>PCP6</code>), edad (<code>PCP7</code>), autoidentificación étnica (<code>PCP12</code>), comunidad lingüística maya (<code>PCP13</code>), lengua materna (<code>PCP15</code>), discapacidad (<code>PCP16_A</code>–<code>PCP16_F</code>), escolaridad (<code>PCP17_A</code>), alfabetismo (<code>PCP22</code>), acceso a tecnología (<code>PCP26_A</code>–<code>PCP26_C</code>), empleo (<code>PCP27</code>), fecundidad (<code>PCP35</code>–<code>PCP39</code>).</p>
-<div id="fd46a4f1" class="cell" data-execution_count="6">
+<div id="99cc7746" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.personas(departamento<span class="op">=</span><span class="st">"Huehuetenango"</span>)</span>
@@ -445,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="gq.hogares"><code>gq.hogares()</code></h3>
 <p>Microdatos a nivel de hogar. <strong>3,275,931 registros</strong>, 37 variables. Cada fila representa un hogar.</p>
 <p>Variables principales: fuente de agua (<code>PCH4</code>), saneamiento (<code>PCH5</code>), electricidad (<code>PCH8</code>), equipamiento del hogar — radio, TV, refrigeradora, internet, carro (<code>PCH9_A</code>–<code>PCH9_M</code>), combustible para cocinar (<code>PCH14</code>), remesas (<code>PCH15</code>).</p>
-<div id="bdd3d9eb" class="cell" data-execution_count="7">
+<div id="3b39c77a" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.hogares(departamento<span class="op">=</span><span class="st">"Sacatepequez"</span>)</span>
@@ -458,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="gq.viviendas"><code>gq.viviendas()</code></h3>
 <p>Microdatos a nivel de vivienda. <strong>~3,300,000 registros</strong>, 11 variables. Cada fila representa una vivienda.</p>
 <p>Variables principales: tipo de vivienda (<code>PCV1</code>), material de paredes (<code>PCV2</code>), techo (<code>PCV3</code>), condición (<code>PCV4</code>), piso (<code>PCV5</code>).</p>
-<div id="cbefcf90" class="cell" data-execution_count="8">
+<div id="dbd562bc" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.viviendas(departamento<span class="op">=</span><span class="st">"Sacatepequez"</span>)</span>
@@ -470,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="gq.emigracion"><code>gq.emigracion()</code></h3>
 <p>Registros de emigración internacional. <strong>242,203 registros</strong>, 11 variables. Cada fila es una persona que emigró desde un hogar.</p>
 <p>Variables principales: sexo (<code>PEI3</code>), edad al emigrar (<code>PEI4</code>), año de partida (<code>PEI5</code>).</p>
-<div id="8358f170" class="cell" data-execution_count="9">
+<div id="75586259" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gq.emigracion(departamento<span class="op">=</span><span class="st">"Huehuetenango"</span>)</span>
@@ -530,7 +540,7 @@ Note
 </tr>
 </tbody>
 </table>
-<div id="7ea3a012" class="cell" data-execution_count="10">
+<div id="c9f8401f" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Todos los lugares poblados</span></span>
@@ -691,7 +701,7 @@ Warning
 </tr>
 </tbody>
 </table>
-<div id="e2d3b4de" class="cell" data-execution_count="11">
+<div id="78a60e78" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Polígonos Voronoi para un municipio</span></span>
@@ -742,7 +752,7 @@ Warning
 </tr>
 </tbody>
 </table>
-<div id="5123858c" class="cell" data-execution_count="12">
+<div id="20a0ad84" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoquetzal <span class="im">as</span> gq</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar todas las variables de un dataset</span></span>
@@ -766,7 +776,7 @@ Warning
 </section>
 <section id="sistemas-de-referencia-de-coordenadas" class="level2">
 <h2 class="anchored" data-anchor-id="sistemas-de-referencia-de-coordenadas">Sistemas de Referencia de Coordenadas</h2>
-<div id="42ae0e4a" class="cell" data-execution_count="13">
+<div id="ca24ae92" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geoquetzal.crs <span class="im">import</span> to_gtm, to_utm16n, suggest_crs</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> gq.departamentos()</span>
@@ -933,7 +943,7 @@ Warning
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/geoquetzal\.org");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -70,9 +70,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link rel="alternate" hreflang="es" href="https://geoquetzal.org/fuentes.html">
+<link rel="alternate" hreflang="en" href="https://geoquetzal.org/en/sources.html">
+<link rel="alternate" hreflang="x-default" href="https://geoquetzal.org/fuentes.html">
 
 
 <link rel="stylesheet" href="../custom.css">
+<meta property="og:title" content="Data Sources &amp; Attribution – GeoQuetzal">
+<meta property="og:description" content="Acceso y visualización programática de los límites geográficos y microdatos del Censo 2018 de Guatemala">
+<meta property="og:site_name" content="GeoQuetzal">
+<meta property="og:locale" content="es_GT">
+<meta name="twitter:title" content="Data Sources &amp; Attribution – GeoQuetzal">
+<meta name="twitter:description" content="Acceso y visualización programática de los límites geográficos y microdatos del Censo 2018 de Guatemala">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
@@ -563,7 +573,7 @@ Warning
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/geoquetzal\.org");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
